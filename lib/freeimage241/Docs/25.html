@@ -1,0 +1,271 @@
+<html><body>
+<h2><a name="SECTION25"></a><b>Simple load functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION26">FreeImage_LoadBMP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION27">FreeImage_LoadICO</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION28">FreeImage_LoadJPEG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION29">FreeImage_LoadKOALA</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION30">FreeImage_LoadLBM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION31">FreeImage_LoadMNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION32">FreeImage_LoadPCD</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION33">FreeImage_LoadPCX</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION34">FreeImage_LoadPNM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION35">FreeImage_LoadPNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION36">FreeImage_LoadRAS</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION37">FreeImage_LoadTARGA</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION38">FreeImage_LoadTIFF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION39">FreeImage_LoadWBMP</a></font>
+        </ul>
+
+<h3><a name="SECTION26"></a><b>FreeImage_LoadBMP </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadBMP(const char *filename, int flags = BMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Windows Bitmap file or OS/2 Bitmap file into a FreeImage bitmap. If the bitmap is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the bitmap couldn't be loaded, FreeImage_LoadBMP returns NULL. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); 
+
+</p></font><h3><a name="SECTION27"></a><b>FreeImage_LoadICO </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadICO(const char *filename, int flags = ICO_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Windows ICON file into a FreeImage bitmap. If the icon is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the bitmap couldn't be loaded, FreeImage_LoadICO returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Flags defaults to ICO_DEFAULT. The following parameters can be passed to change the behaviour of the load routine: 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadICO("test.ico"); <br>FIBITMAP *dib = FreeImage_LoadICO("test.ico", ICO_SECOND); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Value </td><td>Meaning </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>ICO_FIRST </td><td>Loads the first icon in the cabinet </td><tr><td>ICO_SECOND </td><td>Loads the second icon in the cabinet </td><tr><td>ICO_THIRD </td><td>Loads the third icon in the cabinet </td>
+</table><br>
+
+</p></font><h3><a name="SECTION28"></a><b>FreeImage_LoadJPEG </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadJPEG(const char *filename, int flags = JPEG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given JPEG or JIF file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadJPEG returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Flags defaults to JPEG_DEFAULT. The following parameters can be passed to the flags parameter to change the behaviour of the load routine: 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadJPEG("test.jpg"); <br>FIBITMAP *dib = FreeImage_LoadJPEG("test.jpg", JPEG_ACCURATE); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Value </td><td>Meaning </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>JPEG_FAST </td><td>Loads the file as fast as possible, sacrificing some quality. </td><tr><td>JPEG_ACCURATE </td><td>Loads the file as accurate as possible, sacrificing some speed. </td></table><br>
+
+</p></font><h3><a name="SECTION29"></a><b>FreeImage_LoadKOALA </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadKOALA(const char *filename, int flags = KOALA_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given KOALA file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadKOALA returns NULL 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>KOALA is a 4-bit bitmap format developed for and supported by ancient commodore 64 computers and emulators. The format is supported for nostalgic reasons of the author. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadKOALA("test.koa"); 
+
+</p></font><h3><a name="SECTION30"></a><b>FreeImage_LoadLBM </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadLBM(const char *filename, int flags = LBM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Deluxe Paint LBM file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadLBM returns NULL 
+
+</p></font><h3>
+<a name="SECTION31"></a><b>FreeImage_LoadMNG </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadMNG(const char *filename, int flags = MNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Multi Network Graphics (MNG) or JPEG Network Graphics (JNG) file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadMNG returns NULL 
+
+</p></font><h3><a name="SECTION32"></a><b>FreeImage_LoadPCD </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPCD(const char *filename, int flags = PCD_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Kodak PhotoCD file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPCD returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>PhotoCD images are so called cabinet files, where several versions of the same bitmap exist in one file. By default FreeImage loads the image marked in the flags as PCD_BASE. By using the flags parameter other image versions can be obtained: 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadPCD("test.pcd"); <br>FIBITMAP *dib = FreeImage_LoadPCX("test.pcd", PCD_BASEDIV16); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Value </td><td>Meaning </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>PCD_BASE </td><td>24-bit, 768 x 512 pixels </td><tr><td>PCD_BASEDIV4 </td><td>24-bit, 192 x 128 pixels </td><tr><td>PCD_BASEDIV16 </td><td>24-bit. 384 x 256 pixels </td>
+</table><br>
+
+</p></font><h3><a name="SECTION33"></a><b>FreeImage_LoadPCX </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPCX(const char *filename, int flags = PCX_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given PCX file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPCX returns NULL. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadPCX("test.pcx"); 
+
+</p></font><h3><a name="SECTION34"></a><b>FreeImage_LoadPNM </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPNM(const char *filename, PNMFlags flags = PNM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads one of the PNM supported bitmap files into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPNM returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>PNM is a descriptive name for a collection of ASCII based bitmap types: PBM, PGM and PPM. PBM (Portable Bitmap format) is a 1-bit, black and white bitmap type, PGM (Portable Greymap format) is an 8-bit greyscale bitmap type and PPM (Portable Pixelmap format) is a 24-bit full colour bitmap. FreeImage automatically detects if you are dealing with a PBM, PGM or PPM bitmap and will load it in the default bit depth of that particular image. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadPNM("test.ppm"); <br>FIBITMAP *dib = FreeImage_LoadPNM("test.pgm"); <br>FIBITMAP *dib = FreeImage_LoadPNM("test.pbm"); 
+
+</p></font><h3><a name="SECTION35"></a><b>FreeImage_LoadPNG </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPNG(const char *filename, int flags = PNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given PNG file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPNG returns NULL. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadPNG("test.png"); 
+
+</p></font><h3><a name="SECTION36"></a><b>FreeImage_LoadRAS </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadRAS(const char *filename, int flags = RAS_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Sun rasterfile into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadRAS returns NULL. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadRAS("test.ras"); 
+
+</p></font><h3><a name="SECTION37"></a><b>FreeImage_LoadTARGA </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadTARGA(const char *filename, int flags = TARGA_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given TARGA file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadTARGA returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Flags defaults to TARGA_DEFAULT. The flags parameter can be passed the following values to change the behaviour of the load plugin: 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadTARGA("test.tga"); <br>FIBITMAP *dib = FreeImage_LoadTARGA("test.tga", TARGA_LOAD_RGB888); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Value </td><td>Meaning </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>TARGA_LOAD_RGB888 </td><td>If the TARGA file is 16 or 32-bit, it is automatically converted to 24-bit. </td></table><br>
+
+</p></font><h3><a name="SECTION38"></a><b>FreeImage_LoadTIFF </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadTIFF(const char *filename, int flags = TIFF_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given TIFF file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadTIFF returns NULL. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadTIFF("test.tiff"); 
+
+</p></font><h3><a name="SECTION39"></a><b>FreeImage_LoadWBMP </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadWBMP(const char *filename, int flags = WBMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given WBMP or WAP file into a FreeImage bitmap. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadWBMP returns NULL. 
+
+</p></font></body></html>

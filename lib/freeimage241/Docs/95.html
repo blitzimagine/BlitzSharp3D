@@ -1,0 +1,93 @@
+<html><body>
+<h2><a name="SECTION95"></a><b>Conversion functions </b>
+
+</h2>
+<font face="Times New Roman" size=3">
+<p>Bitmaps in FreeImage are always loaded in their default bit depth. If you want the bitmap to be stored in another bit depth, the library provides several conversion functions. 
+
+</p></font>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION96">FreeImage_ConvertTo8Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION97">FreeImage_ConvertTo16Bits 555</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION98">FreeImage_ConvertTo16Bits565</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION99">FreeImage_ConvertTo24Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION100">FreeImage_ConvertTo32Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION101">FreeImage_ColorQuantize</a></font>
+        </ul>
+
+<h3><a name="SECTION96"></a><b>FreeImage_ConvertTo8Bits </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ConvertTo8Bits(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Converts the given bitmap to 8 bits. If the bitmap is 24 or 32-bit RGB, the colour values are converted to greyscale. 
+
+</p></font><h3><a name="SECTION97"></a><b>FreeImage_ConvertTo16Bits </b><b>555 </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ConvertTo16Bits555(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Converts the given bitmap to 16 bits. The resulting bitmap has a layout of 5 bits red, 5 bits green, 5 bits red and 1 unused bit. 
+
+</p></font><h3><a name="SECTION98"></a><b>FreeImage_ConvertTo16Bits565 </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ConvertTo16Bits565(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Converts the given bitmap to 16 bits. The resulting bitmap has a layout of 5 bits red, 6 bits green and 5 bits red. 
+
+</p></font><h3><a name="SECTION99"></a><b>FreeImage_ConvertTo24Bits </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ConvertTo24Bits(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Converts the given bitmap to 24 bits. 
+
+</p></font><h3><a name="SECTION100"></a><b>FreeImage_ConvertTo32Bits </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ConvertTo32Bits(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Converts the given bitmap to 32 bits. 
+
+</p></font><h3><a name="SECTION101"></a><b>FreeImage_ColorQuantize </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_ColorQuantize(FIBITMAP *dib, FREE_IMAGE_QUANTIZE quantize); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Quantizes a full colour 24-bit bitmap to a palletised 8-bit bitmap. The quantize parameter specifies which colour reduction algorithm should be used. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Parameter </td><td>Description </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>FIQ_WUQUANT </td><td>Wu's color quantization algorithm </td><tr><td>FIQ_NNQUANT </td><td>NeuQuant quantization algorithm </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p></table><br>
+
+</p></font></body></html>

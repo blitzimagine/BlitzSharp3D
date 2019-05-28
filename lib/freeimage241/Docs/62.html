@@ -1,0 +1,196 @@
+<html><body>
+<h2><a name="SECTION62"></a><b>Advanced save functions </b>
+
+</h2>
+<font face="Times New Roman" size=3">
+<p>Saving bitmaps using the ...SaveToHandle functions is almost identical to loading bitmap via the ...LoadFromHandle functions. Information about the FreeImageIO and fi_handle can therefore be obtained from the information belonging to these functions. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_ReadProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fread(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_WriteProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle){ 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fwrite(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>int 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_SeekProc(fi_handle handle, long offset, int origin) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fseek((FILE *)handle, offset, origin); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>long 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_TellProc(fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return ftell((FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImageIO io; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.read_proc = _ReadProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.write_proc = _WriteProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.seek_proc = _SeekProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.tell_proc = _TellProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p><br>FILE *file = fopen("test.bmp", "rb"); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMPFromHandle(&io, (fi_handle)file); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>
+<br>fclose(file); <br>
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>if (dib != NULL) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>file = fopen("saved.bmp", "wb"); 
+<br>
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImage_SavePNGToHandle(dib, &io, (fi_handle)file); 
+<br>fclose(file); <br>} <br>
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImage_Free(dib); 
+
+</p></font>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION63">FreeImage_SaveBMPToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION64">FreeImage_SaveJPEGToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION65">FreeImage_SavePNGToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION66">FreeImage_SavePNMToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION67">FreeImage_SaveTIFFToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION68">FreeImage_SaveWBMPToHandle</a></font>
+        </ul>
+
+<h3><a name="SECTION63"></a><b>FreeImage_SaveBMPToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveBMPToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = BMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a Windows Bitmap file. The BMP file is always saved in the Windows format. No compression is used. 
+
+</p></font><h3><a name="SECTION64"></a><b>FreeImage_SaveJPEGToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveJPEGToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = JPEG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a JPEG file. Only 24-bit bitmaps can be saved as JPEG. Bitmaps in bit depths will have to be converted. 
+
+</p></font><h3><a name="SECTION65"></a><b>FreeImage_SavePNGToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SavePNGToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = PNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a PNG file. 
+
+</p></font><h3><a name="SECTION66"></a><b>FreeImage_SavePNMToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SavePNMToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = PNM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a PNM file. PNM is a descriptive name for a collection of ASCII based bitmap types: PBM, PGM and PPM. If the bitmap has a bitdepth of 1, the file is saved as a PBM file. If the bitmap has a bitdepth of 8, the file is saved as a PGM file. If the bitmap has a bitdepth of 24, the file is saved as a PPM file. Other bitdepths are not supported. 
+
+</p></font><h3>
+<a name="SECTION67"></a><b>FreeImage_SaveTIFFToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveTIFFToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = TIFF_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a TIFF file. 
+
+</p></font><h3><a name="SECTION68"></a><b>FreeImage_SaveWBMPToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveWBMPToHandle(FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags = WBMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a WBMP file. 
+
+</p></font></body></html>

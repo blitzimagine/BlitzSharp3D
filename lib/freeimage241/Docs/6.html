@@ -1,0 +1,43 @@
+<html><body>
+<h2><a name="SECTION6"></a><b>Bitmap Allocation functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION7">FreeImage_Allocate</a></font>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION8">FreeImage_Free</a></font>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION9">FreeImage_Unload</a></font>
+        </ul>
+
+<h3><a name="SECTION7"></a><b>FreeImage_Allocate </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_Allocate(int width, int height, int bpp, int red_mask = 0, int green_mask = 0, int blue_mask = 0); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Allocates a new FreeImage bitmap using the given width, height and bits per pixel and optional red, green and blue mask. The mask is stored in BGR order. 
+
+</p></font><h3><a name="SECTION8"></a><b>FreeImage_Free </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>void FreeImage_Free(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Disposes the given bitmap from memory. 
+
+</p></font><h3><a name="SECTION9"></a><b>FreeImage_Unload </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>void FreeImage_Unload(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Alias for FreeImage_Free. 
+
+</p></font></body></html>

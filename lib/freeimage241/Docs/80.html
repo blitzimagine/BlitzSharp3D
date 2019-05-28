@@ -1,0 +1,175 @@
+<html><body>
+<h2>
+<a name="SECTION80"></a><b>DIB information functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION81">FreeImage_GetColorsUsed</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION82">FreeImage_GetBits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION83">FreeImage_GetBitsRowCol</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION84">FreeImage_GetScanLine</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION85">FreeImage_GetBPP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION86">FreeImage_GetWidth</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION87">FreeImage_GetHeight</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION88">FreeImage_GetLine</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION89">FreeImage_GetPitch</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION90">FreeImage_GetDIBSize</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION91">FreeImage_GetPalette</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION92">FreeImage_GetInfoHeader</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION93">FreeImage_GetInfo</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION94">FreeImage_GetColorType</a></font>
+        </ul>
+
+<h3><a name="SECTION81"></a><b>FreeImage_GetColorsUsed </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetColorsUsed(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Retrieves the number of colours used in the bitmap. If the bitmap is non-palletised, 0 is returned. 
+
+</p></font><h3><a name="SECTION82"></a><b>FreeImage_GetBits </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BYTE * FreeImage_GetBits(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the bitmap bits. 
+
+</p></font><h3><a name="SECTION83"></a><b>FreeImage_GetBitsRowCol </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BYTE * FreeImage_GetBitsRowCol(FIBITMAP *dib, int col, int row); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the bitmap bits on the given column and row. 
+
+</p></font><h3><a name="SECTION84"></a><b>FreeImage_GetScanLine </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BYTE * FreeImage_GetScanLine(FIBITMAP *dib, int scanline); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the beginning of the bits of the given scanline. 
+
+</p></font><h3><a name="SECTION85"></a><b>FreeImage_GetBPP </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetBPP(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the bitdepth of the bitmap. 
+
+</p></font><h3><a name="SECTION86"></a><b>FreeImage_GetWidth </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetWidth(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the width of the bitmap in pixels. 
+
+</p></font><h3><a name="SECTION87"></a><b>FreeImage_GetHeight </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetHeight(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the height of the bitmap in pixels. 
+
+</p></font><h3><a name="SECTION88"></a><b>FreeImage_GetLine </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetLine(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the width of the bitmap in bytes. 
+
+</p></font><h3><a name="SECTION89"></a><b>FreeImage_GetPitch </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetPitch(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the width of the bitmap in bytes rounded to the nearest DWORD. 
+
+</p></font><h3><a name="SECTION90"></a><b>FreeImage_GetDIBSize </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetDIBSize(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the size of the bitmap in bytes. The size of the bitmap is the BITMAPINFOHEADER + the size of the palette + the size of the bitmap data. 
+
+</p></font><h3><a name="SECTION91"></a><b>FreeImage_GetPalette </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>RGBQUAD *FreeImage_GetPalette(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the bitmap's palette. If the bitmap doesn't have a palette, FreeImage_GetPalette returns NULL. 
+
+</p></font><h3><a name="SECTION92"></a><b>FreeImage_GetInfoHeader </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BITMAPINFOHEADER *FreeImage_GetInfoHeader(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the bitmap's BITMAPINFOHEADER. 
+
+</p></font><h3><a name="SECTION93"></a><b>FreeImage_GetInfo </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BITMAPINFO *FreeImage_GetInfo(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a pointer to the bitmap's BITMAPINFO header. 
+
+</p></font><h3><a name="SECTION94"></a><b>FreeImage_GetColorType </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_COLOR_TYPE FreeImage_GetColorType(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Investigates the colour type of the bitmap and returns one of the following values: 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Value </td><td>Description </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>FIC_MINISWHITE </td><td>1-bit bitmap. The min value is white </td><tr><td>FIC_MINISBLACK </td><td>1-bit bitmap. The min value is black 8-bit grayscale. The min value is black </td><tr><td>FIC_RGB </td><td>24/32-bit RGB </td><tr>
+<td>FIC_PALETTE </td><td>1/4/8-bit palletised </td></table><br>
+
+</p></font></body></html>

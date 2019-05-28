@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="mono\blitzlib.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="stdutil\stdutil.cpp">
+      <Filter>stdutil</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\basic.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbaudio.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbbank.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbblitz3d.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbfilesystem.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbgraphics.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbinput.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbmath.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbruntime.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbsockets.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbstream.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbstring.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbsys.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\multiplay.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\multiplay_setup.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\runtime.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\std_runtime.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\userlibs.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\asmcoder.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\ddutil.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxaudio.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxcanvas.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxchannel.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxdevice.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxdir.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxfilesystem.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxfont.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxgraphics.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxinput.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxlight.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxmesh.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxmovie.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxmusic.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxruntime.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxscene.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxsound.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\gxtimer.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="gxruntime\std_gxruntime.cpp">
+      <Filter>gxruntime</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\animation.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\animator.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\brush.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\cachedtexture.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\camera.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\collision.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\entity.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\frustum.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\geom.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\light.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\listener.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\loader_3ds.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\loader_b3d.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\loader_x.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\md2model.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\md2norms.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\md2rep.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\meshcollider.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\meshloader.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\meshmodel.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\meshutil.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\mirror.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\model.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\ms3drep.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\object.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\pivot.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\planemodel.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\q3bspmodel.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\q3bsprep.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\sprite.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\std_blitz3d.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\surface.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\terrain.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\terrainrep.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\texture.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+    <ClCompile Include="blitz3d\world.cpp">
+      <Filter>blitz3d</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="mono\blitzlib.h">
+      <Filter>mono</Filter>
+    </ClInclude>
+    <ClInclude Include="stdutil\stdutil.h">
+      <Filter>stdutil</Filter>
+    </ClInclude>
+    <ClInclude Include="config\config.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\basic.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bb_basic.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbaudio.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbbank.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbblitz3d.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbfilesystem.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbgraphics.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbinput.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbmath.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbruntime.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbsockets.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbstream.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbstring.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\bbsys.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\multiplay.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\multiplay_setup.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\userlibs.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="bbruntime\std.h">
+      <Filter>bbruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\asmcoder.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\ddutil.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxaudio.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxcanvas.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxchannel.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxdevice.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxdir.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxfilesystem.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxfont.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxgraphics.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxinput.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxlight.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxmesh.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxmovie.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxmusic.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxruntime.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxscene.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxsound.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\gxtimer.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="gxruntime\std.h">
+      <Filter>gxruntime</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\animation.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\animator.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\blitz3d.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\brush.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\cachedtexture.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\camera.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\collision.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\entity.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\entityutil.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\frustum.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\geom.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\group.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\light.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\listener.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\loader.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\loader_3ds.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\loader_b3d.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\loader_x.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\md2model.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\md2norms.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\md2rep.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\mesh.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\meshcollider.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\meshloader.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\meshmodel.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\meshrenderer.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\meshutil.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\mirror.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\model.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\ms3drep.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\object.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\pivot.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\planemodel.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\q3bspmodel.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\q3bsprep.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\rendercontext.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\sprite.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\surface.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\terrain.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\terrainmodel.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\terrainrep.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\texture.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\texturecache.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\world.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="blitz3d\std.h">
+      <Filter>blitz3d</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bbexe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="mono">
+      <UniqueIdentifier>{1c5c159b-a3bb-407f-a7fd-60c42e39be8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stdutil">
+      <UniqueIdentifier>{5f8b65a3-0c9f-4e22-8d95-7e079bd2643a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{afabab93-8025-4753-b11c-15cf46c53be2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bbruntime">
+      <UniqueIdentifier>{c543b7e5-6c3d-4d9a-acfb-35aac7fe3e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gxruntime">
+      <UniqueIdentifier>{62a6a5a8-36f6-42d3-aa7d-66b2fe84c836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="blitz3d">
+      <UniqueIdentifier>{c13e9f7b-ae20-434f-8d1e-7805fbbf476b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

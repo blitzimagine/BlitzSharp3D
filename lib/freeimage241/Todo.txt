@@ -1,0 +1,4 @@
+What's there to do for FreeImage
+
+* add a movie plugin (DirectShow based)
+* start using c++ (stl) instead of c, since most things are now c++ anyway

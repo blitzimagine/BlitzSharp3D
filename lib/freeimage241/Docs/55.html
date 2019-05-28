@@ -1,0 +1,105 @@
+<html><body>
+<h2>
+<a name="SECTION55"></a><b>Simple save functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION56">FreeImage_SaveBMP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION57">FreeImage_SaveJPEG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION58">FreeImage_SavePNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION59">FreeImage_SavePNM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION60">FreeImage_SaveTIFF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION61">FreeImage_SaveWBMP</a></font>
+        </ul>
+
+<h3><a name="SECTION56"></a><b>FreeImage_SaveBMP </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveBMP(FIBITMAP *dib, const char *filename, int flags = BMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a Windows Bitmap file. The BMP file is always saved in the Windows format. No compression is used. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); <br>if (dib != NULL) { <br>FreeImage_SaveBMP("saved.bmp"); <br>FreeImage_Free(dib); <br>} 
+
+</p></font><h3><a name="SECTION57"></a><b>FreeImage_SaveJPEG </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveJPEG(FIBITMAP *dib, const char *filename, int flags = JPEG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a JPEG file. . Only 24-bit bitmaps can be saved as JPEG. Bitmaps in bit depths will have to be converted. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); <br>if (dib != NULL) { <br>FreeImage_SaveJPEG("saved.jpg"); <br>FreeImage_Free(dib); <br>} 
+
+</p></font><h3><a name="SECTION58"></a><b>FreeImage_SavePNG </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SavePNG(FIBITMAP *dib, const char *filename, int flags = PNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a PNG file. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); <br>if (dib != NULL) { <br>FreeImage_SavePNG("saved.png"); <br>FreeImage_Free(dib); <br>} 
+
+</p></font><h3><a name="SECTION59"></a><b>FreeImage_SavePNM </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SavePNM(FIBITMAP *dib, const char *filename, PNMFlags flags = PNM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a PNM file. PNM is a descriptive name for a collection of ASCII based bitmap types: PBM, PGM and PPM. If the bitmap has a bit depth of 1, the file is saved as a PBM file. If the bitmap has a bit depth of 8, the file is saved as a PGM file. If the bitmap has a bit depth of 24, the file is saved as a PPM file. Other bit depths are not supported. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>if (dib != NULL) { <br>switch(FreeImage_GetBPP(dib)) { <br>case 1 : <br>FreeImage_SavePNM("saved.pbm"); <br>break; <br>case 8 : <br>FreeImage_SavePNM("saved.pgm"); <br>break; <br>case 24 : <br>FreeImage_SavePNM("saved.ppm"); <br>break; <br>} <br>FreeImage_Free(dib); <br>} 
+
+</p></font><h3><a name="SECTION60"></a><b>FreeImage_SaveTIFF </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveTIFF(FIBITMAP *dib, const char *filename, int flags = TIFF_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a TIFF file. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); <br>if (dib != NULL) { <br>FreeImage_SaveTIFF("saved.tiff"); <br>FreeImage_Free(dib); <br>} 
+
+</p></font><h3><a name="SECTION61"></a><b>FreeImage_SaveWBMP </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FreeImage_SaveWBMP(FIBITMAP *dib, const char *filename, int flags = WBMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a WBMP file. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMP("test.bmp"); <br>if (dib != NULL) { <br>FreeImage_SaveWBMP("saved.wbmp"); <br>FreeImage_Free(dib); <br>} 
+
+</p></font></body></html>

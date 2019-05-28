@@ -1,0 +1,77 @@
+<html><body>
+<h2><a name="SECTION73"></a><b>FreeImage bitmap information functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION74">FreeImage_GetRedMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION75">FreeImage_GetGreenMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION76">FreeImage_GetBlueMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION77">FreeImage_GetTransparencyCount</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION78">FreeImage_GetTransparencyTable</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION79">FreeImage_SetTransparencyTable</a></font>
+        </ul>
+
+<h3><a name="SECTION74"></a><b>FreeImage_GetRedMask </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetRedMask(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the red bitmask for the bitmap. If the bitmap is palletised 0 is returned. 
+
+</p></font><h3><a name="SECTION75"></a><b>FreeImage_GetGreenMask </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetGreenMask(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the green bitmask for the bitmap. If the bitmap is palletised 0 is returned. 
+
+</p></font><h3><a name="SECTION76"></a><b>FreeImage_GetBlueMask </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>unsigned FreeImage_GetBlueMask(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the blue bitmask for the bitmap. If the bitmap is palletised 0 is returned. 
+
+</p></font><h3><a name="SECTION77"></a><b>FreeImage_GetTransparencyCount </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BYTE FreeImage_GetTransparencyCount(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the number of transparent colours stored into the transparency colour table of the given bitmap. Every palletised bitmap includes a transparency table containing up to 256 alpha values. 
+
+</p></font><h3><a name="SECTION78"></a>
+<b>FreeImage_GetTransparencyTable </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BYTE *FreeImage_GetTransparencyTable(FIBITMAP *dib); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the transparency table assigned to this bitmap. If the bitmap doesn't contain a transparency table NULL is returned. 
+
+</p></font><h3><a name="SECTION79"></a><b>FreeImage_SetTransparencyTable </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>void FreeImage_SetTransparencyTable(FIBITMAP *dib, BYTE *table, BYTE count); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Assigns a new transparency table to the bitmap. A transparency table consists of up to 256 bytes in an array, where a value of 0xFF in that table stands for completely opaque and 0x00 stands for completely invisible. The transparency table is used in TrollTech Qt to draw transparent bitmaps on a widget. 
+
+</p></font></body></html>

@@ -1,0 +1,43 @@
+rd Release /s
+rd Debug /s
+rd Source\FreeImageQt\Release /s
+rd Source\FreeImageQt\Debug /s
+rd Source\Source\Release /s
+rd Source\Source\Debug /s
+rd Source\LibJPEG\Debug /s
+rd Source\LibJPEG\Release /s
+rd Source\LibPNG\Debug /s
+rd Source\LibPNG\Release /s
+rd Source\LibMNG\Debug /s
+rd Source\LibMNG\Release /s
+rd Source\LibTIFF\Debug /s
+rd Source\LibTIFF\Release /s
+rd Source\Zlib\Debug /s
+rd Source\Zlib\Release /s
+rd Source\Test\Debug /s
+rd Source\Test\Release /s
+del Source\Test\FreeImage*.*
+del Source\Test\*.txt
+del Dist\*.*
+del *.pch /s
+del *.ncb /s
+del *.obj /s
+del *.dll /s
+del *.exe /s
+del *.bsc /s
+del *.bak /s
+del *.pdb /s
+del *.sql /s
+del *.mdb /s
+del *.lib /s
+del *.exp /s
+del *.ilk /s
+del *.bmp /s
+del *.tga /s
+del *.tif /s
+del *.tiff /s
+del *.ras /s
+del *.jpg /s
+del *.koa /s
+del *.fip /s
+del *.pyd /s

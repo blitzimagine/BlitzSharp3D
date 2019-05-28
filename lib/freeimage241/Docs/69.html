@@ -1,0 +1,149 @@
+<html><body>
+<h2><a name="SECTION69"></a><b>Filetype functions </b>
+
+</h2>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION70">FreeImage_GetFileType</a></font>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION71">FreeImage_GetFileTypeFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION72">FreeImage_GetFileTypeFromExt</a></font>
+        </ul>
+
+<h3><a name="SECTION70"></a><b>FreeImage_GetFileType </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFileType(const char *filename, int size); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Investigates the bitmap data from the given bitmap and returns the FreeImage Format ID for it. FreeImage_GetFileType will read the first <i>size </i>bytes of the file but not more than 16. FreeImage_GetFileType will return one of the following values: 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><table border=1><tr><td>Type </td><td>Bitmap </td>
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>
+<tr><td>FIF_UNKNOWN </td><td>Unidentified bitmap type </td><tr><td>FIF_BMP </td><td>Windows or OS/2 Bitmap </td><tr><td>FIF_ICO </td><td>Windows Icon </td><tr>
+<td>FIF_JPEG </td><td>JPEG - JFIF Compliant </td><tr><td>FIF_JNG </td><td>JPEG Network Graphics </td><tr><td>FIF_KOALA </td><td>C64 Koala Graphics </td><tr><td>FIF_LBM 
+</td><td>Deluxe Paint LBM </td><tr><td>FIF_MNG </td><td>Multiple Network Graphics </td><tr><td>FIF_PBM </td><td>Portable Bitmap </td><tr><td>FIF_PCD </td>
+<td>Kodak PhotoCD </td><tr><td>FIF_PCX </td><td>Zsoft Paintbrush </td><tr><td>FIF_PGM </td><td>Portable Greymap </td><tr><td>FIF_PNG </td><td>Portable Network Graphics 
+</td><tr><td>FIF_PPM </td><td>Portable Pixmap </td><tr><td>FIF_RAS </td><td>Sun Raster Image </td><tr><td>FIF_TARGA </td><td>Truevision Targa </td>
+<tr><td>FIF_TIFF </td><td>Tagged Image File Format </td><tr><td>FIF_WBMP </td><td>Wireless Bitmap </td></table><br>
+
+</p></font><h3><a name="SECTION71"></a><b>FreeImage_GetFileTypeFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFileTypeFromHandle(FreeImageIO *io, fi_handle handle, int size); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Investigates the bitmap data from the given bitmap and returns the FreeImage Format ID for it. Code example: 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_ReadProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fread(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_WriteProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle){ 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fwrite(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>int 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_SeekProc(fi_handle handle, long offset, int origin) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fseek((FILE *)handle, offset, origin); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>long 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_TellProc(fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return ftell((FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImageIO io; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.read_proc = _ReadProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.write_proc = _WriteProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.seek_proc = _SeekProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.tell_proc = _TellProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p><br>FILE *file = fopen("test.bmp", "rb"); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_TYPE type; <br>type = FreeImage_GetFileTypeFromHandle(&io, (fi_handle)file, 16); 
+
+</p></font><h3><a name="SECTION72"></a><b>FreeImage_GetFileTypeFromExt </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFileTypeFromExt(const char *ext); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><i>This function is deprecated. FreeImage_GetFIFFromFilename has replaced its functionality. </i>
+
+</p></font></body></html>

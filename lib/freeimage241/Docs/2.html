@@ -1,0 +1,148 @@
+<html><body>
+<h1>
+<a name="SECTION2"></a><b>FreeImage functions </b>
+
+</h1>
+<p><h3><b>Subsections</b></h3>
+
+    <ul>
+        <li><font face="Times New Roman" size=3"><a href="3.html">Initialisation</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="3.html#SECTION4">FreeImage_Initialise</a></font>
+            <li><font face="Times New Roman" size=3"><a href="3.html#SECTION5">FreeImage_DeInitialise</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="6.html">Bitmap Allocation functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION7">FreeImage_Allocate</a></font>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION8">FreeImage_Free</a></font>
+            <li><font face="Times New Roman" size=3"><a href="6.html#SECTION9">FreeImage_Unload</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="10.html">Plugin functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION11">FreeImage_GetFIFByIndex</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION12">FreeImage_GetFIFCount</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION13">FreeImage_GetFIFFromFormat</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION14">FreeImage_GetFormatFromFIF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION15">FreeImage_GetFIFExtensionList</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION16">FreeImage_GetFIFDescription</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION17">FreeImage_GetFIFRegExpr</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION18">FreeImage_GetFIFFromFilename</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION19">FreeImage_FIFSupportsReading</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION20">FreeImage_FIFSupportsWriting</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION21">FreeImage_LoadFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION22">FreeImage_Load</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION23">FreeImage_SaveToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION24">FreeImage_Save</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="25.html">Simple load functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION26">FreeImage_LoadBMP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION27">FreeImage_LoadICO</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION28">FreeImage_LoadJPEG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION29">FreeImage_LoadKOALA</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION30">FreeImage_LoadLBM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION31">FreeImage_LoadMNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION32">FreeImage_LoadPCD</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION33">FreeImage_LoadPCX</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION34">FreeImage_LoadPNM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION35">FreeImage_LoadPNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION36">FreeImage_LoadRAS</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION37">FreeImage_LoadTARGA</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION38">FreeImage_LoadTIFF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="25.html#SECTION39">FreeImage_LoadWBMP</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="40.html">Advanced load functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION41">FreeImage_LoadBMPFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION42">FreeImage_LoadICOFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION43">FreeImage_LoadJPEGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION44">FreeImage_LoadKOALAFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION45">FreeImage_LoadLBMFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION46">FreeImage_LoadMNGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION47">FreeImage_LoadPCDFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION48">FreeImage_LoadPCXFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION49">FreeImage_LoadPNMFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION50">FreeImage_LoadPNGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION51">FreeImage_LoadRASFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION52">FreeImage_LoadTARGAFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION53">FreeImage_LoadTIFFFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION54">FreeImage_LoadWBMPFromHandle</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="55.html">Simple save functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION56">FreeImage_SaveBMP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION57">FreeImage_SaveJPEG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION58">FreeImage_SavePNG</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION59">FreeImage_SavePNM</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION60">FreeImage_SaveTIFF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="55.html#SECTION61">FreeImage_SaveWBMP</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="62.html">Advanced save functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION63">FreeImage_SaveBMPToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION64">FreeImage_SaveJPEGToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION65">FreeImage_SavePNGToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION66">FreeImage_SavePNMToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION67">FreeImage_SaveTIFFToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="62.html#SECTION68">FreeImage_SaveWBMPToHandle</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="69.html">Filetype functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION70">FreeImage_GetFileType</a></font>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION71">FreeImage_GetFileTypeFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="69.html#SECTION72">FreeImage_GetFileTypeFromExt</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="73.html">FreeImage bitmap information functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION74">FreeImage_GetRedMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION75">FreeImage_GetGreenMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION76">FreeImage_GetBlueMask</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION77">FreeImage_GetTransparencyCount</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION78">FreeImage_GetTransparencyTable</a></font>
+            <li><font face="Times New Roman" size=3"><a href="73.html#SECTION79">FreeImage_SetTransparencyTable</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="80.html">DIB information functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION81">FreeImage_GetColorsUsed</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION82">FreeImage_GetBits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION83">FreeImage_GetBitsRowCol</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION84">FreeImage_GetScanLine</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION85">FreeImage_GetBPP</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION86">FreeImage_GetWidth</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION87">FreeImage_GetHeight</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION88">FreeImage_GetLine</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION89">FreeImage_GetPitch</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION90">FreeImage_GetDIBSize</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION91">FreeImage_GetPalette</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION92">FreeImage_GetInfoHeader</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION93">FreeImage_GetInfo</a></font>
+            <li><font face="Times New Roman" size=3"><a href="80.html#SECTION94">FreeImage_GetColorType</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="95.html">Conversion functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION96">FreeImage_ConvertTo8Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION97">FreeImage_ConvertTo16Bits 555</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION98">FreeImage_ConvertTo16Bits565</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION99">FreeImage_ConvertTo24Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION100">FreeImage_ConvertTo32Bits</a></font>
+            <li><font face="Times New Roman" size=3"><a href="95.html#SECTION101">FreeImage_ColorQuantize</a></font>
+        </ul>
+
+        <li><font face="Times New Roman" size=3"><a href="102.html">Extra functions</a></font>
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="102.html#SECTION103">FreeImage_Combine</a></font>
+        </ul>
+
+    </ul>
+
+</body></html>

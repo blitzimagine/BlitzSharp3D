@@ -1,0 +1,297 @@
+<html><body>
+<h2>
+<a name="SECTION40"></a><b>Advanced load functions </b>
+
+</h2>
+<font face="Times New Roman" size=3">
+<p>FreeImage_LoadFromHandle functions are slightly more advanced than the simple load functions, but still quite easy to use. The idea of these functions is that FreeImage doesn't care how it gets its data as long as it gets it. It shouldn't matter if the bitmap is loaded from file, memory or the Internet since data is data not matter where it comes from. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>To make this idea of data abstraction work a new, abstract file I/O system is used: <i>FreeImageIO </i>. FreeImageIO is a structure containing pointers to 4 functions: a read function, write function, seek function and tell function. All these functions have to be implemented so that data is delivered. The handle representing the data is made abstract as well and is named <i>fi_handle </i>. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loading a bitmap using the ...FromHandle functions involves four things. First the 4 file I/O functions are implemented and a FreeImageIO structure is filled with the pointers. Then the file is opened (that is, if we are in fact dealing with a file). After that one of the ...LoadFromHandle functions can be called. If the bitmap is successfully loaded the file has to be closed. 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_ReadProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fread(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>unsigned 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_WriteProc(FIBITMAP *buffer, unsigned s, unsigned c, fi_handle handle){ 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fwrite(buffer, s, c, (FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>int 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_SeekProc(fi_handle handle, long offset, int origin) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return fseek((FILE *)handle, offset, origin); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>long 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>_TellProc(fi_handle handle) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>return ftell((FILE *)handle); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImageIO io; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.read_proc = _ReadProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.write_proc = _WriteProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.seek_proc = _SeekProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>io.tell_proc = _TellProc; 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FILE *file = fopen("test.bmp", "rb"); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>if (file != NULL) { 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *dib = FreeImage_LoadBMPFromHandle(&io, (fi_handle)file); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>FreeImage_Free(dib); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>fclose(file); 
+
+</p></font>
+<font face="Courier New, Courier" size=2">
+<p>} 
+
+</p></font>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION41">FreeImage_LoadBMPFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION42">FreeImage_LoadICOFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION43">FreeImage_LoadJPEGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION44">FreeImage_LoadKOALAFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION45">FreeImage_LoadLBMFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION46">FreeImage_LoadMNGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION47">FreeImage_LoadPCDFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION48">FreeImage_LoadPCXFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION49">FreeImage_LoadPNMFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION50">FreeImage_LoadPNGFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION51">FreeImage_LoadRASFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION52">FreeImage_LoadTARGAFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION53">FreeImage_LoadTIFFFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="40.html#SECTION54">FreeImage_LoadWBMPFromHandle</a></font>
+        </ul>
+
+<h3><a name="SECTION41"></a><b>FreeImage_LoadBMPFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadBMPFromHandle(FreeImageIO *io, fi_handle handle, int flags = BMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given BMP file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadBMPFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION42"></a><b>FreeImage_LoadICOFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadICOFromHandle(FreeImageIO *io, fi_handle handle, int flags = ICO_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given ICO file into a FreeImage bitmap using the given FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadICOFromHandle returns NULL. 
+
+</p></font><h3><a name="SECTION43"></a><b>FreeImage_LoadJPEGFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadJPEGFromHandle(FreeImageIO *io, fi_handle handle, int flags = JPEG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given JPEG file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadJPEGFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION44"></a><b>FreeImage_LoadKOALAFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadKOALAFromHandle(FreeImageIO *io, fi_handle handle, int flags = KOALA_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given KOALA file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadKOALAFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION45"></a><b>FreeImage_LoadLBMFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadLBMFromHandle(FreeImageIO *io, fi_handle handle, int flags = LBM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Deluxe Paint LBM file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadLBMFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION46"></a><b>FreeImage_LoadMNGFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadMNGFromHandle(FreeImageIO *io, fi_handle handle, int flags = MNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the Multi Network Graphics (MNG) or JPEG Network Graphics (JNG) file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadMNGFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION47"></a><b>FreeImage_LoadPCDFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPCDFromHandle(FreeImageIO *io, fi_handle handle, int flags = PCD_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Kodak PhotoCD file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPCDFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION48"></a><b>FreeImage_LoadPCXFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPCXFromHandle(FreeImageIO *io, fi_handle handle, int flags = PCX_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given PCX file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPCXFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION49"></a><b>FreeImage_LoadPNMFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPNMFromHandle(FreeImageIO *io, fi_handle handle, int flags = PNM_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given PBM, PGM or PPM file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPNMFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION50"></a><b>FreeImage_LoadPNGFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadPNGFromHandle(FreeImageIO *io, fi_handle handle, int flags = PNG_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given PNG file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadPNGFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION51"></a><b>FreeImage_LoadRASFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadRASFromHandle(FreeImageIO *io, fi_handle handle, int flags = RAS_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given Sun Rasterfile into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadRASFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION52"></a><b>FreeImage_LoadTARGAFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadTARGAFromHandle(FreeImageIO *io, fi_handle handle, int flags = TARGA_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given TARGA file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadTARGAFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION53"></a><b>FreeImage_LoadTIFFFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadTIFFFromHandle(FreeImageIO *io, fi_handle handle, int flags = TIFF_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given TIFF file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadTIFFFromHandle returns NULL. 
+
+</p></font><h3>
+<a name="SECTION54"></a><b>FreeImage_LoadWBMPFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *FreeImage_LoadWBMPFromHandle(FreeImageIO *io, fi_handle handle, int flags = WBMP_DEFAULT); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the given WBMP file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadWBMPFromHandle returns NULL. 
+
+</p></font></body></html>

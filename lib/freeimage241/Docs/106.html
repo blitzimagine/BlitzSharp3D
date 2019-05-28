@@ -1,0 +1,180 @@
+<html><body>
+<h2>
+<a name="SECTION106"></a><b>Functions </b>
+
+</h2>
+<font face="Times New Roman" size=3">
+<p>FreeImageQt supports the following functions. Note that in average use you only need FIQT_Register to use this library. 
+
+</p></font>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION107">FIQT_Register</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION108">FIQT_Unregister</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION109">FIQT_IsLoaded</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION110">FIQT_GetVersion</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION111">FIQT_GetCopyrightMessage</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION112">FIQT_GetFIFCount</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION113">FIQT_GetFIFFromFormat</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION114">FIQT_GetFormatFromFIF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION115">FIQT_GetFIFExtensionList</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION116">FIQT_GetFIFDescription</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION117">FIQT_GetFIFFromFilename</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION118">FIQT_FIFSupportsReading</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION119">FIQT_FIFSupportsWriting</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION120">FIQT_GetFileTypeFromFormat</a></font>
+            <li><font face="Times New Roman" size=3"><a href="106.html#SECTION121">FIQT_GetFormatFromExtension</a></font>
+        </ul>
+
+<h3><a name="SECTION107"></a><b>FIQT_Register </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>bool FIQT_Register(bool new_formats_only = false); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Registers the FreeImage load functions in Qt and returns true if successful. If <i>new_formats_only </i>is true, only the bitmap formats not supported by Qt are registered. Else all bitmap formats supported by FreeImage are registered. You have to call this function to take advantage of FreeImage. 
+
+</p></font><h3><a name="SECTION108"></a><b>FIQT_Unregister </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>void FIQT_Unregister(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Removes all binding between FreeImage and Qt. You shouldn't normally have to call this function. It is called automatically on program exit. 
+
+</p></font><h3><a name="SECTION109"></a><b>FIQT_IsLoaded </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>Bool FIQT_IsLoaded(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns true if FreeImage was successfully registered into Qt's bitmap functionality handler, false otherwise. 
+
+</p></font><h3><a name="SECTION110"></a><b>FIQT_GetVersion </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetVersion(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the version string of the library. 
+
+</p></font><h3><a name="SECTION111"></a><b>FIQT_GetCopyrightMessage </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetVersion(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a short copyright message you can include in your program. 
+
+</p></font><h3><a name="SECTION112"></a><b>FIQT_GetFIFCount </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>int FIQT_GetFIFCount(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the number of supported bitmap formats. 
+
+</p></font><h3><a name="SECTION113"></a><b>FIQT_GetFIFFromFormat </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FIQT_GetFIFFromFormat(const char *format); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the FreeImage format ID for the given format string. 
+
+</p></font><h3><a name="SECTION114"></a><b>FIQT_GetFormatFromFIF </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetFormatFromFIF(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a format string for the given FreeImage Format ID. 
+
+</p></font><h3><a name="SECTION115"></a><b>FIQT_GetFIFExtensionList </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetFIFExtensionList(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a list of possible file extension for the given FreeImage Format ID. The extension list is a string containing one or more comma separated file extensions. 
+
+</p></font><h3><a name="SECTION116"></a><b>FIQT_GetFIFDescription </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetFIFDescription(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a descriptive string for the given FreeImage Format ID. 
+
+</p></font><h3><a name="SECTION117"></a><b>FIQT_GetFIFFromFilename </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FIQT_GetFIFFromFilename(const char *filename); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Tries to identify a bitmap type by looking at the filename or a file extension. FreeImage_GetFIFFromFilename returns a valid FreeImage Format ID on success and FIF_UNKNOWN on failure. 
+
+</p></font><h3><a name="SECTION118"></a><b>FIQT_FIFSupportsReading </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FIQT_FIFSupportsReading(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns true if the plugin belonging to this FreeImage Format ID supports reading, false otherwise. 
+
+</p></font><h3><a name="SECTION119"></a><b>FIQT_FIFSupportsWriting </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FIQT_FIFSupportsWriting(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns true if the plugin belonging to this FreeImage Format ID supports writing, false otherwise. 
+
+</p></font><h3><a name="SECTION120"></a><b>FIQT_GetFileTypeFromFormat </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetFileTypeFromFormat(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p><i>This function is deprecated. FIQT_GetFIFFromFormat has replaced its functionality. </i>
+
+</p></font><h3><a name="SECTION121"></a><b>FIQT_GetFormatFromExtension </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FIQT_GetFormatFromExtension(const char *extension); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a FreeImage Format string for the given file extension. 
+
+</p></font></body></html>

@@ -1,0 +1,23 @@
+Check Makefile.cfg and set the variables in there if things dont work.
+This compiles with no warnings at all with the default options on
+Redhat 6.2 / Linux-2.2.16 with glibc6 and the pre-installed libjpeg,
+libpng, libtiff, and libz libraries that were already installed in my
+/usr/lib directory.
+I tested the GTK example I wrote under X11R6 running 1024x768x24bit but
+the machine I was using does not allow switching to other modes, so
+I am unsure if the picture would be displayed properly in other video
+modes.
+You should be able to link progams with the -lfreeimage options after
+it is compiled and installed, which will require that libjpeg, libpng,
+libtiff, and libz are installed as well.  If you statically link with
+libfreeimage.a you must also link with libjpeg.a, libpng.a, libtiff.a,
+and libz.a.
+If you unzip a new snapshot over old code, it will need to be reran
+thru dos2unix to strip the CR's from it.  `make refix` or just
+rm .nodos2unix yourself to allow make to rerun dos2unix next time
+the library is build.
+Please let me know how this works for you under Linux or any other *nix
+
+- Ryan "Ark" Rubley
+- ark@lhq.com / rubleyr@csis.gvsu.edu
+

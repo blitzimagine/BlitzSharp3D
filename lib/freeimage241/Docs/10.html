@@ -1,0 +1,184 @@
+<html><body>
+<h2><a name="SECTION10"></a><b>Plugin functions </b>
+
+</h2>
+<font face="Times New Roman" size=3">
+<p>From version 2.1.0 on FreeImage provides a new, simplified interface besides the old style API. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>The new API, known as the plugin API, treats bitmap formats and their accompanied loader and saver routines as plugin modules. A new series of functions provides access to these plugins. For example the new functions provide the means to retrieve a list of supported bitmap formats, as well as their descriptions and their possible file extensions. The new API has many advantages over the old one. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>For a start the plugin interface will enable FreeImage's <i>hot swap </i>technology: a feature that allows you to compile and link the library only once in your program making instantly profit from bug fixes, newly supported bitmap formats and more without ever recompiling again. Second it opens the way to use <i>plugins. </i>You won't have these advantages when you use the standard API. 
+
+</p></font>
+<p><h3><b>Subsections</b></h3>
+
+        <ul>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION11">FreeImage_GetFIFByIndex</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION12">FreeImage_GetFIFCount</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION13">FreeImage_GetFIFFromFormat</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION14">FreeImage_GetFormatFromFIF</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION15">FreeImage_GetFIFExtensionList</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION16">FreeImage_GetFIFDescription</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION17">FreeImage_GetFIFRegExpr</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION18">FreeImage_GetFIFFromFilename</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION19">FreeImage_FIFSupportsReading</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION20">FreeImage_FIFSupportsWriting</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION21">FreeImage_LoadFromHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION22">FreeImage_Load</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION23">FreeImage_SaveToHandle</a></font>
+            <li><font face="Times New Roman" size=3"><a href="10.html#SECTION24">FreeImage_Save</a></font>
+        </ul>
+
+<h3><a name="SECTION11"></a><b>FreeImage_GetFIFByIndex </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFIFByIndex(int index); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the needed plugin id in the plugin list. The plugin list is sorted on the format string. 
+
+</p></font><h3><a name="SECTION12"></a><b>FreeImage_GetFIFCount </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>int FreeImage_GetFIFCount(); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the number of supported bitmap formats. 
+
+</p></font><h3><a name="SECTION13"></a><b>FreeImage_GetFIFFromFormat </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFIFFromFormat(const char *format); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns the FreeImage format ID for the given format string. 
+
+</p></font><h3><a name="SECTION14"></a><b>FreeImage_GetFormatFromFIF </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FreeImage_GetFormatFromFIF(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a format string for the given FreeImage Format ID. 
+
+</p></font><h3><a name="SECTION15"></a><b>FreeImage_GetFIFExtensionList </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FreeImage_GetFIFExtensionList(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a list of possible file extension for the given FreeImage Format ID. The extension list is a string containing one or more comma separated file extensions. 
+
+</p></font><h3>
+<a name="SECTION16"></a><b>FreeImage_GetFIFDescription </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FreeImage_GetFIFDescription(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a descriptive string for the given FreeImage Format ID. 
+
+</p></font><h3><a name="SECTION17"></a><b>FreeImage_GetFIFRegExpr </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>const char *FreeImage_GetFIFRegExpr(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns a regular expression for the given FreeImage Format ID, assisting external libraries to identify the bitmap format. Currently FreeImageQt uses this function. 
+
+</p></font><h3>
+<a name="SECTION18"></a><b>FreeImage_GetFIFFromFilename </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FREE_IMAGE_FORMAT FreeImage_GetFIFFromFilename(const char *filename); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Tries to identify a bitmap type by looking at the filename or a file extension. FreeImage_GetFIFFromFilename returns a valid FreeImage Format ID on success and FIF_UNKNOWN on failure. 
+
+</p></font><h3>
+<a name="SECTION19"></a><b>FreeImage_FIFSupportsReading </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FreeImage_FIFSupportsReading(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns true if the plugin belonging to this FreeImage Format ID supports reading, false otherwise. 
+
+</p></font><h3><a name="SECTION20"></a><b>FreeImage_FIFSupportsWriting </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FreeImage_FIFSupportsWriting(FREE_IMAGE_FORMAT fif); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Returns true if the plugin belonging to this FreeImage Format ID supports writing, false otherwise. 
+
+</p></font><h3><a name="SECTION21"></a><b>FreeImage_LoadFromHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP * FreeImage_LoadFromHandle(FREE_IMAGE_FORMAT fif, FreeImageIO *io, fi_handle handle, int flags FI_DEFAULT(0)); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads a bitmap file into a FreeImage bitmap using the specified FreeImageIO struct and fi_handle. If the file is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the file couldn't be loaded, FreeImage_LoadFromHandle returns NULL. 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>The fif parameter specifies the desired bitmap format to be loaded. The parameter accepts any valid FreeImage Format ID, such as FIF_BMP or FIF_JPEG, or an integer value obtained from any of the plugin interface functions. 
+
+</p></font><h3>
+<a name="SECTION22"></a><b>FreeImage_Load </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>FIBITMAP *DLL_CALLCONV FreeImage_Load(FREE_IMAGE_FORMAT fif, const char *filename, int flags FI_DEFAULT(0)); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Loads the bitmap file into a FreeImage bitmap. If the bitmap is loaded successfully, memory for it is allocated and a bitmap pointer is returned. If the bitmap couldn't be loaded, FreeImage_Load returns NULL. 
+
+</p></font><h3><a name="SECTION23"></a><b>FreeImage_SaveToHandle </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FreeImage_SaveToHandle(FREE_IMAGE_FORMAT fif, FIBITMAP *dib, FreeImageIO *io, fi_handle handle, int flags FI_DEFAULT(0)); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a bitmap file of the given type. 
+
+</p></font><h3><a name="SECTION24"></a><b>FreeImage_Save </b>
+
+</h3>
+<font face="Courier New, Courier" size=2">
+<p>BOOL FreeImage_Save(FREE_IMAGE_FORMAT fif, FIBITMAP *dib, const char *filename, int flags FI_DEFAULT(0)); 
+
+</p></font>
+<font face="Times New Roman" size=3">
+<p>Saves the FreeImage DIB to a bitmap file of the given type. 
+
+</p></font></body></html>

@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="bbexe.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="bbruntime\basic.cpp" />
+    <ClCompile Include="bbruntime\bbaudio.cpp" />
+    <ClCompile Include="bbruntime\bbbank.cpp" />
+    <ClCompile Include="bbruntime\bbblitz3d.cpp" />
+    <ClCompile Include="bbruntime\bbfilesystem.cpp" />
+    <ClCompile Include="bbruntime\bbgraphics.cpp" />
+    <ClCompile Include="bbruntime\bbinput.cpp" />
+    <ClCompile Include="bbruntime\bbmath.cpp" />
+    <ClCompile Include="bbruntime\bbruntime.cpp" />
+    <ClCompile Include="bbruntime\bbsockets.cpp" />
+    <ClCompile Include="bbruntime\bbstream.cpp" />
+    <ClCompile Include="bbruntime\bbstring.cpp" />
+    <ClCompile Include="bbruntime\bbsys.cpp" />
+    <ClCompile Include="bbruntime\multiplay.cpp" />
+    <ClCompile Include="bbruntime\multiplay_setup.cpp" />
+    <ClCompile Include="bbruntime\runtime.cpp" />
+    <ClCompile Include="bbruntime\std_runtime.cpp" />
+    <ClCompile Include="bbruntime\userlibs.cpp" />
+    <ClCompile Include="blitz3d\animation.cpp" />
+    <ClCompile Include="blitz3d\animator.cpp" />
+    <ClCompile Include="blitz3d\brush.cpp" />
+    <ClCompile Include="blitz3d\cachedtexture.cpp" />
+    <ClCompile Include="blitz3d\camera.cpp" />
+    <ClCompile Include="blitz3d\collision.cpp" />
+    <ClCompile Include="blitz3d\entity.cpp" />
+    <ClCompile Include="blitz3d\frustum.cpp" />
+    <ClCompile Include="blitz3d\geom.cpp" />
+    <ClCompile Include="blitz3d\light.cpp" />
+    <ClCompile Include="blitz3d\listener.cpp" />
+    <ClCompile Include="blitz3d\loader_3ds.cpp" />
+    <ClCompile Include="blitz3d\loader_b3d.cpp" />
+    <ClCompile Include="blitz3d\loader_x.cpp" />
+    <ClCompile Include="blitz3d\md2model.cpp" />
+    <ClCompile Include="blitz3d\md2norms.cpp" />
+    <ClCompile Include="blitz3d\md2rep.cpp" />
+    <ClCompile Include="blitz3d\meshcollider.cpp" />
+    <ClCompile Include="blitz3d\meshloader.cpp" />
+    <ClCompile Include="blitz3d\meshmodel.cpp" />
+    <ClCompile Include="blitz3d\meshutil.cpp" />
+    <ClCompile Include="blitz3d\mirror.cpp" />
+    <ClCompile Include="blitz3d\model.cpp" />
+    <ClCompile Include="blitz3d\ms3drep.cpp" />
+    <ClCompile Include="blitz3d\object.cpp" />
+    <ClCompile Include="blitz3d\pivot.cpp" />
+    <ClCompile Include="blitz3d\planemodel.cpp" />
+    <ClCompile Include="blitz3d\q3bspmodel.cpp" />
+    <ClCompile Include="blitz3d\q3bsprep.cpp" />
+    <ClCompile Include="blitz3d\sprite.cpp" />
+    <ClCompile Include="blitz3d\std_blitz3d.cpp" />
+    <ClCompile Include="blitz3d\surface.cpp" />
+    <ClCompile Include="blitz3d\terrain.cpp" />
+    <ClCompile Include="blitz3d\terrainrep.cpp" />
+    <ClCompile Include="blitz3d\texture.cpp" />
+    <ClCompile Include="blitz3d\world.cpp" />
+    <ClCompile Include="gxruntime\asmcoder.cpp" />
+    <ClCompile Include="gxruntime\ddutil.cpp" />
+    <ClCompile Include="gxruntime\gxaudio.cpp" />
+    <ClCompile Include="gxruntime\gxcanvas.cpp" />
+    <ClCompile Include="gxruntime\gxchannel.cpp" />
+    <ClCompile Include="gxruntime\gxdevice.cpp" />
+    <ClCompile Include="gxruntime\gxdir.cpp" />
+    <ClCompile Include="gxruntime\gxfilesystem.cpp" />
+    <ClCompile Include="gxruntime\gxfont.cpp" />
+    <ClCompile Include="gxruntime\gxgraphics.cpp" />
+    <ClCompile Include="gxruntime\gxinput.cpp" />
+    <ClCompile Include="gxruntime\gxlight.cpp" />
+    <ClCompile Include="gxruntime\gxmesh.cpp" />
+    <ClCompile Include="gxruntime\gxmovie.cpp" />
+    <ClCompile Include="gxruntime\gxmusic.cpp" />
+    <ClCompile Include="gxruntime\gxruntime.cpp" />
+    <ClCompile Include="gxruntime\gxscene.cpp" />
+    <ClCompile Include="gxruntime\gxsound.cpp" />
+    <ClCompile Include="gxruntime\gxtimer.cpp" />
+    <ClCompile Include="gxruntime\std_gxruntime.cpp" />
+    <ClCompile Include="mono\blitzlib.cpp" />
+    <ClCompile Include="stdutil\stdutil.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bbruntime\basic.h" />
+    <ClInclude Include="bbruntime\bbaudio.h" />
+    <ClInclude Include="bbruntime\bbbank.h" />
+    <ClInclude Include="bbruntime\bbblitz3d.h" />
+    <ClInclude Include="bbruntime\bbfilesystem.h" />
+    <ClInclude Include="bbruntime\bbgraphics.h" />
+    <ClInclude Include="bbruntime\bbinput.h" />
+    <ClInclude Include="bbruntime\bbmath.h" />
+    <ClInclude Include="bbruntime\bbruntime.h" />
+    <ClInclude Include="bbruntime\bbsockets.h" />
+    <ClInclude Include="bbruntime\bbstream.h" />
+    <ClInclude Include="bbruntime\bbstring.h" />
+    <ClInclude Include="bbruntime\bbsys.h" />
+    <ClInclude Include="bbruntime\bb_basic.h" />
+    <ClInclude Include="bbruntime\multiplay.h" />
+    <ClInclude Include="bbruntime\multiplay_setup.h" />
+    <ClInclude Include="bbruntime\std.h" />
+    <ClInclude Include="bbruntime\userlibs.h" />
+    <ClInclude Include="blitz3d\animation.h" />
+    <ClInclude Include="blitz3d\animator.h" />
+    <ClInclude Include="blitz3d\blitz3d.h" />
+    <ClInclude Include="blitz3d\brush.h" />
+    <ClInclude Include="blitz3d\cachedtexture.h" />
+    <ClInclude Include="blitz3d\camera.h" />
+    <ClInclude Include="blitz3d\collision.h" />
+    <ClInclude Include="blitz3d\entity.h" />
+    <ClInclude Include="blitz3d\entityutil.h" />
+    <ClInclude Include="blitz3d\frustum.h" />
+    <ClInclude Include="blitz3d\geom.h" />
+    <ClInclude Include="blitz3d\group.h" />
+    <ClInclude Include="blitz3d\light.h" />
+    <ClInclude Include="blitz3d\listener.h" />
+    <ClInclude Include="blitz3d\loader.h" />
+    <ClInclude Include="blitz3d\loader_3ds.h" />
+    <ClInclude Include="blitz3d\loader_b3d.h" />
+    <ClInclude Include="blitz3d\loader_x.h" />
+    <ClInclude Include="blitz3d\md2model.h" />
+    <ClInclude Include="blitz3d\md2norms.h" />
+    <ClInclude Include="blitz3d\md2rep.h" />
+    <ClInclude Include="blitz3d\mesh.h" />
+    <ClInclude Include="blitz3d\meshcollider.h" />
+    <ClInclude Include="blitz3d\meshloader.h" />
+    <ClInclude Include="blitz3d\meshmodel.h" />
+    <ClInclude Include="blitz3d\meshrenderer.h" />
+    <ClInclude Include="blitz3d\meshutil.h" />
+    <ClInclude Include="blitz3d\mirror.h" />
+    <ClInclude Include="blitz3d\model.h" />
+    <ClInclude Include="blitz3d\ms3drep.h" />
+    <ClInclude Include="blitz3d\object.h" />
+    <ClInclude Include="blitz3d\pivot.h" />
+    <ClInclude Include="blitz3d\planemodel.h" />
+    <ClInclude Include="blitz3d\q3bspmodel.h" />
+    <ClInclude Include="blitz3d\q3bsprep.h" />
+    <ClInclude Include="blitz3d\rendercontext.h" />
+    <ClInclude Include="blitz3d\sprite.h" />
+    <ClInclude Include="blitz3d\std.h" />
+    <ClInclude Include="blitz3d\surface.h" />
+    <ClInclude Include="blitz3d\terrain.h" />
+    <ClInclude Include="blitz3d\terrainmodel.h" />
+    <ClInclude Include="blitz3d\terrainrep.h" />
+    <ClInclude Include="blitz3d\texture.h" />
+    <ClInclude Include="blitz3d\texturecache.h" />
+    <ClInclude Include="blitz3d\world.h" />
+    <ClInclude Include="config\config.h" />
+    <ClInclude Include="gxruntime\asmcoder.h" />
+    <ClInclude Include="gxruntime\ddutil.h" />
+    <ClInclude Include="gxruntime\gxaudio.h" />
+    <ClInclude Include="gxruntime\gxcanvas.h" />
+    <ClInclude Include="gxruntime\gxchannel.h" />
+    <ClInclude Include="gxruntime\gxdevice.h" />
+    <ClInclude Include="gxruntime\gxdir.h" />
+    <ClInclude Include="gxruntime\gxfilesystem.h" />
+    <ClInclude Include="gxruntime\gxfont.h" />
+    <ClInclude Include="gxruntime\gxgraphics.h" />
+    <ClInclude Include="gxruntime\gxinput.h" />
+    <ClInclude Include="gxruntime\gxlight.h" />
+    <ClInclude Include="gxruntime\gxmesh.h" />
+    <ClInclude Include="gxruntime\gxmovie.h" />
+    <ClInclude Include="gxruntime\gxmusic.h" />
+    <ClInclude Include="gxruntime\gxruntime.h" />
+    <ClInclude Include="gxruntime\gxscene.h" />
+    <ClInclude Include="gxruntime\gxsound.h" />
+    <ClInclude Include="gxruntime\gxtimer.h" />
+    <ClInclude Include="gxruntime\std.h" />
+    <ClInclude Include="mono\blitzlib.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdutil\stdutil.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{23AC99EE-C884-4854-BF00-0889F1C8816C}</ProjectGuid>
+    <RootNamespace>BlitzSharp3D</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run\</OutDir>
+    <TargetName>$(ProjectName)_DEBUG</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\mono-runtime\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\mono-runtime\lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Run\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <Manifest>
+      <EnableDpiAwareness>PerMonitorHighDPIAware</EnableDpiAwareness>
+    </Manifest>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <DisableSpecificWarnings>
+      </DisableSpecificWarnings>
+      <StringPooling>true</StringPooling>
+      <ExceptionHandling>Async</ExceptionHandling>
+      <CallingConvention>StdCall</CallingConvention>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmodvc.lib;libmono-static-sgen.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

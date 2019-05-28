@@ -1,0 +1,249 @@
+<?xml version='1.0' standalone='no'?>
+<contents>
+<toc>
+    <a href="2.html">FreeImage functions</a>
+    <a href="3.html">Initialisation</a>
+        <a href="3.html#SECTION4">FreeImage_Initialise</a>
+</item>
+        <a href="3.html#SECTION5">FreeImage_DeInitialise</a>
+</item>
+</item>
+    <a href="6.html">Bitmap Allocation functions</a>
+        <a href="6.html#SECTION7">FreeImage_Allocate</a>
+</item>
+        <a href="6.html#SECTION8">FreeImage_Free</a>
+</item>
+        <a href="6.html#SECTION9">FreeImage_Unload</a>
+</item>
+</item>
+    <a href="10.html">Plugin functions</a>
+        <a href="10.html#SECTION11">FreeImage_GetFIFByIndex</a>
+</item>
+        <a href="10.html#SECTION12">FreeImage_GetFIFCount</a>
+</item>
+        <a href="10.html#SECTION13">FreeImage_GetFIFFromFormat</a>
+</item>
+        <a href="10.html#SECTION14">FreeImage_GetFormatFromFIF</a>
+</item>
+        <a href="10.html#SECTION15">FreeImage_GetFIFExtensionList</a>
+</item>
+        <a href="10.html#SECTION16">FreeImage_GetFIFDescription</a>
+</item>
+        <a href="10.html#SECTION17">FreeImage_GetFIFRegExpr</a>
+</item>
+        <a href="10.html#SECTION18">FreeImage_GetFIFFromFilename</a>
+</item>
+        <a href="10.html#SECTION19">FreeImage_FIFSupportsReading</a>
+</item>
+        <a href="10.html#SECTION20">FreeImage_FIFSupportsWriting</a>
+</item>
+        <a href="10.html#SECTION21">FreeImage_LoadFromHandle</a>
+</item>
+        <a href="10.html#SECTION22">FreeImage_Load</a>
+</item>
+        <a href="10.html#SECTION23">FreeImage_SaveToHandle</a>
+</item>
+        <a href="10.html#SECTION24">FreeImage_Save</a>
+</item>
+</item>
+    <a href="25.html">Simple load functions</a>
+        <a href="25.html#SECTION26">FreeImage_LoadBMP</a>
+</item>
+        <a href="25.html#SECTION27">FreeImage_LoadICO</a>
+</item>
+        <a href="25.html#SECTION28">FreeImage_LoadJPEG</a>
+</item>
+        <a href="25.html#SECTION29">FreeImage_LoadKOALA</a>
+</item>
+        <a href="25.html#SECTION30">FreeImage_LoadLBM</a>
+</item>
+        <a href="25.html#SECTION31">FreeImage_LoadMNG</a>
+</item>
+        <a href="25.html#SECTION32">FreeImage_LoadPCD</a>
+</item>
+        <a href="25.html#SECTION33">FreeImage_LoadPCX</a>
+</item>
+        <a href="25.html#SECTION34">FreeImage_LoadPNM</a>
+</item>
+        <a href="25.html#SECTION35">FreeImage_LoadPNG</a>
+</item>
+        <a href="25.html#SECTION36">FreeImage_LoadRAS</a>
+</item>
+        <a href="25.html#SECTION37">FreeImage_LoadTARGA</a>
+</item>
+        <a href="25.html#SECTION38">FreeImage_LoadTIFF</a>
+</item>
+        <a href="25.html#SECTION39">FreeImage_LoadWBMP</a>
+</item>
+</item>
+    <a href="40.html">Advanced load functions</a>
+        <a href="40.html#SECTION41">FreeImage_LoadBMPFromHandle</a>
+</item>
+        <a href="40.html#SECTION42">FreeImage_LoadICOFromHandle</a>
+</item>
+        <a href="40.html#SECTION43">FreeImage_LoadJPEGFromHandle</a>
+</item>
+        <a href="40.html#SECTION44">FreeImage_LoadKOALAFromHandle</a>
+</item>
+        <a href="40.html#SECTION45">FreeImage_LoadLBMFromHandle</a>
+</item>
+        <a href="40.html#SECTION46">FreeImage_LoadMNGFromHandle</a>
+</item>
+        <a href="40.html#SECTION47">FreeImage_LoadPCDFromHandle</a>
+</item>
+        <a href="40.html#SECTION48">FreeImage_LoadPCXFromHandle</a>
+</item>
+        <a href="40.html#SECTION49">FreeImage_LoadPNMFromHandle</a>
+</item>
+        <a href="40.html#SECTION50">FreeImage_LoadPNGFromHandle</a>
+</item>
+        <a href="40.html#SECTION51">FreeImage_LoadRASFromHandle</a>
+</item>
+        <a href="40.html#SECTION52">FreeImage_LoadTARGAFromHandle</a>
+</item>
+        <a href="40.html#SECTION53">FreeImage_LoadTIFFFromHandle</a>
+</item>
+        <a href="40.html#SECTION54">FreeImage_LoadWBMPFromHandle</a>
+</item>
+</item>
+    <a href="55.html">Simple save functions</a>
+        <a href="55.html#SECTION56">FreeImage_SaveBMP</a>
+</item>
+        <a href="55.html#SECTION57">FreeImage_SaveJPEG</a>
+</item>
+        <a href="55.html#SECTION58">FreeImage_SavePNG</a>
+</item>
+        <a href="55.html#SECTION59">FreeImage_SavePNM</a>
+</item>
+        <a href="55.html#SECTION60">FreeImage_SaveTIFF</a>
+</item>
+        <a href="55.html#SECTION61">FreeImage_SaveWBMP</a>
+</item>
+</item>
+    <a href="62.html">Advanced save functions</a>
+        <a href="62.html#SECTION63">FreeImage_SaveBMPToHandle</a>
+</item>
+        <a href="62.html#SECTION64">FreeImage_SaveJPEGToHandle</a>
+</item>
+        <a href="62.html#SECTION65">FreeImage_SavePNGToHandle</a>
+</item>
+        <a href="62.html#SECTION66">FreeImage_SavePNMToHandle</a>
+</item>
+        <a href="62.html#SECTION67">FreeImage_SaveTIFFToHandle</a>
+</item>
+        <a href="62.html#SECTION68">FreeImage_SaveWBMPToHandle</a>
+</item>
+</item>
+    <a href="69.html">Filetype functions</a>
+        <a href="69.html#SECTION70">FreeImage_GetFileType</a>
+</item>
+        <a href="69.html#SECTION71">FreeImage_GetFileTypeFromHandle</a>
+</item>
+        <a href="69.html#SECTION72">FreeImage_GetFileTypeFromExt</a>
+</item>
+</item>
+    <a href="73.html">FreeImage bitmap information functions</a>
+        <a href="73.html#SECTION74">FreeImage_GetRedMask</a>
+</item>
+        <a href="73.html#SECTION75">FreeImage_GetGreenMask</a>
+</item>
+        <a href="73.html#SECTION76">FreeImage_GetBlueMask</a>
+</item>
+        <a href="73.html#SECTION77">FreeImage_GetTransparencyCount</a>
+</item>
+        <a href="73.html#SECTION78">FreeImage_GetTransparencyTable</a>
+</item>
+        <a href="73.html#SECTION79">FreeImage_SetTransparencyTable</a>
+</item>
+</item>
+    <a href="80.html">DIB information functions</a>
+        <a href="80.html#SECTION81">FreeImage_GetColorsUsed</a>
+</item>
+        <a href="80.html#SECTION82">FreeImage_GetBits</a>
+</item>
+        <a href="80.html#SECTION83">FreeImage_GetBitsRowCol</a>
+</item>
+        <a href="80.html#SECTION84">FreeImage_GetScanLine</a>
+</item>
+        <a href="80.html#SECTION85">FreeImage_GetBPP</a>
+</item>
+        <a href="80.html#SECTION86">FreeImage_GetWidth</a>
+</item>
+        <a href="80.html#SECTION87">FreeImage_GetHeight</a>
+</item>
+        <a href="80.html#SECTION88">FreeImage_GetLine</a>
+</item>
+        <a href="80.html#SECTION89">FreeImage_GetPitch</a>
+</item>
+        <a href="80.html#SECTION90">FreeImage_GetDIBSize</a>
+</item>
+        <a href="80.html#SECTION91">FreeImage_GetPalette</a>
+</item>
+        <a href="80.html#SECTION92">FreeImage_GetInfoHeader</a>
+</item>
+        <a href="80.html#SECTION93">FreeImage_GetInfo</a>
+</item>
+        <a href="80.html#SECTION94">FreeImage_GetColorType</a>
+</item>
+</item>
+    <a href="95.html">Conversion functions</a>
+        <a href="95.html#SECTION96">FreeImage_ConvertTo8Bits</a>
+</item>
+        <a href="95.html#SECTION97">FreeImage_ConvertTo16Bits 555</a>
+</item>
+        <a href="95.html#SECTION98">FreeImage_ConvertTo16Bits565</a>
+</item>
+        <a href="95.html#SECTION99">FreeImage_ConvertTo24Bits</a>
+</item>
+        <a href="95.html#SECTION100">FreeImage_ConvertTo32Bits</a>
+</item>
+        <a href="95.html#SECTION101">FreeImage_ColorQuantize</a>
+</item>
+</item>
+    <a href="102.html">Extra functions</a>
+        <a href="102.html#SECTION103">FreeImage_Combine</a>
+</item>
+</item>
+</item>
+    <a href="104.html">FreeImageQt functions</a>
+    <a href="105.html">Introduction</a>
+</item>
+    <a href="106.html">Functions</a>
+        <a href="106.html#SECTION107">FIQT_Register</a>
+</item>
+        <a href="106.html#SECTION108">FIQT_Unregister</a>
+</item>
+        <a href="106.html#SECTION109">FIQT_IsLoaded</a>
+</item>
+        <a href="106.html#SECTION110">FIQT_GetVersion</a>
+</item>
+        <a href="106.html#SECTION111">FIQT_GetCopyrightMessage</a>
+</item>
+        <a href="106.html#SECTION112">FIQT_GetFIFCount</a>
+</item>
+        <a href="106.html#SECTION113">FIQT_GetFIFFromFormat</a>
+</item>
+        <a href="106.html#SECTION114">FIQT_GetFormatFromFIF</a>
+</item>
+        <a href="106.html#SECTION115">FIQT_GetFIFExtensionList</a>
+</item>
+        <a href="106.html#SECTION116">FIQT_GetFIFDescription</a>
+</item>
+        <a href="106.html#SECTION117">FIQT_GetFIFFromFilename</a>
+</item>
+        <a href="106.html#SECTION118">FIQT_FIFSupportsReading</a>
+</item>
+        <a href="106.html#SECTION119">FIQT_FIFSupportsWriting</a>
+</item>
+        <a href="106.html#SECTION120">FIQT_GetFileTypeFromFormat</a>
+</item>
+        <a href="106.html#SECTION121">FIQT_GetFormatFromExtension</a>
+</item>
+</item>
+</item>
+    <a href="122.html">Index</a>
+</item>
+</toc>
+<index>
+</index>
+</contents>

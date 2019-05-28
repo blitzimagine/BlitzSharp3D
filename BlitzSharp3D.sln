@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlitzSharp3D", "BlitzSharp3D\BlitzSharp3D.vcxproj", "{23AC99EE-C884-4854-BF00-0889F1C8816C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlitzEngine", "BlitzEngine\BlitzEngine.csproj", "{FD9CCB24-19B4-4D07-A190-A7441DD38B53}"
+	ProjectSection(ProjectDependencies) = postProject
+		{23AC99EE-C884-4854-BF00-0889F1C8816C} = {23AC99EE-C884-4854-BF00-0889F1C8816C}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlitzGame", "BlitzGame\BlitzGame.csproj", "{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53} = {FD9CCB24-19B4-4D07-A190-A7441DD38B53}
+		{23AC99EE-C884-4854-BF00-0889F1C8816C} = {23AC99EE-C884-4854-BF00-0889F1C8816C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		DebugEngine|Any CPU = DebugEngine|Any CPU
+		DebugEngine|x64 = DebugEngine|x64
+		DebugEngine|x86 = DebugEngine|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|Any CPU.ActiveCfg = Release|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|Any CPU.Build.0 = Release|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|x64.ActiveCfg = Debug|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|x64.Build.0 = Debug|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|x86.ActiveCfg = Debug|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|x86.Build.0 = Debug|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|Any CPU.ActiveCfg = Debug|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|Any CPU.Build.0 = Debug|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.ActiveCfg = DebugEngine|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.Build.0 = DebugEngine|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.ActiveCfg = DebugEngine|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.Build.0 = DebugEngine|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|Any CPU.Build.0 = Release|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|x64.ActiveCfg = Release|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|x64.Build.0 = Release|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|x86.ActiveCfg = Release|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|x86.Build.0 = Release|Win32
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|x64.Build.0 = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Debug|x86.Build.0 = Debug|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|Any CPU.ActiveCfg = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|Any CPU.Build.0 = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|x64.ActiveCfg = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|x64.Build.0 = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|x86.ActiveCfg = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.DebugEngine|x86.Build.0 = DebugEngine|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|x64.ActiveCfg = Release|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|x64.Build.0 = Release|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|x86.ActiveCfg = Release|Any CPU
+		{FD9CCB24-19B4-4D07-A190-A7441DD38B53}.Release|x86.Build.0 = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|x64.Build.0 = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Debug|x86.Build.0 = Debug|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|Any CPU.ActiveCfg = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|Any CPU.Build.0 = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|x64.ActiveCfg = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|x64.Build.0 = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|x86.ActiveCfg = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.DebugEngine|x86.Build.0 = DebugEngine|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|x64.Build.0 = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|x86.ActiveCfg = Release|Any CPU
+		{A5BB93BB-E4D6-4917-8350-8681E3E69DC9}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CE0C760B-7221-45DD-B928-DEC8B8A385E0}
+	EndGlobalSection
+EndGlobal
