@@ -74,6 +74,7 @@
     <Compile Include="IO\Dir.cs" />
     <Compile Include="IO\File.cs" />
     <Compile Include="IO\Stream.cs" />
+    <Compile Include="Native\B3DStrings.cs" />
     <Compile Include="Vector3.cs" />
     <Compile Include="Audio\B3DAudio.cs" />
     <Compile Include="Native\B3DBank.cs" />
