@@ -121,7 +121,9 @@ namespace BlitzEngine
 		public static extern int FileType(string file);
 
 		[DllImport(B3DDllLink)]
-		public static extern void CopyFile(string file, string to);
+		private static extern void CopyFile_internal(string file, string to);
+
+		public static void CopyFile(string file, string to) => CopyFile_internal(file, to);
 
 		[DllImport(B3DDllLink)]
 		private static extern void DeleteFile_internal(string file);
