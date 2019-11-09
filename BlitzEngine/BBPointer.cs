@@ -36,6 +36,6 @@ namespace BlitzEngine
 			return !(a == b);
 		}
 
-		public static implicit operator IntPtr(BBPointer that)=>that.Pointer;
+		public static implicit operator IntPtr(BBPointer that)=>that == null ? IntPtr.Zero : that.Pointer;
 	}
 }

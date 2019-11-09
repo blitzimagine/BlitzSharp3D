@@ -526,7 +526,7 @@ namespace BlitzEngine
 
 		public static void TFormVector(float x, float y, float z, Entity src, Entity dest)
 		{
-			TFormVector_internal(x, y, z, src.Pointer, dest.Pointer);
+			TFormVector_internal(x, y, z, src, dest);
 		}
 
 		[DllImport(B3DDllLink)]
