@@ -274,9 +274,9 @@ namespace BlitzEngine
 		}
 
 		[DllImport(B3DDllLink)]
-		private static extern void AnimateMD2_internal(IntPtr md2, int mode = 1, float speed = 1.0f, int firstFrame = 0, int lastFrame = 9999, float transition = 0.0f);
+		private static extern void AnimateMD2_internal(IntPtr md2, int mode, float speed, int firstFrame, int lastFrame, float transition);
 
-		public static void AnimateMD2(Entity md2, int mode, float speed, int firstFrame, int lastFrame, float transition)
+		public static void AnimateMD2(Entity md2, int mode = 1, float speed = 1.0f, int firstFrame = 0, int lastFrame = 9999, float transition = 0.0f)
 		{
 			AnimateMD2_internal(md2.Pointer, mode, speed, firstFrame, lastFrame, transition);
 		}
