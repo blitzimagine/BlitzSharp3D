@@ -28,7 +28,7 @@ namespace BlitzEngine
 
 		public static void FreeSound(Sound sound)
 		{
-			FreeSound_internal(sound.Pointer);
+			FreeSound_internal(sound);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -36,7 +36,7 @@ namespace BlitzEngine
 
 		public static void LoopSound(Sound sound)
 		{
-			LoopSound_internal(sound.Pointer);
+			LoopSound_internal(sound);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -44,7 +44,7 @@ namespace BlitzEngine
 
 		public static void SoundPitch(Sound sound, int pitch)
 		{
-			SoundPitch_internal(sound.Pointer, pitch);
+			SoundPitch_internal(sound, pitch);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -52,7 +52,7 @@ namespace BlitzEngine
 
 		public static void SoundVolume(Sound sound, float volume)
 		{
-			SoundVolume_internal(sound.Pointer, volume);
+			SoundVolume_internal(sound, volume);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -60,7 +60,7 @@ namespace BlitzEngine
 
 		public static void SoundPan(Sound sound, float pan)
 		{
-			SoundPan_internal(sound.Pointer, pan);
+			SoundPan_internal(sound, pan);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -68,7 +68,7 @@ namespace BlitzEngine
 
 		public static Channel PlaySound(Sound sound)
 		{
-			IntPtr pointer = PlaySound_internal(sound.Pointer);
+			IntPtr pointer = PlaySound_internal(sound);
 			Channel ret = new Channel(pointer);
 			return ret;
 		}
@@ -100,7 +100,7 @@ namespace BlitzEngine
 		{
 			if (channel != null && channel.Pointer != IntPtr.Zero)
 			{
-				StopChannel_internal(channel.Pointer);
+				StopChannel_internal(channel);
 				channel.Pointer = IntPtr.Zero;
 			}
 		}
@@ -110,7 +110,7 @@ namespace BlitzEngine
 
 		public static void PauseChannel(Channel channel)
 		{
-			PauseChannel_internal(channel.Pointer);
+			PauseChannel_internal(channel);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -118,7 +118,7 @@ namespace BlitzEngine
 
 		public static void ResumeChannel(Channel channel)
 		{
-			ResumeChannel_internal(channel.Pointer);
+			ResumeChannel_internal(channel);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -126,7 +126,7 @@ namespace BlitzEngine
 
 		public static void ChannelPitch(Channel channel, int pitch)
 		{
-			ChannelPitch_internal(channel.Pointer, pitch);
+			ChannelPitch_internal(channel, pitch);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -134,7 +134,7 @@ namespace BlitzEngine
 
 		public static void ChannelVolume(Channel channel, float volume)
 		{
-			ChannelVolume_internal(channel.Pointer, volume);
+			ChannelVolume_internal(channel, volume);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -142,7 +142,7 @@ namespace BlitzEngine
 
 		public static void ChannelPan(Channel channel, float pan)
 		{
-			ChannelPan_internal(channel.Pointer, pan);
+			ChannelPan_internal(channel, pan);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -150,7 +150,7 @@ namespace BlitzEngine
 
 		public static bool ChannelPlaying(Channel channel)
 		{
-			return ChannelPlaying_internal(channel.Pointer);
+			return ChannelPlaying_internal(channel);
 		}
 
 		[DllImport(B3DDllLink)]
