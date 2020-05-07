@@ -124,7 +124,7 @@ public:
 		if (imm == 1) { Code(0xd1); Code(op); }
 		else { Code(0xc1); Code(op); Code(imm); }
 	}
-	voidand (Reg32 reg, int imm)
+	void and(Reg32 reg, int imm)
 	{
 		if (imm == 0xffffffff) return;
 		if (imm >= -128 && imm < 128)
