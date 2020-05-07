@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlitzSharp3D", "BlitzSharp3D\BlitzSharp3D.vcxproj", "{23AC99EE-C884-4854-BF00-0889F1C8816C}"
 EndProject
@@ -37,10 +37,10 @@ Global
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Debug|x86.Build.0 = Debug|Win32
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|Any CPU.ActiveCfg = Debug|Win32
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|Any CPU.Build.0 = Debug|Win32
-		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.ActiveCfg = DebugEngine|x64
-		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.Build.0 = DebugEngine|x64
-		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.ActiveCfg = DebugEngine|Win32
-		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.Build.0 = DebugEngine|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.ActiveCfg = Debug|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x64.Build.0 = Debug|x64
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.ActiveCfg = Debug|Win32
+		{23AC99EE-C884-4854-BF00-0889F1C8816C}.DebugEngine|x86.Build.0 = Debug|Win32
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|Any CPU.ActiveCfg = Release|Win32
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|Any CPU.Build.0 = Release|Win32
 		{23AC99EE-C884-4854-BF00-0889F1C8816C}.Release|x64.ActiveCfg = Release|x64
