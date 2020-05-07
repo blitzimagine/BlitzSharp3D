@@ -7,16 +7,16 @@ class gxAudio;
 struct FMUSIC_MODULE;
 struct FSOUND_STREAM;
 
-class gxMusic{
+class gxMusic {
 public:
-	gxAudio *audio;
+	gxAudio* audio;
 
-	gxMusic( gxAudio *audio,FMUSIC_MODULE *module,FSOUND_STREAM *stream );
+	gxMusic(gxAudio* audio, FMUSIC_MODULE* module, FSOUND_STREAM* stream);
 	~gxMusic();
 
 private:
-	FMUSIC_MODULE *module;
-	FSOUND_STREAM *stream;
+	FMUSIC_MODULE* module;
+	FSOUND_STREAM* stream;
 	int stream_channel;
 
 	/***** GX INTERFACE *****/
@@ -24,8 +24,8 @@ public:
 	//modifiers
 	void play();
 	void stop();
-	void setPaused( bool paused );
-	void setVolume( float volume );
+	void setPaused(bool paused);
+	void setVolume(float volume);
 
 	//accessors
 	bool isPlaying()const;

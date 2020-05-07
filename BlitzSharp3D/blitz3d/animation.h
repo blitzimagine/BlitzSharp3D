@@ -6,32 +6,32 @@
 
 #include "geom.h"
 
-class Animation{
+class Animation {
 public:
 	Animation();
-	Animation( const Animation &t );
-	Animation( const Animation &t,int first,int last );
+	Animation(const Animation& t);
+	Animation(const Animation& t, int first, int last);
 	~Animation();
 
-	Animation &operator=( const Animation &t );
+	Animation& operator=(const Animation& t);
 
-	void setScaleKey( int frame,const Vector &q );
-	void setPositionKey( int frame,const Vector &p );
-	void setRotationKey( int frame,const Quat &q );
+	void setScaleKey(int frame, const Vector& q);
+	void setPositionKey(int frame, const Vector& p);
+	void setRotationKey(int frame, const Quat& q);
 
 	int numScaleKeys()const;
 	int numRotationKeys()const;
 	int numPositionKeys()const;
 
-	Vector getScale( float time )const;
-	Vector getPosition( float time )const;
-	Quat getRotation( float time )const;
+	Vector getScale(float time)const;
+	Vector getPosition(float time)const;
+	Quat getRotation(float time)const;
 
 private:
 	struct Rep;
-	Rep *rep;
+	Rep* rep;
 
-	Rep *write();
+	Rep* write();
 };
 
 #endif

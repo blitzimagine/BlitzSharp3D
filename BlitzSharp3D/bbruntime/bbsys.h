@@ -8,12 +8,12 @@ extern gxRuntime* gx_runtime;
 
 struct bbEx : std::exception
 {
-    const char* message;
-    bool runtime;
+	const char* message;
+	bool runtime;
 
-    bbEx(const char* message, bool runtime = false);
+	bbEx(const char* message, bool runtime = false);
 
-    void showError() const;
+	void showError() const;
 };
 
 extern void ThrowBlitzException(bbEx ex);

@@ -5,20 +5,20 @@
 #include "mesh.h"
 #include "model.h"
 
-class MeshRenderer{
+class MeshRenderer {
 public:
-	MeshRenderer( const Mesh &t );
+	MeshRenderer(const Mesh& t);
 	~MeshRenderer();
 
-	void render( Camera *c,Model *m )const;
+	void render(Camera* c, Model* m)const;
 
 private:
 	Box box;
 	struct Surface;
 	vector<Surface*> surfs;
 
-	MeshRenderer( const MeshRenderer &t );
-	MeshRenderer &operator=(const MeshRenderer&);
+	MeshRenderer(const MeshRenderer& t);
+	MeshRenderer& operator=(const MeshRenderer&);
 };
 
 #endif

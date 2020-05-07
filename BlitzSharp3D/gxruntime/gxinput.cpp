@@ -8,204 +8,211 @@
 #include <dinput.h>
 #include <SDL_syswm.h>
 
-static const int QUE_SIZE=32;
+static const int QUE_SIZE = 32;
 
-class Device : public gxDevice{
+class Device : public gxDevice {
 public:
 	bool acquired;
-	gxInput *input;
-	IDirectInputDevice7 *device;
+	gxInput* input;
+	IDirectInputDevice7* device;
 
-	Device( gxInput *i,IDirectInputDevice7 *d ):input(i),acquired(false),device(d){
+	Device(gxInput* i, IDirectInputDevice7* d) :input(i), acquired(false), device(d) {
 	}
-	virtual ~Device(){
+	virtual ~Device() {
 		device->Release();
 	}
-	bool acquire(){
-		return acquired=device->Acquire()>=0;
+	bool acquire() {
+		return acquired = device->Acquire() >= 0;
 	}
-	void unacquire(){
+	void unacquire() {
 		device->Unacquire();
-		acquired=false;
+		acquired = false;
 	}
 };
 
-class Keyboard : public Device{
+class Keyboard : public Device {
 public:
-	Keyboard( gxInput *i,IDirectInputDevice7 *d ):Device(i,d){
+	Keyboard(gxInput* i, IDirectInputDevice7* d) :Device(i, d) {
 	}
-	void update(){
-		if( !acquired ){
+	void update() {
+		if (!acquired) {
 			if (!input->runtime->idle())
 				RTEX(0);
 			return;
 		}
-		int k,cnt=32;
-		DIDEVICEOBJECTDATA data[32],*curr;
-		if( device->GetDeviceData( sizeof(DIDEVICEOBJECTDATA),data,(DWORD*)&cnt,0 )<0 ) return;
-		curr=data;
-		for( k=0;k<cnt;++curr,++k ){
-			int n=curr->dwOfs;if( !n || n>255 ) continue;
-			if( curr->dwData&0x80 ) downEvent( n );
-			else upEvent( n );
+		int k, cnt = 32;
+		DIDEVICEOBJECTDATA data[32], * curr;
+		if (device->GetDeviceData(sizeof(DIDEVICEOBJECTDATA), data, (DWORD*)&cnt, 0) < 0) return;
+		curr = data;
+		for (k = 0; k < cnt; ++curr, ++k) {
+			int n = curr->dwOfs; if (!n || n > 255) continue;
+			if (curr->dwData & 0x80) downEvent(n);
+			else upEvent(n);
 		}
 	}
 };
 
-class Mouse : public Device{
+class Mouse : public Device {
 public:
-	Mouse( gxInput *i,IDirectInputDevice7 *d ):Device(i,d){
+	Mouse(gxInput* i, IDirectInputDevice7* d) :Device(i, d) {
 	}
-	void update(){
-		if( !acquired ){
+	void update() {
+		if (!acquired) {
 			if (!input->runtime->idle())
 				RTEX(0);
 			return;
 		}
 		DIMOUSESTATE state;
-		if( device->GetDeviceState(sizeof(state),&state)<0 ) return;
-		if( gxGraphics *g=input->runtime->graphics ){
-			int mx=(int)(axis_states[0]+state.lX);
-			int my=(int)(axis_states[1]+state.lY);
-			if( mx<0 ) mx=0;
-			else if( mx>=g->getWidth() ) mx=g->getWidth()-1;
-			if( my<0 ) my=0;
-			else if( my>=g->getHeight() ) my=g->getHeight()-1;
-			axis_states[0]=(float)mx;
+		if (device->GetDeviceState(sizeof(state), &state) < 0) return;
+		if (gxGraphics* g = input->runtime->graphics) {
+			int mx = (int)(axis_states[0] + state.lX);
+			int my = (int)(axis_states[1] + state.lY);
+			if (mx < 0) mx = 0;
+			else if (mx >= g->getWidth()) mx = g->getWidth() - 1;
+			if (my < 0) my = 0;
+			else if (my >= g->getHeight()) my = g->getHeight() - 1;
+			axis_states[0] = (float)mx;
 			axis_states[1] = (float)my;
 			axis_states[2] += (float)state.lZ;
 		}
-		for( int k=0;k<3;++k ){
-			setDownState( k+1,state.rgbButtons[k]&0x80 ? true : false );
+		for (int k = 0; k < 3; ++k) {
+			setDownState(k + 1, state.rgbButtons[k] & 0x80 ? true : false);
 		}
 	}
 };
 
-class Joystick : public Device{
+class Joystick : public Device {
 public:
-	int type,poll_time;
-	int mins[12],maxs[12];
-	Joystick( gxInput *i,IDirectInputDevice7 *d,int t ):Device(i,d),type(t),poll_time(0){
-		for( int k=0;k<12;++k ){
+	int type, poll_time;
+	int mins[12], maxs[12];
+	Joystick(gxInput* i, IDirectInputDevice7* d, int t) :Device(i, d), type(t), poll_time(0) {
+		for (int k = 0; k < 12; ++k) {
 			//initialize joystick axis ranges (d'oh!)
 			DIPROPRANGE range;
-			range.diph.dwSize=sizeof(DIPROPRANGE);
-			range.diph.dwHeaderSize=sizeof(DIPROPHEADER);
-			range.diph.dwObj=k*4+12;
-			range.diph.dwHow=DIPH_BYOFFSET;
-			if( d->GetProperty( DIPROP_RANGE,&range.diph )<0 ){
-				mins[k]=0;
-				maxs[k]=65535;
+			range.diph.dwSize = sizeof(DIPROPRANGE);
+			range.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+			range.diph.dwObj = k * 4 + 12;
+			range.diph.dwHow = DIPH_BYOFFSET;
+			if (d->GetProperty(DIPROP_RANGE, &range.diph) < 0) {
+				mins[k] = 0;
+				maxs[k] = 65535;
 				continue;
 			}
-			mins[k]=range.lMin;
-			maxs[k]=range.lMax-range.lMin;
+			mins[k] = range.lMin;
+			maxs[k] = range.lMax - range.lMin;
 		}
 	}
-	void update(){
-		unsigned tm=timeGetTime();
-		if( tm-poll_time<3 ) return;
-		if( device->Poll()<0 ){
-			acquired=false;
+	void update() {
+		unsigned tm = timeGetTime();
+		if (tm - poll_time < 3) return;
+		if (device->Poll() < 0) {
+			acquired = false;
 			if (!input->runtime->idle())
 				RTEX(0);
-			acquire();if( device->Poll()<0 ) return;
+			acquire(); if (device->Poll() < 0) return;
 		}
-		poll_time=tm;
+		poll_time = tm;
 		DIJOYSTATE state;
-		if( device->GetDeviceState( sizeof( state ),&state )<0 ) return;
-		axis_states[0]=(state.lX-mins[0])/(float)maxs[0]*2-1;
-		axis_states[1]=(state.lY-mins[1])/(float)maxs[1]*2-1;
-		axis_states[2]=(state.lZ-mins[2])/(float)maxs[2]*2-1;
-		axis_states[3]=(state.rglSlider[0]-mins[6])/(float)maxs[6]*2-1;
-		axis_states[4]=(state.rglSlider[1]-mins[7])/(float)maxs[7]*2-1;
-		axis_states[5]=(state.lRx-mins[3])/(float)maxs[3]*2-1;
-		axis_states[6]=(state.lRy-mins[4])/(float)maxs[4]*2-1;
-		axis_states[7]=(state.lRz-mins[5])/(float)maxs[5]*2-1;
-		if( (state.rgdwPOV[0]&0xffff)==0xffff ) axis_states[8]=-1;
-		else axis_states[8]=floor(state.rgdwPOV[0]/100.0f+.5f);
+		if (device->GetDeviceState(sizeof(state), &state) < 0) return;
+		axis_states[0] = (state.lX - mins[0]) / (float)maxs[0] * 2 - 1;
+		axis_states[1] = (state.lY - mins[1]) / (float)maxs[1] * 2 - 1;
+		axis_states[2] = (state.lZ - mins[2]) / (float)maxs[2] * 2 - 1;
+		axis_states[3] = (state.rglSlider[0] - mins[6]) / (float)maxs[6] * 2 - 1;
+		axis_states[4] = (state.rglSlider[1] - mins[7]) / (float)maxs[7] * 2 - 1;
+		axis_states[5] = (state.lRx - mins[3]) / (float)maxs[3] * 2 - 1;
+		axis_states[6] = (state.lRy - mins[4]) / (float)maxs[4] * 2 - 1;
+		axis_states[7] = (state.lRz - mins[5]) / (float)maxs[5] * 2 - 1;
+		if ((state.rgdwPOV[0] & 0xffff) == 0xffff) axis_states[8] = -1;
+		else axis_states[8] = floor(state.rgdwPOV[0] / 100.0f + .5f);
 
-		for( int k=0;k<31;++k ){
-			setDownState( k+1,state.rgbButtons[k]&0x80 ? true : false );
+		for (int k = 0; k < 31; ++k) {
+			setDownState(k + 1, state.rgbButtons[k] & 0x80 ? true : false);
 		}
 	}
 };
 
-static Keyboard *keyboard;
-static Mouse *mouse;
+static Keyboard* keyboard;
+static Mouse* mouse;
 static vector<Joystick*> joysticks;
-					  
-static Keyboard *createKeyboard( gxInput *input ){
-	IDirectInputDevice7 *dev;
-	if( input->dirInput->CreateDeviceEx( GUID_SysKeyboard,IID_IDirectInputDevice7,(void**)&dev,0 )>=0 ){
+
+static Keyboard* createKeyboard(gxInput* input) {
+	IDirectInputDevice7* dev;
+	if (input->dirInput->CreateDeviceEx(GUID_SysKeyboard, IID_IDirectInputDevice7, (void**)&dev, 0) >= 0) {
 		SDL_SysWMinfo info;
 		SDL_VERSION(&info.version);
 		SDL_GetWindowWMInfo(input->runtime->window, &info); // TEMPORARY
-		if( dev->SetCooperativeLevel( info.info.win.window,DISCL_FOREGROUND|DISCL_EXCLUSIVE )>=0 ){
+		if (dev->SetCooperativeLevel(info.info.win.window, DISCL_FOREGROUND | DISCL_EXCLUSIVE) >= 0) {
 
-			if( dev->SetDataFormat( &c_dfDIKeyboard )>=0 ){
+			if (dev->SetDataFormat(&c_dfDIKeyboard) >= 0) {
 				DIPROPDWORD dword;
-	 			memset( &dword,0,sizeof(dword) );
-				dword.diph.dwSize=sizeof(DIPROPDWORD);
-				dword.diph.dwHeaderSize=sizeof(DIPROPHEADER);
-				dword.diph.dwObj=0;
-				dword.diph.dwHow=DIPH_DEVICE;
-				dword.dwData=32;
-				if( dev->SetProperty( DIPROP_BUFFERSIZE,&dword.diph )>=0 ){
-					return d_new Keyboard( input,dev );
-				}else{
-//					input->runtime->debugInfo( "keyboard: SetProperty failed" );
+				memset(&dword, 0, sizeof(dword));
+				dword.diph.dwSize = sizeof(DIPROPDWORD);
+				dword.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+				dword.diph.dwObj = 0;
+				dword.diph.dwHow = DIPH_DEVICE;
+				dword.dwData = 32;
+				if (dev->SetProperty(DIPROP_BUFFERSIZE, &dword.diph) >= 0) {
+					return d_new Keyboard(input, dev);
 				}
-			}else{
-//				input->runtime->debugInfo( "keyboard: SetDataFormat failed" );
+				else {
+					//					input->runtime->debugInfo( "keyboard: SetProperty failed" );
+				}
 			}
-			return d_new Keyboard( input,dev );
+			else {
+				//				input->runtime->debugInfo( "keyboard: SetDataFormat failed" );
+			}
+			return d_new Keyboard(input, dev);
 
-		}else{
-			input->runtime->debugInfo( "keyboard: SetCooperativeLevel failed" );
+		}
+		else {
+			input->runtime->debugInfo("keyboard: SetCooperativeLevel failed");
 		}
 		dev->Release();
-	}else{
-		input->runtime->debugInfo( "keyboard: CreateDeviceEx failed" );
+	}
+	else {
+		input->runtime->debugInfo("keyboard: CreateDeviceEx failed");
 	}
 	return 0;
 }
 
-static Mouse *createMouse( gxInput *input ){
-	IDirectInputDevice7 *dev;
-	if( input->dirInput->CreateDeviceEx( GUID_SysMouse,IID_IDirectInputDevice7,(void**)&dev,0 )>=0 ){
+static Mouse* createMouse(gxInput* input) {
+	IDirectInputDevice7* dev;
+	if (input->dirInput->CreateDeviceEx(GUID_SysMouse, IID_IDirectInputDevice7, (void**)&dev, 0) >= 0) {
 		SDL_SysWMinfo info;
 		SDL_VERSION(&info.version);
 		SDL_GetWindowWMInfo(input->runtime->window, &info); // TEMPORARY
-		if( dev->SetCooperativeLevel( info.info.win.window,DISCL_FOREGROUND|DISCL_EXCLUSIVE )>=0 ){
+		if (dev->SetCooperativeLevel(info.info.win.window, DISCL_FOREGROUND | DISCL_EXCLUSIVE) >= 0) {
 
-			if( dev->SetDataFormat( &c_dfDIMouse )>=0 ){
-				return d_new Mouse( input,dev );
-			}else{
-//				input->runtime->debugInfo( "mouse: SetDataFormat failed" );
+			if (dev->SetDataFormat(&c_dfDIMouse) >= 0) {
+				return d_new Mouse(input, dev);
 			}
-			return d_new Mouse( input,dev );
+			else {
+				//				input->runtime->debugInfo( "mouse: SetDataFormat failed" );
+			}
+			return d_new Mouse(input, dev);
 
-		}else{
-			input->runtime->debugInfo( "mouse: SetCooperativeLevel failed" );
+		}
+		else {
+			input->runtime->debugInfo("mouse: SetCooperativeLevel failed");
 		}
 		dev->Release();
-	}else{
-		input->runtime->debugInfo( "mouse: CreateDeviceEx failed" );
+	}
+	else {
+		input->runtime->debugInfo("mouse: CreateDeviceEx failed");
 	}
 	return 0;
 }
 
-static Joystick *createJoystick( gxInput *input,LPCDIDEVICEINSTANCE devinst ){
-	IDirectInputDevice7 *dev;
-	if( input->dirInput->CreateDeviceEx( devinst->guidInstance,IID_IDirectInputDevice7,(void**)&dev,0 )>=0 ){
+static Joystick* createJoystick(gxInput* input, LPCDIDEVICEINSTANCE devinst) {
+	IDirectInputDevice7* dev;
+	if (input->dirInput->CreateDeviceEx(devinst->guidInstance, IID_IDirectInputDevice7, (void**)&dev, 0) >= 0) {
 		SDL_SysWMinfo info;
 		SDL_VERSION(&info.version);
 		SDL_GetWindowWMInfo(input->runtime->window, &info); // TEMPORARY
-		if( dev->SetCooperativeLevel( info.info.win.window,DISCL_FOREGROUND|DISCL_EXCLUSIVE )>=0 ){
-			if( dev->SetDataFormat( &c_dfDIJoystick )>=0 ){
-				int t=((devinst->dwDevType>>8)&0xff)==DIDEVTYPEJOYSTICK_GAMEPAD ? 1 : 2;
-				return d_new Joystick( input,dev,t );
+		if (dev->SetCooperativeLevel(info.info.win.window, DISCL_FOREGROUND | DISCL_EXCLUSIVE) >= 0) {
+			if (dev->SetDataFormat(&c_dfDIJoystick) >= 0) {
+				int t = ((devinst->dwDevType >> 8) & 0xff) == DIDEVTYPEJOYSTICK_GAMEPAD ? 1 : 2;
+				return d_new Joystick(input, dev, t);
 			}
 		}
 		dev->Release();
@@ -213,26 +220,26 @@ static Joystick *createJoystick( gxInput *input,LPCDIDEVICEINSTANCE devinst ){
 	return 0;
 }
 
-static BOOL CALLBACK enumJoystick( LPCDIDEVICEINSTANCE devinst,LPVOID pvRef ){
+static BOOL CALLBACK enumJoystick(LPCDIDEVICEINSTANCE devinst, LPVOID pvRef) {
 
-	if( (devinst->dwDevType&0xff)!=DIDEVTYPE_JOYSTICK ) return DIENUM_CONTINUE;
+	if ((devinst->dwDevType & 0xff) != DIDEVTYPE_JOYSTICK) return DIENUM_CONTINUE;
 
-	if( Joystick *joy=createJoystick( (gxInput*)pvRef,devinst ) ){
-		joysticks.push_back( joy );
+	if (Joystick* joy = createJoystick((gxInput*)pvRef, devinst)) {
+		joysticks.push_back(joy);
 	}
 	return DIENUM_CONTINUE;
 }
 
-gxInput::gxInput( gxRuntime *rt,IDirectInput7 *di ):
-runtime(rt),dirInput(di){
-	keyboard=createKeyboard( this );
-	mouse=createMouse( this );
+gxInput::gxInput(gxRuntime* rt, IDirectInput7* di) :
+	runtime(rt), dirInput(di) {
+	keyboard = createKeyboard(this);
+	mouse = createMouse(this);
 	joysticks.clear();
-	dirInput->EnumDevices( DIDEVTYPE_JOYSTICK,enumJoystick,this,DIEDFL_ATTACHEDONLY );
+	dirInput->EnumDevices(DIDEVTYPE_JOYSTICK, enumJoystick, this, DIEDFL_ATTACHEDONLY);
 }
 
-gxInput::~gxInput(){
-	for( int k=0;k<(int)joysticks.size();++k ) delete joysticks[k];
+gxInput::~gxInput() {
+	for (int k = 0; k < (int)joysticks.size(); ++k) delete joysticks[k];
 	joysticks.clear();
 	delete mouse;
 	delete keyboard;
@@ -240,7 +247,7 @@ gxInput::~gxInput(){
 	dirInput->Release();
 }
 
-static uint8_t SDLToBlitzScancode(gxInput *input, int key)
+static uint8_t SDLToBlitzScancode(gxInput* input, int key)
 {
 	switch (key)
 	{
@@ -344,11 +351,11 @@ static uint8_t SDLToBlitzScancode(gxInput *input, int key)
 	case SDL_SCANCODE_AUDIOPREV: return 144;
 	case SDL_SCANCODE_KP_AT: return 145;
 	case SDL_SCANCODE_KP_COLON: return 146;
-	//UNDERLINE = 147,
-	//KANJI = 148,
+		//UNDERLINE = 147,
+		//KANJI = 148,
 	case SDL_SCANCODE_STOP: return 149;
-	//AX = 150, // Japan AX
-	//Unlabeled = 151, // (J3100)
+		//AX = 150, // Japan AX
+		//Unlabeled = 151, // (J3100)
 	case SDL_SCANCODE_AUDIONEXT: return 153;
 	case SDL_SCANCODE_KP_ENTER: return 156;
 	case SDL_SCANCODE_RCTRL: return 157;
@@ -379,7 +386,7 @@ static uint8_t SDLToBlitzScancode(gxInput *input, int key)
 	case SDL_SCANCODE_APPLICATION: return 221;
 	case SDL_SCANCODE_POWER: return 222;
 	case SDL_SCANCODE_SLEEP: return 223;
-	//WAKE = 227,
+		//WAKE = 227,
 	case SDL_SCANCODE_AC_SEARCH: return 229;
 	case SDL_SCANCODE_AC_BOOKMARKS: return 230;
 	case SDL_SCANCODE_AC_REFRESH: return 231;
@@ -395,83 +402,83 @@ static uint8_t SDLToBlitzScancode(gxInput *input, int key)
 	}
 }
 
-void gxInput::wm_keydown( int key ){
-	if( keyboard ) keyboard->downEvent(SDLToBlitzScancode(this, key));
+void gxInput::wm_keydown(int key) {
+	if (keyboard) keyboard->downEvent(SDLToBlitzScancode(this, key));
 }
 
-void gxInput::wm_keyup( int key ){
-	if( keyboard ) keyboard->upEvent(SDLToBlitzScancode(this, key));
+void gxInput::wm_keyup(int key) {
+	if (keyboard) keyboard->upEvent(SDLToBlitzScancode(this, key));
 }
 
-void gxInput::wm_mousedown( int key ){
-	if( mouse ) mouse->downEvent( key );
+void gxInput::wm_mousedown(int key) {
+	if (mouse) mouse->downEvent(key);
 }
 
-void gxInput::wm_mouseup( int key ){
-	if( mouse ) mouse->upEvent( key );
+void gxInput::wm_mouseup(int key) {
+	if (mouse) mouse->upEvent(key);
 }
 
-void gxInput::wm_mousemove( int x,int y ){
-	if( mouse ){
-		mouse->axis_states[0]=(float)x;
-		mouse->axis_states[1]=(float)y;
+void gxInput::wm_mousemove(int x, int y) {
+	if (mouse) {
+		mouse->axis_states[0] = (float)x;
+		mouse->axis_states[1] = (float)y;
 	}
 }
 
-void gxInput::wm_mousewheel( int dz ){
-	if( mouse ) mouse->axis_states[2]+=dz;
+void gxInput::wm_mousewheel(int dz) {
+	if (mouse) mouse->axis_states[2] += dz;
 }
 
-void gxInput::reset(){
-	if( mouse ) mouse->reset();
-	if( keyboard ) keyboard->reset();
-	for( int k=0;k<(int)joysticks.size();++k ) joysticks[k]->reset();
+void gxInput::reset() {
+	if (mouse) mouse->reset();
+	if (keyboard) keyboard->reset();
+	for (int k = 0; k < (int)joysticks.size(); ++k) joysticks[k]->reset();
 }
 
-bool gxInput::acquire(){
-	bool m_ok=true,k_ok=true;
-	if( mouse ) m_ok=mouse->acquire();
-	if( keyboard ) k_ok=keyboard->acquire();
-	if( m_ok && k_ok ) return true;
-	if( k_ok ) keyboard->unacquire();
-	if( m_ok ) mouse->unacquire();
+bool gxInput::acquire() {
+	bool m_ok = true, k_ok = true;
+	if (mouse) m_ok = mouse->acquire();
+	if (keyboard) k_ok = keyboard->acquire();
+	if (m_ok && k_ok) return true;
+	if (k_ok) keyboard->unacquire();
+	if (m_ok) mouse->unacquire();
 	return false;
 }
 
-void gxInput::unacquire(){
-	if( keyboard ) keyboard->unacquire();
-	if( mouse ) mouse->unacquire();
+void gxInput::unacquire() {
+	if (keyboard) keyboard->unacquire();
+	if (mouse) mouse->unacquire();
 }
 
-void gxInput::moveMouse( int x,int y ){
-	if( !mouse ) return;
-	mouse->axis_states[0]=(float)x;
-	mouse->axis_states[1]=(float)y;
-	runtime->moveMouse( x,y );
+void gxInput::moveMouse(int x, int y) {
+	if (!mouse) return;
+	mouse->axis_states[0] = (float)x;
+	mouse->axis_states[1] = (float)y;
+	runtime->moveMouse(x, y);
 }
 
-gxDevice *gxInput::getMouse()const{
+gxDevice* gxInput::getMouse()const {
 	return mouse;
 }
 
-gxDevice *gxInput::getKeyboard()const{
+gxDevice* gxInput::getKeyboard()const {
 	return keyboard;
 }
 
-gxDevice *gxInput::getJoystick( int n )const{
-	return n>=0 && n<(int)joysticks.size() ? joysticks[n] : 0;
+gxDevice* gxInput::getJoystick(int n)const {
+	return n >= 0 && n < (int)joysticks.size() ? joysticks[n] : 0;
 }
 
-int gxInput::getJoystickType( int n )const{
-	return n>=0 && n<(int)joysticks.size() ? joysticks[n]->type : 0;
+int gxInput::getJoystickType(int n)const {
+	return n >= 0 && n < (int)joysticks.size() ? joysticks[n]->type : 0;
 }
 
-int gxInput::numJoysticks()const{
+int gxInput::numJoysticks()const {
 	return joysticks.size();
 }
 
-int gxInput::toAscii( int scan )const{
-	switch( scan ){
+int gxInput::toAscii(int scan)const {
+	switch (scan) {
 	case DIK_INSERT:return ASC_INSERT;
 	case DIK_DELETE:return ASC_DELETE;
 	case DIK_HOME:return ASC_HOME;
@@ -483,22 +490,22 @@ int gxInput::toAscii( int scan )const{
 	case DIK_LEFT:return ASC_LEFT;
 	case DIK_RIGHT:return ASC_RIGHT;
 	}
-	scan&=0x7f;
- 	int virt=MapVirtualKey( scan,1 );
-	if( !virt ) return 0;
+	scan &= 0x7f;
+	int virt = MapVirtualKey(scan, 1);
+	if (!virt) return 0;
 
 	static unsigned char mat[256];
-	mat[VK_LSHIFT]=keyboard->keyDown( DIK_LSHIFT ) ? 0x80 : 0;
-	mat[VK_RSHIFT]=keyboard->keyDown( DIK_RSHIFT ) ? 0x80 : 0;
-	mat[VK_SHIFT]=mat[VK_LSHIFT]|mat[VK_RSHIFT];
-	mat[VK_LCONTROL]=keyboard->keyDown( DIK_LCONTROL ) ? 0x80 : 0;
-	mat[VK_RCONTROL]=keyboard->keyDown( DIK_RCONTROL ) ? 0x80 : 0;
-	mat[VK_CONTROL]=mat[VK_LCONTROL]|mat[VK_RCONTROL];
-	mat[VK_LMENU]=keyboard->keyDown( DIK_LMENU ) ? 0x80 : 0;
-	mat[VK_RMENU]=keyboard->keyDown( DIK_RMENU ) ? 0x80 : 0;
-	mat[VK_MENU]=mat[VK_LMENU]|mat[VK_RMENU];
+	mat[VK_LSHIFT] = keyboard->keyDown(DIK_LSHIFT) ? 0x80 : 0;
+	mat[VK_RSHIFT] = keyboard->keyDown(DIK_RSHIFT) ? 0x80 : 0;
+	mat[VK_SHIFT] = mat[VK_LSHIFT] | mat[VK_RSHIFT];
+	mat[VK_LCONTROL] = keyboard->keyDown(DIK_LCONTROL) ? 0x80 : 0;
+	mat[VK_RCONTROL] = keyboard->keyDown(DIK_RCONTROL) ? 0x80 : 0;
+	mat[VK_CONTROL] = mat[VK_LCONTROL] | mat[VK_RCONTROL];
+	mat[VK_LMENU] = keyboard->keyDown(DIK_LMENU) ? 0x80 : 0;
+	mat[VK_RMENU] = keyboard->keyDown(DIK_RMENU) ? 0x80 : 0;
+	mat[VK_MENU] = mat[VK_LMENU] | mat[VK_RMENU];
 
 	WORD ch;
-	if( ToAscii( virt,scan,mat,&ch,0 )!=1 ) return 0;
+	if (ToAscii(virt, scan, mat, &ch, 0) != 1) return 0;
 	return ch & 255;
 }

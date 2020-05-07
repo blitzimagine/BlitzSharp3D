@@ -34,10 +34,10 @@ static inline void freeBBStr(BBStr* str)
 
 static inline const char* toMonoStrNoFree(BBStr* str)
 {
-    char* ret = static_cast<char*>(malloc(str->length() + 1));
-    ret = strcpy(ret, str->c_str());
-    ret[str->length()] = 0;
-    return ret;
+	char* ret = static_cast<char*>(malloc(str->length() + 1));
+	ret = strcpy(ret, str->c_str());
+	ret[str->length()] = 0;
+	return ret;
 }
 
 static inline const char* toMonoStr(BBStr* str)
@@ -133,21 +133,21 @@ PUBLIC_METHOD int MilliSecs()
 PUBLIC_METHOD void CommandLine_internal(char* ret, int retLen)
 {
 	BBStr* str = bbCommandLine();
-    strcpy_s(ret, retLen, str->c_str());
+	strcpy_s(ret, retLen, str->c_str());
 	freeBBStr(str);
 }
 
 PUBLIC_METHOD void SystemProperty_internal(char* ret, int retLen, const char* prop)
 {
 	BBStr* p = toBBStr(prop);
-    strcpy_s(ret, retLen, bbSystemProperty(p)->c_str());
+	strcpy_s(ret, retLen, bbSystemProperty(p)->c_str());
 	freeBBStr(p);
 }
 
 PUBLIC_METHOD void GetEnv_internal(char* ret, int retLen, const char* env_var)
 {
 	BBStr* v = toBBStr(env_var);
-    strcpy_s(ret, retLen, bbGetEnv(v)->c_str());
+	strcpy_s(ret, retLen, bbGetEnv(v)->c_str());
 	freeBBStr(v);
 }
 
@@ -316,8 +316,8 @@ PUBLIC_METHOD int SeekFile_internal(bbFile* file, int pos)
 
 PUBLIC_METHOD gxDir* ReadDir_internal(const char* dirname)
 {
-    if (dirname == nullptr || strlen(dirname) == 0)
-        return nullptr;
+	if (dirname == nullptr || strlen(dirname) == 0)
+		return nullptr;
 	BBStr* dir = toBBStr(dirname);
 	gxDir* ret = bbReadDir(dir);
 	freeBBStr(dir);
@@ -332,14 +332,14 @@ PUBLIC_METHOD void CloseDir_internal(gxDir* dir)
 PUBLIC_METHOD void NextFile_internal(char* ret, int retLen, gxDir* dir)
 {
 	BBStr* f = bbNextFile(dir);
-    strcpy_s(ret, retLen, f->c_str());
-    freeBBStr(f);
+	strcpy_s(ret, retLen, f->c_str());
+	freeBBStr(f);
 }
 
 PUBLIC_METHOD void CurrentDir_internal(char* ret, int retLen)
 {
 	BBStr* currentDir = bbCurrentDir();
-    strcpy_s(ret, retLen, currentDir->c_str());
+	strcpy_s(ret, retLen, currentDir->c_str());
 	freeBBStr(currentDir);
 }
 
@@ -433,14 +433,14 @@ PUBLIC_METHOD float ReadFloat_internal(bbStream* stream)
 PUBLIC_METHOD void ReadString_internal(char* ret, int retLen, bbStream* stream)
 {
 	BBStr* str = bbReadString(stream);
-    strcpy_s(ret, retLen, str->c_str());
+	strcpy_s(ret, retLen, str->c_str());
 	freeBBStr(str);
 }
 
 PUBLIC_METHOD void ReadLine_internal(char* ret, int retLen, bbStream* stream)
 {
 	BBStr* str = bbReadLine(stream);
-    strcpy_s(ret, retLen, str->c_str());
+	strcpy_s(ret, retLen, str->c_str());
 	freeBBStr(str);
 }
 
@@ -530,7 +530,7 @@ PUBLIC_METHOD void DeleteNetPlayer(int player)
 PUBLIC_METHOD void NetPlayerName_internal(char* ret, int retLen, int player)
 {
 	BBStr* n = bbNetPlayerName(player);
-    strcpy_s(ret, retLen, n->c_str());
+	strcpy_s(ret, retLen, n->c_str());
 	freeBBStr(n);
 }
 
@@ -570,7 +570,7 @@ PUBLIC_METHOD int NetMsgTo()
 PUBLIC_METHOD void NetMsgData_internal(char* ret, int retLen)
 {
 	BBStr* d = bbNetMsgData();
-    strcpy_s(ret, retLen, d->c_str());
+	strcpy_s(ret, retLen, d->c_str());
 	freeBBStr(d);
 }
 
@@ -581,7 +581,7 @@ PUBLIC_METHOD void NetMsgData_internal(char* ret, int retLen)
 PUBLIC_METHOD void DottedIP_internal(char* ret, int retLen, int ip)
 {
 	BBStr* i = bbDottedIP(ip);
-    strcpy_s(ret, retLen, i->c_str());
+	strcpy_s(ret, retLen, i->c_str());
 	freeBBStr(i);
 }
 
@@ -859,17 +859,17 @@ PUBLIC_METHOD int JoyVDir(int port)
 
 PUBLIC_METHOD int JoyPitchDir(int port)
 {
-  return bbJoyPitchDir(port);
+	return bbJoyPitchDir(port);
 }
 
 PUBLIC_METHOD int JoyYawDir(int port)
 {
-  return bbJoyYawDir(port);
+	return bbJoyYawDir(port);
 }
 
 PUBLIC_METHOD int JoyRollDir(int port)
 {
-  return bbJoyRollDir(port);
+	return bbJoyRollDir(port);
 }
 
 PUBLIC_METHOD void FlushJoy()
@@ -1180,7 +1180,7 @@ PUBLIC_METHOD int GraphicsLost()
 
 PUBLIC_METHOD int IsFocused()
 {
-  return bbIsFocused() != 0;
+	return bbIsFocused() != 0;
 }
 
 PUBLIC_METHOD void SetGamma(int srcRed, int srcGreen, int srcBlue, float destRed, float destGreen, float destBlue)
@@ -1660,7 +1660,7 @@ PUBLIC_METHOD void Input_internal(char* ret, int retLen, const char* prompt)
 {
 	BBStr* p = toBBStr(prompt);
 	BBStr* r = bbInput(p);
-    strcpy_s(ret, retLen, toMonoStr(r));
+	strcpy_s(ret, retLen, toMonoStr(r));
 	freeBBStr(p);
 }
 
@@ -2872,7 +2872,7 @@ PUBLIC_METHOD void ShowEntity_internal(Entity* entity)
 
 PUBLIC_METHOD int EntityHidden_internal(Entity* entity)
 {
-  return bbEntityHidden(entity) != 0;
+	return bbEntityHidden(entity) != 0;
 }
 
 PUBLIC_METHOD void FreeEntity_internal(Entity* entity)
@@ -2889,17 +2889,17 @@ PUBLIC_METHOD void NameEntity_internal(Entity* entity, const char* name)
 
 PUBLIC_METHOD void EntityName_internal(char* ret, int retLen, Entity* entity)
 {
-    strcpy_s(ret, retLen, toMonoStr(bbEntityName(entity)));
+	strcpy_s(ret, retLen, toMonoStr(bbEntityName(entity)));
 }
 
 PUBLIC_METHOD void EntityClass_internal(char* ret, int retLen, Entity* entity)
 {
-    strcpy_s(ret, retLen, toMonoStr(bbEntityClass(entity)));
+	strcpy_s(ret, retLen, toMonoStr(bbEntityClass(entity)));
 }
 
 PUBLIC_METHOD void GetBuildType_internal(char* ret, int retLen)
 {
-    strcpy_s(ret, retLen, toMonoStr(bbGetBuildType()));
+	strcpy_s(ret, retLen, toMonoStr(bbGetBuildType()));
 }
 
 // -------
@@ -2908,32 +2908,32 @@ PUBLIC_METHOD void GetBuildType_internal(char* ret, int retLen)
 
 PUBLIC_METHOD void Left_internal(char* ret, int retLen, const char* str, int length)
 {
-  BBStr* s = toBBStr(str);
-  strcpy_s(ret, retLen, toMonoStr(bbLeft(s, length)));
-  freeBBStr(s);
+	BBStr* s = toBBStr(str);
+	strcpy_s(ret, retLen, toMonoStr(bbLeft(s, length)));
+	freeBBStr(s);
 }
 
 PUBLIC_METHOD void Right_internal(char* ret, int retLen, const char* str, int length)
 {
-  BBStr* s = toBBStr(str);
-  strcpy_s(ret, retLen, toMonoStr(bbRight(s, length)));
-  freeBBStr(s);
+	BBStr* s = toBBStr(str);
+	strcpy_s(ret, retLen, toMonoStr(bbRight(s, length)));
+	freeBBStr(s);
 }
 
 PUBLIC_METHOD void Mid_internal(char* ret, int retLen, const char* str, int offset, int length)
 {
-  BBStr* s = toBBStr(str);
-  strcpy_s(ret, retLen, toMonoStr(bbMid(s, offset, length)));
-  freeBBStr(s);
+	BBStr* s = toBBStr(str);
+	strcpy_s(ret, retLen, toMonoStr(bbMid(s, offset, length)));
+	freeBBStr(s);
 }
 
 PUBLIC_METHOD int Instr(const char* str1, const char* str2, int offset)
 {
-  BBStr* s1 = toBBStr(str1);
-  BBStr* s2 = toBBStr(str2);
-  int ret = bbInstr(s1, s2, offset);
-  freeBBStr(s1);
-  freeBBStr(s2);
+	BBStr* s1 = toBBStr(str1);
+	BBStr* s2 = toBBStr(str2);
+	int ret = bbInstr(s1, s2, offset);
+	freeBBStr(s1);
+	freeBBStr(s2);
 
-  return ret;
+	return ret;
 }

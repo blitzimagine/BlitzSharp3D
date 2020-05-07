@@ -1,19 +1,19 @@
 
-enum{
-	BBTYPE_END=0,
-	BBTYPE_INT=1,BBTYPE_FLOAT=2,
-	BBTYPE_STRING=3,BBTYPE_CSTR=4,
-	BBTYPE_OBJECT=5,BBTYPE_VECTOR=6
+enum {
+	BBTYPE_END = 0,
+	BBTYPE_INT = 1, BBTYPE_FLOAT = 2,
+	BBTYPE_STRING = 3, BBTYPE_CSTR = 4,
+	BBTYPE_OBJECT = 5, BBTYPE_VECTOR = 6
 };
 
 typedef int bbInt;
 typedef float bbFloat;
-typedef bbStringhandle *bbString;
-typedef bbObjectHandle *bbObject;
-typedef bbVectorHandle *bbVector;
-typedef const char * bbCStr;
+typedef bbStringhandle* bbString;
+typedef bbObjectHandle* bbObject;
+typedef bbVectorHandle* bbVector;
+typedef const char* bbCStr;
 
-union bbValue{
+union bbValue {
 	bbInt INT;
 	bbFloat FLOAT;
 	bbString STRING;
@@ -22,61 +22,61 @@ union bbValue{
 	bbCStr CSTR;
 };
 
-struct bbType{
+struct bbType {
 	int id;
-	bbType( int n ):id(n(){}
+	bbType(int n) :id(n() {}
 };
 
-struct bbInstance{
+struct bbInstance {
 	bbValue value;
 };
 
-struct bbHandle{
-	bbInstance *instance;
+struct bbHandle {
+	bbInstance* instance;
 	int ref_cnt;
-	bbType *type;
+	bbType* type;
 };
 
-struct bbEnviron{
-	bbVector *variables;
+struct bbEnviron {
+	bbVector* variables;
 };
 
-struct bbIntType : public bbType{
-	bbInt():bbType( BBTYPE_INT ){}
+struct bbIntType : public bbType {
+	bbInt() :bbType(BBTYPE_INT) {}
 };
 
-struct bbFloatType : public bbType{
-	bbFloat():bbType( BBTYPE_FLOAT ){}
+struct bbFloatType : public bbType {
+	bbFloat() :bbType(BBTYPE_FLOAT) {}
 };
 
-struct bbCStrType : public bbType{
-	bbCStrType():bbType( BBTYPE_CSTR ){}
+struct bbCStrType : public bbType {
+	bbCStrType() :bbType(BBTYPE_CSTR) {}
 };
 
-struct bbStringType : public bbType{
-	bbStringType():bbType( BBTYPE_STRING ){}
+struct bbStringType : public bbType {
+	bbStringType() :bbType(BBTYPE_STRING) {}
 };
 
-struct bbVectorType : public bbType{
-	bbType *element_type;
-	bbVectorType( bbType *e ):bbType( BBTYPE_VECTOR ),element_type( e ){}
+struct bbVectorType : public bbType {
+	bbType* element_type;
+	bbVectorType(bbType* e) :bbType(BBTYPE_VECTOR), element_type(e) {}
 }
 
-struct bbObjectType : public bbType{
-	bbEnviron *environ;
-	bbObject *first_used,*last_used;
-	bbObject *first_free,*last_free;
-	bbObjectType( bbEnviron *e ):bbType( BBTYPE_OBJECT ),environ( e ){}
+struct bbObjectType : public bbType {
+	bbEnviron* environ;
+	bbObject* first_used, * last_used;
+	bbObject* first_free, * last_free;
+	bbObjectType(bbEnviron* e) :bbType(BBTYPE_OBJECT), environ(e) {}
 };
 
-struct bbStringHandle : public bbHandle{
+struct bbStringHandle : public bbHandle {
 };
 
-struct bbObjectHandle : public bbHandle{
-	bbObject *next,*prev;
+struct bbObjectHandle : public bbHandle {
+	bbObject* next, * prev;
 };
 
-struct bbVectorHandle : public bbHandle{
+struct bbVectorHandle : public bbHandle {
 };
 
-void assign( bbHandleVariable dest,bbHandle src );
+void assign(bbHandleVariable dest, bbHandle src);

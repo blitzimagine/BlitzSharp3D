@@ -4,15 +4,15 @@
 
 #include "object.h"
 
-class Mirror : public Object{
+class Mirror : public Object {
 public:
 	Mirror();
-	Mirror( const Mirror &t );
+	Mirror(const Mirror& t);
 	~Mirror();
 
 	//Entity interface
-	Entity *clone(){ return d_new Mirror( *this ); }
-	Mirror *getMirror(){ return this; }
+	Entity* clone() { return d_new Mirror(*this); }
+	Mirror* getMirror() { return this; }
 };
 
 #endif

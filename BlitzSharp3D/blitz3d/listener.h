@@ -4,15 +4,15 @@
 
 #include "object.h"
 
-class Listener : public Object{
+class Listener : public Object {
 public:
-	Listener( float roll,float dopp,float dist );
-	Listener( const Listener &t );
+	Listener(float roll, float dopp, float dist);
+	Listener(const Listener& t);
 	~Listener();
 
 	//Entity interface
-	Entity *clone(){ return d_new Listener( *this ); }
-	Listener *getListener(){ return this; }
+	Entity* clone() { return d_new Listener(*this); }
+	Listener* getListener() { return this; }
 
 	//Listener interface
 	void renderListener();

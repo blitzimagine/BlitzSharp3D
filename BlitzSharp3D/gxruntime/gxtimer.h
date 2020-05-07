@@ -4,18 +4,18 @@
 
 class gxRuntime;
 
-class gxTimer{
+class gxTimer {
 public:
-	gxTimer( gxRuntime *rt,int hertz );
+	gxTimer(gxRuntime* rt, int hertz);
 	~gxTimer();
 
-	static void CALLBACK timerCallback( UINT id,UINT msg,DWORD user,DWORD dw1,DWORD dw2 );
+	static void CALLBACK timerCallback(UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2);
 
 private:
-	gxRuntime *runtime;
+	gxRuntime* runtime;
 	HANDLE event;
 	MMRESULT timerID;
-	int ticks_put,ticks_get;
+	int ticks_put, ticks_get;
 
 	/***** GX INTERFACE *****/
 public:

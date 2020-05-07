@@ -2,5 +2,5 @@
 #include "std.h"
 #include "gxchannel.h"
 
-gxChannel::~gxChannel(){
+gxChannel::~gxChannel() {
 }

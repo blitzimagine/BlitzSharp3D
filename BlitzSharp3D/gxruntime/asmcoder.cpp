@@ -12,11 +12,11 @@
 
 #include "asmcoder.h"
 
-void (__fastcall *plot)(void *s,int argb);
-int	(__fastcall *point)(void*s);
-void (__fastcall *span)(void *s,int *argb,int n);
+void(__fastcall* plot)(void* s, int argb);
+int(__fastcall* point)(void* s);
+void(__fastcall* span)(void* s, int* argb, int n);
 
-/*void main() 
+/*void main()
 {
 	void	*pixmap;
 	int		n;
@@ -39,7 +39,7 @@ void (__fastcall *span)(void *s,int *argb,int n);
 
 	n=coder->CodePoint(point,24,0,0xff0000,0xff00,0x00ff);		//0:5:6:5
 	printf("pointcode size=%d\n",n);
-	
+
 	n=coder->CodeSpan(span,24,0,0xff0000,0xff00,0x00ff);		//0:5:6:5
 	printf("scancode size=%d\n",n);
 
@@ -67,8 +67,8 @@ void (__fastcall *span)(void *s,int *argb,int n);
 
 void ortest()
 {
-__asm{
-		or		eax,0xff00ff00
-		or		eax,-100
+	__asm {
+		or eax, 0xff00ff00
+		or eax, -100
 	}
 }

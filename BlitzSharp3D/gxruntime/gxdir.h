@@ -5,9 +5,9 @@
 #include <string>
 #include <windows.h>
 
-class gxDir{
+class gxDir {
 public:
-	gxDir( HANDLE h,const WIN32_FIND_DATA &f );
+	gxDir(HANDLE h, const WIN32_FIND_DATA& f);
 	~gxDir();
 
 private:
