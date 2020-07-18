@@ -29,7 +29,6 @@
     <ClCompile Include="bbruntime\bbfilesystem.cpp" />
     <ClCompile Include="bbruntime\bbgraphics.cpp" />
     <ClCompile Include="bbruntime\bbinput.cpp" />
-    <ClCompile Include="bbruntime\bbmath.cpp" />
     <ClCompile Include="bbruntime\bbruntime.cpp" />
     <ClCompile Include="bbruntime\bbsockets.cpp" />
     <ClCompile Include="bbruntime\bbstream.cpp" />
@@ -107,7 +106,6 @@
     <ClInclude Include="bbruntime\bbfilesystem.h" />
     <ClInclude Include="bbruntime\bbgraphics.h" />
     <ClInclude Include="bbruntime\bbinput.h" />
-    <ClInclude Include="bbruntime\bbmath.h" />
     <ClInclude Include="bbruntime\bbruntime.h" />
     <ClInclude Include="bbruntime\bbsockets.h" />
     <ClInclude Include="bbruntime\bbstream.h" />

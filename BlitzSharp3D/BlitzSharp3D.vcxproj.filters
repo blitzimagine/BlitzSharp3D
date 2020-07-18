@@ -28,9 +28,6 @@
     <ClCompile Include="bbruntime\bbinput.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="bbruntime\bbmath.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="bbruntime\bbruntime.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
@@ -262,9 +259,6 @@
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbinput.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\bbmath.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbruntime.h">

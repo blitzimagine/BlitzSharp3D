@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlitzEngine
 {
@@ -13,55 +8,81 @@ namespace BlitzEngine
 		// Math
 		// ----
 
-		[DllImport(B3DDllLink)]
-		public static extern float Sin(float deg);
+		private static int rnd_state = 0x1234;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Cos(float deg);
+		private const int RND_A = 48271;
+		private const int RND_M = 2147483647;
+		private const int RND_Q = 44488;
+		private const int RND_R = 3399;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Tan(float deg);
+		private const float dtor = 0.0174532925199432957692369076848861f;
+		private const float rtod = 57.2957795130823208767981548141052f;
 
-		[DllImport(B3DDllLink)]
-		public static extern float ASin(float f);
+		public static float Sin(float deg) => (float)Math.Sin(deg * dtor);
 
-		[DllImport(B3DDllLink)]
-		public static extern float ACos(float f);
+		public static float Cos(float deg) => (float)Math.Cos(deg * dtor);
 
-		[DllImport(B3DDllLink)]
-		public static extern float ATan(float f);
+		public static float Tan(float deg) => (float)Math.Tan(deg * dtor);
 
-		[DllImport(B3DDllLink)]
-		public static extern float ATan2(float n, float t);
+		public static float ASin(float f) => (float)Math.Asin(f) * rtod;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Sqr(float f);
+		public static float ACos(float f) => (float)Math.Acos(f) * rtod;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Floor(float f);
+		public static float ATan(float f) => (float)Math.Atan(f) * rtod;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Ceil(float f);
+		public static float ATan2(float n, float t) => (float)Math.Atan2(n, t) * rtod;
 
-		[DllImport(B3DDllLink)]
-		public static extern float Exp(float f);
+		public static float Sqr(float f) => (float)Math.Sqrt(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern float Log(float f);
+		public static float Floor(float f) => (float)Math.Floor(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern float Log10(float f);
+		public static float Ceil(float f) => (float)Math.Ceiling(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern float Rnd(float from, float to = 0);
+		public static float Exp(float f) => (float)Math.Exp(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern int Rand(int from, int to = 1);
+		public static float Log(float f) => (float)Math.Log(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern void SeedRnd(int seed);
+		public static float Log10(float f) => (float)Math.Log10(f);
 
-		[DllImport(B3DDllLink)]
-		public static extern int RndSeed();
+		//return rand float from 0...1
+		private static float rnd()
+		{
+			rnd_state = RND_A * (rnd_state % RND_Q) - RND_R * (rnd_state / RND_Q);
+			if (rnd_state < 0) rnd_state += RND_M;
+			return (rnd_state & 65535) / 65536.0f + (.5f / 65536.0f);
+		}
+
+		public static float Rnd(float from, float to = 0) => rnd() * (to - from) + from;
+
+		public static int Rand(int from, int to = 1)
+		{
+			if (to < from)
+			{
+				int temp = from;
+				from = to;
+				to = temp;
+			}
+			return (int)(rnd() * (to - from + 1)) + from;
+		}
+
+		public static void SeedRnd(int seed)
+		{
+			seed &= 0x7fffffff;
+			rnd_state = seed!=0 ? seed : 1;
+		}
+
+		public static int RndSeed() => rnd_state;
+
+
+		internal static bool math_create()
+		{
+			SeedRnd(0x1234);
+			return true;
+		}
+
+		internal static bool math_destroy()
+		{
+			return true;
+		}
 	}
 }
