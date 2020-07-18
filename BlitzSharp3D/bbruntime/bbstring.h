@@ -5,11 +5,7 @@
 #include "basic.h"
 
 BBStr* bbString(BBStr* s, int n);
-BBStr* bbLeft(BBStr* s, int n);
-BBStr* bbRight(BBStr* s, int n);
 BBStr* bbReplace(BBStr* s, BBStr* from, BBStr* to);
-int		 bbInstr(BBStr* s, BBStr* t, int from);
-BBStr* bbMid(BBStr* s, int o, int n);
 BBStr* bbUpper(BBStr* s);
 BBStr* bbLower(BBStr* s);
 BBStr* bbTrim(BBStr* s);

@@ -12,17 +12,6 @@ BBStr* bbString(BBStr* s, int n) {
 	delete s; return t;
 }
 
-BBStr* bbLeft(BBStr* s, int n) {
-	CHKPOS(n);
-	*s = s->substr(0, n); return s;
-}
-
-BBStr* bbRight(BBStr* s, int n) {
-	CHKPOS(n);
-	n = s->size() - n; if (n < 0) n = 0;
-	*s = s->substr(n); return s;
-}
-
 BBStr* bbReplace(BBStr* s, BBStr* from, BBStr* to) {
 	int n = 0, from_sz = from->size(), to_sz = to->size();
 	while (n < s->size() && (n = s->find(*from, n)) != string::npos) {
@@ -30,21 +19,6 @@ BBStr* bbReplace(BBStr* s, BBStr* from, BBStr* to) {
 		n += to_sz;
 	}
 	delete from; delete to; return s;
-}
-
-int bbInstr(BBStr* s, BBStr* t, int from) {
-	CHKOFF(from); --from;
-	int n = s->find(*t, from);
-	delete s; delete t;
-	return n == string::npos ? 0 : n + 1;
-}
-
-BBStr* bbMid(BBStr* s, int o, int n) {
-	CHKOFF(o); --o;
-	if (o > (int)s->size()) o = s->size();
-	if (n >= 0) *s = s->substr(o, n);
-	else *s = s->substr(o);
-	return s;
 }
 
 BBStr* bbUpper(BBStr* s) {
@@ -138,33 +112,4 @@ BBStr* bbCurrentTime() {
 
 	strftime(buff, 256, "%H:%M:%S", &time);
 	return d_new BBStr(buff);
-}
-
-bool string_create() {
-	return true;
-}
-
-bool string_destroy() {
-	return true;
-}
-
-void string_link(void(*rtSym)(const char*, void*)) {
-	rtSym("$String$string%repeat", bbString);
-	rtSym("$Left$string%count", bbLeft);
-	rtSym("$Right$string%count", bbRight);
-	rtSym("$Replace$string$from$to", bbReplace);
-	rtSym("%Instr$string$find%from=1", bbInstr);
-	rtSym("$Mid$string%start%count=-1", bbMid);
-	rtSym("$Upper$string", bbUpper);
-	rtSym("$Lower$string", bbLower);
-	rtSym("$Trim$string", bbTrim);
-	rtSym("$LSet$string%size", bbLSet);
-	rtSym("$RSet$string%size", bbRSet);
-	rtSym("$Chr%ascii", bbChr);
-	rtSym("%Asc$string", bbAsc);
-	rtSym("%Len$string", bbLen);
-	rtSym("$Hex%value", bbHex);
-	rtSym("$Bin%value", bbBin);
-	rtSym("$CurrentDate", bbCurrentDate);
-	rtSym("$CurrentTime", bbCurrentTime);
 }

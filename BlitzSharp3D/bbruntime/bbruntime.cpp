@@ -125,9 +125,6 @@ void  _bbDebugLeave() {
 bool basic_create();
 bool basic_destroy();
 void basic_link(void (*rtSym)(const char* sym, void* pc));
-bool string_create();
-bool string_destroy();
-void string_link(void (*rtSym)(const char* sym, void* pc));
 bool stream_create();
 bool stream_destroy();
 void stream_link(void (*rtSym)(const char* sym, void* pc));
@@ -190,7 +187,6 @@ void bbruntime_link(void (*rtSym)(const char* sym, void* pc)) {
 	rtSym("_bbDebugLeave", _bbDebugLeave);
 
 	basic_link(rtSym);
-	string_link(rtSym);
 	stream_link(rtSym);
 	sockets_link(rtSym);
 	filesystem_link(rtSym);
@@ -211,7 +207,6 @@ static void sue(const char* t) {
 
 bool bbruntime_create() {
 	if (basic_create()) {
-			if (string_create()) {
 				if (stream_create()) {
 					if (sockets_create()) {
 						if (filesystem_create()) {
@@ -250,9 +245,6 @@ bool bbruntime_create() {
 					stream_destroy();
 				}
 				else sue("stream_create failed");
-				string_destroy();
-			}
-			else sue("string_create failed");
 		basic_destroy();
 	}
 	else sue("basic_create failed");
@@ -270,8 +262,6 @@ bool bbruntime_destroy() {
 	filesystem_destroy();
 	sockets_destroy();
 	stream_destroy();
-	string_destroy();
-	//math_destroy();
 	basic_destroy();
 	return true;
 }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlitzEngine
+﻿namespace BlitzEngine
 {
 	public static partial class Blitz3D
 	{
@@ -13,37 +6,63 @@ namespace BlitzEngine
 		// Strings
 		// ----
 
-		[DllImport(B3DDllLink)]
-		private static extern void Left_internal(StringBuilder ret, int retLen, string str, int length);
+		private static void CHKPOS(int x)
+		{
+			if(x<0)
+			{
+				throw new Blitz3DException("parameter must be positive");
+			}
+		}
+
+		private static void CHKOFF(int x)
+		{
+			if(x<=0)
+			{
+				throw new Blitz3DException("parameter must be greater than 0");
+			}
+		}
 
 		public static string Left(string str, int length)
 		{
-			StringBuilder sb = new StringBuilder(4096);
-			Left_internal(sb, sb.Capacity, str, length);
-			return sb.ToString();
+			CHKPOS(length);
+			if(length>=str.Length)
+				return str;
+			return str.Substring(0, length);
 		}
-
-		[DllImport(B3DDllLink)]
-		private static extern void Right_internal(StringBuilder ret, int retLen, string str, int length);
 
 		public static string Right(string str, int length)
 		{
-			StringBuilder sb = new StringBuilder(4096);
-			Right_internal(sb, sb.Capacity, str, length);
-			return sb.ToString();
+			CHKPOS(length);
+			int pos = str.Length - length;
+			if (pos < 0)
+				pos = 0;
+			return str.Substring(pos);
 		}
-
-		[DllImport(B3DDllLink)]
-		private static extern void Mid_internal(StringBuilder ret, int retLen, string str, int offset, int length);
 
 		public static string Mid(string str, int offset, int length)
 		{
-			StringBuilder sb = new StringBuilder(4096);
-			Mid_internal(sb, sb.Capacity, str, offset, length);
-			return sb.ToString();
+			CHKOFF(offset);
+			offset--;
+			if (offset > str.Length)
+			{
+				return string.Empty;
+			}
+			else if(length<0 || offset+length>=str.Length)
+			{
+				return str.Substring(offset);
+			}
+			else
+			{
+				return str.Substring(offset, length);
+			}
 		}
 
-		[DllImport(B3DDllLink)]
-		public static extern int Instr(string str1, string str2, int offset);
+		public static int Instr(string str1, string str2, int offset)
+		{
+			CHKOFF(offset);
+			offset--;
+			int n = str1.IndexOf(str2, offset);
+			return n<0 ? 0 : n + 1;
+		}
 	}
 }
