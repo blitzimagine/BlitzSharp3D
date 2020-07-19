@@ -119,21 +119,21 @@ namespace BlitzEngine
 			PokeFloat_internal(bank.Pointer, offset, value);
 		}
 
-		[DllImport(B3DDllLink)]
-		private static extern int ReadBytes_internal(IntPtr bank, IntPtr stream, int offset, int count);
+		//[DllImport(B3DDllLink)]
+		//private static extern int ReadBytes_internal(IntPtr bank, IntPtr stream, int offset, int count);
 
-		public static int ReadBytes(Bank bank, Stream stream, int offset, int count)
-		{
-			return ReadBytes_internal(bank.Pointer, stream.Pointer, offset, count);
-		}
+		//public static int ReadBytes(Bank bank, Stream stream, int offset, int count)
+		//{
+		//	return ReadBytes_internal(bank.Pointer, stream.Pointer, offset, count);
+		//}
 
-		[DllImport(B3DDllLink)]
-		private static extern int WriteBytes_internal(IntPtr bank, IntPtr stream, int offset, int count);
+		//[DllImport(B3DDllLink)]
+		//private static extern int WriteBytes_internal(IntPtr bank, IntPtr stream, int offset, int count);
 
-		public static int WriteBytes(Bank bank, Stream stream, int offset, int count)
-		{
-			return WriteBytes_internal(bank.Pointer, stream.Pointer, offset, count);
-		}
+		//public static int WriteBytes(Bank bank, Stream stream, int offset, int count)
+		//{
+		//	return WriteBytes_internal(bank.Pointer, stream.Pointer, offset, count);
+		//}
 
 		[DllImport(B3DDllLink)]
 		private static extern int CallDLL_internal(string dll, string func, IntPtr input, IntPtr output);

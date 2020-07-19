@@ -125,15 +125,6 @@ void  _bbDebugLeave() {
 bool basic_create();
 bool basic_destroy();
 void basic_link(void (*rtSym)(const char* sym, void* pc));
-bool stream_create();
-bool stream_destroy();
-void stream_link(void (*rtSym)(const char* sym, void* pc));
-bool sockets_create();
-bool sockets_destroy();
-void sockets_link(void (*rtSym)(const char* sym, void* pc));
-bool filesystem_create();
-bool filesystem_destroy();
-void filesystem_link(void (*rtSym)(const char* sym, void* pc));
 bool bank_create();
 bool bank_destroy();
 void bank_link(void (*rtSym)(const char* sym, void* pc));
@@ -187,9 +178,6 @@ void bbruntime_link(void (*rtSym)(const char* sym, void* pc)) {
 	rtSym("_bbDebugLeave", _bbDebugLeave);
 
 	basic_link(rtSym);
-	stream_link(rtSym);
-	sockets_link(rtSym);
-	filesystem_link(rtSym);
 	bank_link(rtSym);
 	graphics_link(rtSym);
 	input_link(rtSym);
@@ -207,9 +195,6 @@ static void sue(const char* t) {
 
 bool bbruntime_create() {
 	if (basic_create()) {
-				if (stream_create()) {
-					if (sockets_create()) {
-						if (filesystem_create()) {
 							if (bank_create()) {
 								if (graphics_create()) {
 									if (input_create()) {
@@ -236,15 +221,6 @@ bool bbruntime_create() {
 								bank_destroy();
 							}
 							else sue("bank_create failed");
-							filesystem_destroy();
-						}
-						else sue("filesystem_create failed");
-						sockets_destroy();
-					}
-					else sue("sockets_create failed");
-					stream_destroy();
-				}
-				else sue("stream_create failed");
 		basic_destroy();
 	}
 	else sue("basic_create failed");
@@ -259,9 +235,6 @@ bool bbruntime_destroy() {
 	input_destroy();
 	graphics_destroy();
 	bank_destroy();
-	filesystem_destroy();
-	sockets_destroy();
-	stream_destroy();
 	basic_destroy();
 	return true;
 }

@@ -19,9 +19,6 @@
     <ClCompile Include="bbruntime\bbblitz3d.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="bbruntime\bbfilesystem.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="bbruntime\bbgraphics.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
@@ -29,9 +26,6 @@
       <Filter>bbruntime</Filter>
     </ClCompile>
     <ClCompile Include="bbruntime\bbruntime.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\bbsockets.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
     <ClCompile Include="bbruntime\bbstream.cpp">
@@ -252,9 +246,6 @@
     <ClInclude Include="bbruntime\bbblitz3d.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="bbruntime\bbfilesystem.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
     <ClInclude Include="bbruntime\bbgraphics.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
@@ -262,9 +253,6 @@
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbruntime.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\bbsockets.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbstream.h">

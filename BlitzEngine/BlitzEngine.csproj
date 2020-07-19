@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -84,7 +85,6 @@
     <Compile Include="Native\B3DInput.cs" />
     <Compile Include="Native\B3DMath.cs" />
     <Compile Include="Native\B3DMultiplay.cs" />
-    <Compile Include="Native\B3DSockets.cs" />
     <Compile Include="IO\B3DStream.cs" />
     <Compile Include="Native\B3DSystem.cs" />
     <Compile Include="Blitz3DException.cs" />

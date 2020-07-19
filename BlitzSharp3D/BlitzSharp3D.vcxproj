@@ -26,11 +26,9 @@
     <ClCompile Include="bbruntime\bbaudio.cpp" />
     <ClCompile Include="bbruntime\bbbank.cpp" />
     <ClCompile Include="bbruntime\bbblitz3d.cpp" />
-    <ClCompile Include="bbruntime\bbfilesystem.cpp" />
     <ClCompile Include="bbruntime\bbgraphics.cpp" />
     <ClCompile Include="bbruntime\bbinput.cpp" />
     <ClCompile Include="bbruntime\bbruntime.cpp" />
-    <ClCompile Include="bbruntime\bbsockets.cpp" />
     <ClCompile Include="bbruntime\bbstream.cpp" />
     <ClCompile Include="bbruntime\bbstring.cpp" />
     <ClCompile Include="bbruntime\bbsys.cpp" />
@@ -103,11 +101,9 @@
     <ClInclude Include="bbruntime\bbaudio.h" />
     <ClInclude Include="bbruntime\bbbank.h" />
     <ClInclude Include="bbruntime\bbblitz3d.h" />
-    <ClInclude Include="bbruntime\bbfilesystem.h" />
     <ClInclude Include="bbruntime\bbgraphics.h" />
     <ClInclude Include="bbruntime\bbinput.h" />
     <ClInclude Include="bbruntime\bbruntime.h" />
-    <ClInclude Include="bbruntime\bbsockets.h" />
     <ClInclude Include="bbruntime\bbstream.h" />
     <ClInclude Include="bbruntime\bbstring.h" />
     <ClInclude Include="bbruntime\bbsys.h" />

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BlitzEngine
 {
@@ -18,7 +15,7 @@ namespace BlitzEngine
 
 		public static bool Eof(Stream stream)
 		{
-			return Eof_internal(stream.Pointer);
+			return stream.Eof();//Eof_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -26,7 +23,7 @@ namespace BlitzEngine
 
 		public static int ReadAvail(Stream stream)
 		{
-			return ReadAvail_internal(stream.Pointer);
+			return stream.Avail();//ReadAvail_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -34,7 +31,7 @@ namespace BlitzEngine
 
 		public static byte ReadByte(Stream stream)
 		{
-			return ReadByte_internal(stream.Pointer);
+			return stream.ReadByte();//ReadByte_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -42,7 +39,7 @@ namespace BlitzEngine
 
 		public static short ReadShort(Stream stream)
 		{
-			return ReadShort_internal(stream.Pointer);
+			return stream.ReadShort();//ReadShort_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -50,7 +47,7 @@ namespace BlitzEngine
 
 		public static int ReadInt(Stream stream)
 		{
-			return ReadInt_internal(stream.Pointer);
+			return stream.ReadInt();//ReadInt_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -58,7 +55,7 @@ namespace BlitzEngine
 
 		public static float ReadFloat(Stream stream)
 		{
-			return ReadFloat_internal(stream.Pointer);
+			return stream.ReadFloat();//ReadFloat_internal(stream.Pointer);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -66,9 +63,10 @@ namespace BlitzEngine
 
 		public static string ReadString(Stream stream)
 		{
-			StringBuilder sb = new StringBuilder(4096);
-			ReadString_internal(sb, sb.Capacity, stream.Pointer);
-			return sb.ToString();
+			//StringBuilder sb = new StringBuilder(4096);
+			//ReadString_internal(sb, sb.Capacity, stream.Pointer);
+			//return sb.ToString();
+			return stream.ReadString();
 		}
 
 		[DllImport(B3DDllLink)]
@@ -76,9 +74,10 @@ namespace BlitzEngine
 
 		public static string ReadLine(Stream stream)
 		{
-			StringBuilder sb = new StringBuilder(4096);
-			ReadLine_internal(sb, sb.Capacity, stream.Pointer);
-			return sb.ToString();
+			//StringBuilder sb = new StringBuilder(4096);
+			//ReadLine_internal(sb, sb.Capacity, stream.Pointer);
+			//return sb.ToString();
+			return stream.ReadLine();
 		}
 
 		[DllImport(B3DDllLink)]
@@ -86,7 +85,7 @@ namespace BlitzEngine
 
 		public static void WriteByte(Stream stream, byte b)
 		{
-			WriteByte_internal(stream.Pointer, b);
+			stream.WriteByte(b);//WriteByte_internal(stream.Pointer, b);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -94,7 +93,7 @@ namespace BlitzEngine
 
 		public static void WriteShort(Stream stream, short s)
 		{
-			WriteShort_internal(stream.Pointer, s);
+			stream.WriteShort(s);//WriteShort_internal(stream.Pointer, s);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -102,7 +101,7 @@ namespace BlitzEngine
 
 		public static void WriteInt(Stream stream, int i)
 		{
-			WriteInt_internal(stream.Pointer, i);
+			stream.WriteInt(i);//WriteInt_internal(stream.Pointer, i);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -110,7 +109,7 @@ namespace BlitzEngine
 
 		public static void WriteFloat(Stream stream, float f)
 		{
-			WriteFloat_internal(stream.Pointer, f);
+			stream.WriteFloat(f);//WriteFloat_internal(stream.Pointer, f);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -118,7 +117,7 @@ namespace BlitzEngine
 
 		public static void WriteString(Stream stream, string s)
 		{
-			WriteString_internal(stream.Pointer, s);
+			stream.WriteString(s);//WriteString_internal(stream.Pointer, s);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -126,7 +125,7 @@ namespace BlitzEngine
 
 		public static void WriteLine(Stream stream, string s)
 		{
-			WriteLine_internal(stream.Pointer, s);
+			stream.WriteString(s);//WriteLine_internal(stream.Pointer, s);
 		}
 
 		[DllImport(B3DDllLink)]
@@ -134,7 +133,7 @@ namespace BlitzEngine
 
 		public static void CopyStream(Stream src, Stream dest, int bufferSize = 16384)
 		{
-			CopyStream_internal(src.Pointer, dest.Pointer, bufferSize);
+			Stream.CopyStream(src, dest, bufferSize);//CopyStream_internal(src.Pointer, dest.Pointer, bufferSize);
 		}
 	}
 }

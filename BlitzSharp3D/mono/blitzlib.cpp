@@ -4,9 +4,7 @@
 #include "../bbruntime/bbgraphics.h"
 #include "../bbruntime/bbinput.h"
 #include "../bbruntime/bbblitz3d.h"
-#include "../bbruntime/bbfilesystem.h"
 #include "../bbruntime/multiplay.h"
-#include "../bbruntime/bbsockets.h"
 #include "../bbruntime/bbaudio.h"
 #include "../bbruntime/bbbank.h"
 
@@ -180,218 +178,6 @@ PUBLIC_METHOD void DebugLog(const char* text)
 	freeBBStr(txt);
 }
 
-// ----------
-// FileSystem
-// ----------
-
-PUBLIC_METHOD bbFile* OpenFile_internal(const char* filename)
-{
-	BBStr* fn = toBBStr(filename);
-	bbFile* ret = bbOpenFile(fn);
-	freeBBStr(fn);
-	return ret;
-}
-
-PUBLIC_METHOD bbFile* ReadFile_internal(const char* filename)
-{
-	BBStr* fn = toBBStr(filename);
-	bbFile* ret = bbReadFile(fn);
-	freeBBStr(fn);
-	return ret;
-}
-
-PUBLIC_METHOD bbFile* WriteFile_internal(const char* filename)
-{
-	BBStr* fn = toBBStr(filename);
-	bbFile* ret = bbWriteFile(fn);
-	freeBBStr(fn);
-	return ret;
-}
-
-PUBLIC_METHOD void CloseFile_internal(bbFile* file)
-{
-	bbCloseFile(file);
-}
-
-PUBLIC_METHOD int FilePos_internal(bbFile* file)
-{
-	return bbFilePos(file);
-}
-
-PUBLIC_METHOD int SeekFile_internal(bbFile* file, int pos)
-{
-	return bbSeekFile(file, pos);
-}
-
-PUBLIC_METHOD gxDir* ReadDir_internal(const char* dirname)
-{
-	if (dirname == nullptr || strlen(dirname) == 0)
-		return nullptr;
-	BBStr* dir = toBBStr(dirname);
-	gxDir* ret = bbReadDir(dir);
-	freeBBStr(dir);
-	return ret;
-}
-
-PUBLIC_METHOD void CloseDir_internal(gxDir* dir)
-{
-	bbCloseDir(dir);
-}
-
-PUBLIC_METHOD void NextFile_internal(char* ret, int retLen, gxDir* dir)
-{
-	BBStr* f = bbNextFile(dir);
-	strcpy_s(ret, retLen, f->c_str());
-	freeBBStr(f);
-}
-
-PUBLIC_METHOD void CurrentDir_internal(char* ret, int retLen)
-{
-	BBStr* currentDir = bbCurrentDir();
-	strcpy_s(ret, retLen, currentDir->c_str());
-	freeBBStr(currentDir);
-}
-
-PUBLIC_METHOD void ChangeDir(const char* dir)
-{
-	BBStr* d = toBBStr(dir);
-	bbChangeDir(d);
-	freeBBStr(d);
-}
-
-PUBLIC_METHOD void CreateDir(const char* dir)
-{
-	BBStr* d = toBBStr(dir);
-	bbCreateDir(d);
-	freeBBStr(d);
-}
-
-PUBLIC_METHOD void DeleteDir(const char* dir)
-{
-	BBStr* d = toBBStr(dir);
-	bbDeleteDir(d);
-	freeBBStr(d);
-}
-
-PUBLIC_METHOD int FileSize(const char* file)
-{
-	BBStr* f = toBBStr(file);
-	int ret = bbFileSize(f);
-	freeBBStr(f);
-	return ret;
-}
-
-PUBLIC_METHOD int FileType(const char* file)
-{
-	BBStr* f = toBBStr(file);
-	int ret = bbFileType(f);
-	freeBBStr(f);
-	return ret;
-}
-
-PUBLIC_METHOD void CopyFile_internal(const char* file, const char* to)
-{
-	BBStr* f = toBBStr(file);
-	BBStr* t = toBBStr(to);
-	bbCopyFile(f, t);
-	freeBBStr(f);
-	freeBBStr(t);
-}
-
-PUBLIC_METHOD void DeleteFile_internal(const char* file)
-{
-	BBStr* f = toBBStr(file);
-	bbDeleteFile(f);
-	freeBBStr(f);
-}
-
-// ------
-// Stream
-// ------
-
-PUBLIC_METHOD int Eof_internal(bbStream* stream)
-{
-	return bbEof(stream) != 0;
-}
-
-PUBLIC_METHOD int ReadAvail_internal(bbStream* stream)
-{
-	return bbReadAvail(stream);
-}
-
-PUBLIC_METHOD char ReadByte_internal(bbStream* stream)
-{
-	return (char)bbReadByte(stream);
-}
-
-PUBLIC_METHOD short ReadShort_internal(bbStream* stream)
-{
-	return (short)bbReadShort(stream);
-}
-
-PUBLIC_METHOD int ReadInt_internal(bbStream* stream)
-{
-	return bbReadInt(stream);
-}
-
-PUBLIC_METHOD float ReadFloat_internal(bbStream* stream)
-{
-	return bbReadFloat(stream);
-}
-
-PUBLIC_METHOD void ReadString_internal(char* ret, int retLen, bbStream* stream)
-{
-	BBStr* str = bbReadString(stream);
-	strcpy_s(ret, retLen, str->c_str());
-	freeBBStr(str);
-}
-
-PUBLIC_METHOD void ReadLine_internal(char* ret, int retLen, bbStream* stream)
-{
-	BBStr* str = bbReadLine(stream);
-	strcpy_s(ret, retLen, str->c_str());
-	freeBBStr(str);
-}
-
-PUBLIC_METHOD void WriteByte_internal(bbStream* stream, char n)
-{
-	bbWriteByte(stream, (int)n);
-}
-
-PUBLIC_METHOD void WriteShort_internal(bbStream* stream, short n)
-{
-	bbWriteShort(stream, (int)n);
-}
-
-PUBLIC_METHOD void WriteInt_internal(bbStream* stream, int n)
-{
-	bbWriteInt(stream, n);
-}
-
-PUBLIC_METHOD void WriteFloat_internal(bbStream* stream, float n)
-{
-	bbWriteFloat(stream, n);
-}
-
-PUBLIC_METHOD void WriteString_internal(bbStream* stream, const char* string)
-{
-	BBStr* s = toBBStr(string);
-	bbWriteString(stream, s);
-	freeBBStr(s);
-}
-
-PUBLIC_METHOD void WriteLine_internal(bbStream* stream, const char* string)
-{
-	BBStr* s = toBBStr(string);
-	bbWriteLine(stream, s);
-	freeBBStr(s);
-}
-
-PUBLIC_METHOD void CopyStream_internal(bbStream* src, bbStream* dest, const int bufferSize)
-{
-	bbCopyStream(src, dest, bufferSize);
-}
-
 // ---------
 // Multiplay
 // ---------
@@ -481,118 +267,6 @@ PUBLIC_METHOD void NetMsgData_internal(char* ret, int retLen)
 	BBStr* d = bbNetMsgData();
 	strcpy_s(ret, retLen, d->c_str());
 	freeBBStr(d);
-}
-
-// -------
-// Sockets
-// -------
-
-PUBLIC_METHOD void DottedIP_internal(char* ret, int retLen, int ip)
-{
-	BBStr* i = bbDottedIP(ip);
-	strcpy_s(ret, retLen, i->c_str());
-	freeBBStr(i);
-}
-
-PUBLIC_METHOD int CountHostIPs(const char* hostName)
-{
-	BBStr* h = toBBStr(hostName);
-	int ret = bbCountHostIPs(h);
-	freeBBStr(h);
-	return ret;
-}
-
-PUBLIC_METHOD int HostIP(int hostIndex)
-{
-	return bbHostIP(hostIndex);
-}
-
-PUBLIC_METHOD UDPStream* CreateUDPStream_internal(int port)
-{
-	return bbCreateUDPStream(port);
-}
-
-PUBLIC_METHOD void CloseUDPStream_internal(UDPStream* stream)
-{
-	bbCloseUDPStream(stream);
-}
-
-PUBLIC_METHOD void SendUDPMsg_internal(UDPStream* stream, int destIp, int destPort)
-{
-	bbSendUDPMsg(stream, destIp, destPort);
-}
-
-PUBLIC_METHOD int RecvUDPMsg_internal(UDPStream* stream)
-{
-	return bbRecvUDPMsg(stream);
-}
-
-PUBLIC_METHOD int UDPStreamIP_internal(UDPStream* stream)
-{
-	return bbUDPStreamIP(stream);
-}
-
-PUBLIC_METHOD int UDPStreamPort_internal(UDPStream* stream)
-{
-	return bbUDPStreamPort(stream);
-}
-
-PUBLIC_METHOD int UDPMsgIP_internal(UDPStream* stream)
-{
-	return bbUDPMsgIP(stream);
-}
-
-PUBLIC_METHOD int UDPMsgPort_internal(UDPStream* stream)
-{
-	return bbUDPMsgPort(stream);
-}
-
-PUBLIC_METHOD void UDPTimeouts(int recvTimeout)
-{
-	return bbUDPTimeouts(recvTimeout);
-}
-
-PUBLIC_METHOD TCPStream* OpenTCPStream_internal(const char* server, int serverPort, int localPort)
-{
-	BBStr* s = toBBStr(server);
-	TCPStream* ret = bbOpenTCPStream(s, serverPort, localPort);
-	freeBBStr(s);
-	return ret;
-}
-
-PUBLIC_METHOD void CloseTCPStream_internal(TCPStream* stream)
-{
-	bbCloseTCPStream(stream);
-}
-
-PUBLIC_METHOD TCPServer* CreateTCPServer_internal(int port)
-{
-	return bbCreateTCPServer(port);
-}
-
-PUBLIC_METHOD void CloseTCPServer_internal(TCPServer* server)
-{
-	bbCloseTCPServer(server);
-}
-
-PUBLIC_METHOD TCPStream* AcceptTCPStream_internal(TCPServer* server)
-{
-	return bbAcceptTCPStream(server);
-}
-
-PUBLIC_METHOD int TCPStreamIP_internal(TCPStream* stream)
-{
-	return bbTCPStreamIP(stream);
-}
-
-PUBLIC_METHOD int TCPStreamPort_internal(TCPStream* stream)
-{
-	return bbTCPStreamPort(stream);
-}
-
-PUBLIC_METHOD void TCPTimeouts(int readTime, int acceptTime)
-{
-	bbTCPTimeouts(readTime, acceptTime);
 }
 
 // -----
@@ -963,15 +637,15 @@ PUBLIC_METHOD void PokeFloat_internal(bbBank* bank, int offset, float value)
 	bbPokeFloat(bank, offset, value);
 }
 
-PUBLIC_METHOD int ReadBytes_internal(bbBank* bank, bbStream* stream, int offset, int count)
-{
-	return bbReadBytes(bank, stream, offset, count);
-}
-
-PUBLIC_METHOD int WriteBytes_internal(bbBank* bank, bbStream* stream, int offset, int count)
-{
-	return bbWriteBytes(bank, stream, offset, count);
-}
+//PUBLIC_METHOD int ReadBytes_internal(bbBank* bank, bbStream* stream, int offset, int count)
+//{
+//	return bbReadBytes(bank, stream, offset, count);
+//}
+//
+//PUBLIC_METHOD int WriteBytes_internal(bbBank* bank, bbStream* stream, int offset, int count)
+//{
+//	return bbWriteBytes(bank, stream, offset, count);
+//}
 
 PUBLIC_METHOD int CallDLL_internal(const char* dll, const char* func, bbBank* in, bbBank* out)
 {

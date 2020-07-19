@@ -1,7 +1,6 @@
 
 #include "std.h"
 #include "bbbank.h"
-#include "bbstream.h"
 
 struct bbBank {
 	char* data;
@@ -112,21 +111,21 @@ void  bbPokeFloat(bbBank* b, int offset, float value) {
 	*(float*)(b->data + offset) = value;
 }
 
-int   bbReadBytes(bbBank* b, bbStream* s, int offset, int count) {
-	/*if( debug ){
-		debugBank( b,offset+count-1 );
-		debugStream( s );
-	}*/
-	return s->read(b->data + offset, count);
-}
-
-int   bbWriteBytes(bbBank* b, bbStream* s, int offset, int count) {
-	/*if( debug ){
-		debugBank( b,offset+count-1 );
-		debugStream( s );
-	}*/
-	return s->write(b->data + offset, count);
-}
+//int   bbReadBytes(bbBank* b, bbStream* s, int offset, int count) {
+//	/*if( debug ){
+//		debugBank( b,offset+count-1 );
+//		debugStream( s );
+//	}*/
+//	return s->read(b->data + offset, count);
+//}
+//
+//int   bbWriteBytes(bbBank* b, bbStream* s, int offset, int count) {
+//	/*if( debug ){
+//		debugBank( b,offset+count-1 );
+//		debugStream( s );
+//	}*/
+//	return s->write(b->data + offset, count);
+//}
 
 int  bbCallDLL(BBStr* dll, BBStr* fun, bbBank* in, bbBank* out) {
 	/*if( debug ){
@@ -163,8 +162,6 @@ void bank_link(void(*rtSym)(const char*, void*)) {
 	rtSym("PokeShort%bank%offset%value", bbPokeShort);
 	rtSym("PokeInt%bank%offset%value", bbPokeInt);
 	rtSym("PokeFloat%bank%offset#value", bbPokeFloat);
-	rtSym("%ReadBytes%bank%file%offset%count", bbReadBytes);
-	rtSym("%WriteBytes%bank%file%offset%count", bbWriteBytes);
 	rtSym("%CallDLL$dll_name$func_name%in_bank=0%out_bank=0", bbCallDLL);
 }
 
