@@ -125,9 +125,6 @@ void  _bbDebugLeave() {
 bool basic_create();
 bool basic_destroy();
 void basic_link(void (*rtSym)(const char* sym, void* pc));
-bool bank_create();
-bool bank_destroy();
-void bank_link(void (*rtSym)(const char* sym, void* pc));
 bool graphics_create();
 bool graphics_destroy();
 void graphics_link(void (*rtSym)(const char* sym, void* pc));
@@ -178,7 +175,7 @@ void bbruntime_link(void (*rtSym)(const char* sym, void* pc)) {
 	rtSym("_bbDebugLeave", _bbDebugLeave);
 
 	basic_link(rtSym);
-	bank_link(rtSym);
+	//bank_link(rtSym);
 	graphics_link(rtSym);
 	input_link(rtSym);
 	audio_link(rtSym);
@@ -195,7 +192,6 @@ static void sue(const char* t) {
 
 bool bbruntime_create() {
 	if (basic_create()) {
-							if (bank_create()) {
 								if (graphics_create()) {
 									if (input_create()) {
 										if (audio_create()) {
@@ -218,9 +214,6 @@ bool bbruntime_create() {
 									graphics_destroy();
 								}
 								else sue("graphics_create failed");
-								bank_destroy();
-							}
-							else sue("bank_create failed");
 		basic_destroy();
 	}
 	else sue("basic_create failed");
@@ -234,7 +227,6 @@ bool bbruntime_destroy() {
 	audio_destroy();
 	input_destroy();
 	graphics_destroy();
-	bank_destroy();
 	basic_destroy();
 	return true;
 }

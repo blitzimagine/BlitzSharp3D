@@ -28,9 +28,6 @@
     <ClCompile Include="bbruntime\bbruntime.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="bbruntime\bbstream.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="bbruntime\bbstring.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
@@ -253,9 +250,6 @@
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbruntime.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\bbstream.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbstring.h">

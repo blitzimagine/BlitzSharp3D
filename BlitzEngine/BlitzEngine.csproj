@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Audio\Channel.cs" />
     <Compile Include="Audio\Sound.cs" />
+    <Compile Include="Bank.cs" />
     <Compile Include="BBPointer.cs" />
     <Compile Include="Graphics\Brush.cs" />
     <Compile Include="Graphics\Canvas.cs" />

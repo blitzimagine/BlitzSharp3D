@@ -29,7 +29,6 @@
     <ClCompile Include="bbruntime\bbgraphics.cpp" />
     <ClCompile Include="bbruntime\bbinput.cpp" />
     <ClCompile Include="bbruntime\bbruntime.cpp" />
-    <ClCompile Include="bbruntime\bbstream.cpp" />
     <ClCompile Include="bbruntime\bbstring.cpp" />
     <ClCompile Include="bbruntime\bbsys.cpp" />
     <ClCompile Include="bbruntime\multiplay.cpp" />
@@ -104,7 +103,6 @@
     <ClInclude Include="bbruntime\bbgraphics.h" />
     <ClInclude Include="bbruntime\bbinput.h" />
     <ClInclude Include="bbruntime\bbruntime.h" />
-    <ClInclude Include="bbruntime\bbstream.h" />
     <ClInclude Include="bbruntime\bbstring.h" />
     <ClInclude Include="bbruntime\bbsys.h" />
     <ClInclude Include="bbruntime\bb_basic.h" />

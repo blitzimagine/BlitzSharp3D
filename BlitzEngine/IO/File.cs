@@ -17,12 +17,12 @@ namespace BlitzEngine
 		}
 
 		//returns chars read
-		public override int Read(byte[] buff, int size) => stream.Read(buff, 0, size);
+		public override int Read(byte[] buff, int offset, int size) => stream.Read(buff, offset, size);
 
 		//returns chars written
-		public override int Write(byte[] buff, int size)
+		public override int Write(byte[] buff, int offset, int size)
 		{
-			stream.Write(buff, 0, size);
+			stream.Write(buff, offset, size);
 			return size;
 		}
 

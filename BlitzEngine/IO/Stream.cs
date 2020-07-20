@@ -10,10 +10,12 @@ namespace BlitzEngine
 		public const int EOF_OK = 1;
 
 		//returns chars read
-		public abstract int Read(byte[] buff, int size);
+		public int Read(byte[] buff, int size) => Read(buff, 0, size);
+		public abstract int Read(byte[] buff, int offset, int size);
 
 		//returns chars written
-		public abstract int Write(byte[] buff, int size);
+		public int Write(byte[] buff, int size) => Write(buff, 0, size);
+		public abstract int Write(byte[] buff, int offset, int size);
 
 
 		//returns chars avilable for reading
