@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace BlitzEngine
+﻿namespace BlitzEngine
 {
 	public static partial class Blitz3D
 	{
@@ -14,9 +11,6 @@ namespace BlitzEngine
 		public static void FreeBank(Bank bank){}
 
 		public static int BankSize(Bank bank) => bank.Size;
-
-		[DllImport(B3DDllLink)]
-		private static extern void ResizeBank_internal(IntPtr bank, int size);
 
 		public static void ResizeBank(Bank bank, int size) => bank.Resize(size);
 

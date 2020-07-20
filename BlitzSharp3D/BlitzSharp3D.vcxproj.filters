@@ -13,9 +13,6 @@
     <ClCompile Include="bbruntime\bbaudio.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="bbruntime\bbbank.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="bbruntime\bbblitz3d.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
@@ -32,21 +29,6 @@
       <Filter>bbruntime</Filter>
     </ClCompile>
     <ClCompile Include="bbruntime\bbsys.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\multiplay.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\multiplay_setup.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\runtime.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\std_runtime.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\userlibs.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
     <ClCompile Include="gxruntime\asmcoder.cpp">
@@ -237,9 +219,6 @@
     <ClInclude Include="bbruntime\bbaudio.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
-    <ClInclude Include="bbruntime\bbbank.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
     <ClInclude Include="bbruntime\bbblitz3d.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
@@ -256,15 +235,6 @@
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\bbsys.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\multiplay.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\multiplay_setup.h">
-      <Filter>bbruntime</Filter>
-    </ClInclude>
-    <ClInclude Include="bbruntime\userlibs.h">
       <Filter>bbruntime</Filter>
     </ClInclude>
     <ClInclude Include="bbruntime\std.h">

@@ -24,18 +24,12 @@
   <ItemGroup>
     <ClCompile Include="bbruntime\basic.cpp" />
     <ClCompile Include="bbruntime\bbaudio.cpp" />
-    <ClCompile Include="bbruntime\bbbank.cpp" />
     <ClCompile Include="bbruntime\bbblitz3d.cpp" />
     <ClCompile Include="bbruntime\bbgraphics.cpp" />
     <ClCompile Include="bbruntime\bbinput.cpp" />
     <ClCompile Include="bbruntime\bbruntime.cpp" />
     <ClCompile Include="bbruntime\bbstring.cpp" />
     <ClCompile Include="bbruntime\bbsys.cpp" />
-    <ClCompile Include="bbruntime\multiplay.cpp" />
-    <ClCompile Include="bbruntime\multiplay_setup.cpp" />
-    <ClCompile Include="bbruntime\runtime.cpp" />
-    <ClCompile Include="bbruntime\std_runtime.cpp" />
-    <ClCompile Include="bbruntime\userlibs.cpp" />
     <ClCompile Include="blitz3d\animation.cpp" />
     <ClCompile Include="blitz3d\animator.cpp" />
     <ClCompile Include="blitz3d\brush.cpp" />
@@ -98,7 +92,6 @@
   <ItemGroup>
     <ClInclude Include="bbruntime\basic.h" />
     <ClInclude Include="bbruntime\bbaudio.h" />
-    <ClInclude Include="bbruntime\bbbank.h" />
     <ClInclude Include="bbruntime\bbblitz3d.h" />
     <ClInclude Include="bbruntime\bbgraphics.h" />
     <ClInclude Include="bbruntime\bbinput.h" />
@@ -106,10 +99,7 @@
     <ClInclude Include="bbruntime\bbstring.h" />
     <ClInclude Include="bbruntime\bbsys.h" />
     <ClInclude Include="bbruntime\bb_basic.h" />
-    <ClInclude Include="bbruntime\multiplay.h" />
-    <ClInclude Include="bbruntime\multiplay_setup.h" />
     <ClInclude Include="bbruntime\std.h" />
-    <ClInclude Include="bbruntime\userlibs.h" />
     <ClInclude Include="blitz3d\animation.h" />
     <ClInclude Include="blitz3d\animator.h" />
     <ClInclude Include="blitz3d\blitz3d.h" />
