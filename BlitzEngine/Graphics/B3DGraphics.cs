@@ -5,6 +5,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using BlitzEngine.Enums;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace BlitzEngine
 {
@@ -69,8 +71,13 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		public static extern void Graphics(int width, int height, BitDepth depth = BitDepth.Bits32, WindowMode mode = WindowMode.Windowed, int monitor = 0);
 
-		[DllImport(B3DDllLink)]
-		public static extern void Graphics3D(int width, int height, BitDepth depth = BitDepth.Bits32, WindowMode mode = WindowMode.Windowed, int monitor = 0);
+		[DllImport(B3DDllLink, EntryPoint = "Graphics3D")]
+		public static extern void Graphics3D_Internal(int width, int height, BitDepth depth = BitDepth.Bits32, WindowMode mode = WindowMode.Windowed, int monitor = 0);
+		public static void Graphics3D(int width, int height, BitDepth depth = BitDepth.Bits32, WindowMode mode = WindowMode.Windowed, int monitor = 0)
+		{
+			Graphics3D_Internal(width, height, depth, mode, monitor);
+			B3DGame.Start(width, height, depth, mode, monitor);
+		}
 
 		[DllImport(B3DDllLink)]
 		public static extern void EndGraphics();
@@ -81,8 +88,7 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		public static extern bool GraphicsLost();
 
-		[DllImport(B3DDllLink)]
-		public static extern bool IsFocused();
+		public static bool IsFocused() => B3DGame.Instance.HasFocus;
 
 		[DllImport(B3DDllLink)]
 		public static extern void SetGamma(int srcRed, int srcGreen, int srcBlue, float destRed, float destGreen, float destBlue);

@@ -22,8 +22,11 @@ namespace BlitzEngine
 		// System
 		// -------
 
-		[DllImport(B3DDllLink)]
-		public static extern bool InitBlitz();
+		[DllImport(B3DDllLink, EntryPoint = "InitBlitz")]private static extern bool InitBlitz_internal();
+		public static bool InitBlitz()
+        {
+            return InitBlitz_internal();
+        }
 
 		[DllImport(B3DDllLink)]
 		public static extern bool CloseBlitz();
