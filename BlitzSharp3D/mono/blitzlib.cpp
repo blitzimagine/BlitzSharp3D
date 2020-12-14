@@ -1067,16 +1067,6 @@ PUBLIC_METHOD int WriteBytes_internal(bbBank* bank, bbStream* stream, int offset
 	return bbWriteBytes(bank, stream, offset, count);
 }
 
-PUBLIC_METHOD int CallDLL_internal(const char* dll, const char* func, bbBank* in, bbBank* out)
-{
-	BBStr* d = toBBStr(dll);
-	BBStr* f = toBBStr(func);
-	int ret = bbCallDLL(d, f, in, out);
-	freeBBStr(f);
-	freeBBStr(d);
-	return ret;
-}
-
 // --------
 // Graphics
 // --------

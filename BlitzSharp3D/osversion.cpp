@@ -8,8 +8,6 @@
 #include <stdint.h>
 #include <memory>
 
-#pragma comment(lib, "version.lib" )
-
 bool GetOSVersionStringW(WCHAR* version, size_t maxlen)
 {
     WCHAR path[_MAX_PATH];
@@ -63,7 +61,17 @@ bool GetOSVersionStringW(WCHAR* version, size_t maxlen)
 
 bool GetOSVersionStringA(char* version, size_t maxlen)
 {
-    char path[_MAX_PATH];
+    // For some reason GetFileVersionInfoSizeExA and GetFileVersionInfoExA are missing from version.lib in the windows sdk.
+    // The correct implementation is beneath but this will have to do for now.
+    WCHAR* v = reinterpret_cast<WCHAR*>(malloc((maxlen + 1) * 2));
+    if (!GetOSVersionStringW(v, maxlen))
+        return false;
+    if (v == nullptr)
+        return false;
+    wcstombs(version, v, maxlen);
+    return true;
+
+    /*char path[_MAX_PATH];
     if (!GetSystemDirectoryA(path, _MAX_PATH))
         return false;
 
@@ -109,5 +117,6 @@ bool GetOSVersionStringA(char* version, size_t maxlen)
         HIWORD(vInfo->dwFileVersionLS),
         LOWORD(vInfo->dwFileVersionLS));
 
-    return true;
+    return true;*/
 }
+

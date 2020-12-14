@@ -22,6 +22,5 @@ void  bbPokeInt(bbBank* b, int offset, int value);
 void  bbPokeFloat(bbBank* b, int offset, float value);
 int   bbReadBytes(bbBank* b, bbStream* s, int offset, int count);
 int   bbWriteBytes(bbBank* b, bbStream* s, int offset, int count);
-int  bbCallDLL(BBStr* dll, BBStr* fun, bbBank* in, bbBank* out);
 
 #endif
