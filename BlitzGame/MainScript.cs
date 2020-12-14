@@ -1,5 +1,6 @@
 ﻿using System;
 using BlitzEngine;
+using BlitzEngine.Enums;
 
 namespace BlitzGame
 {
