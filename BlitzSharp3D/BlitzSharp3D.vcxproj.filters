@@ -229,7 +229,10 @@
     <ClCompile Include="blitz3d\world.cpp">
       <Filter>blitz3d</Filter>
     </ClCompile>
-    <ClCompile Include="osversion.cpp">
+    <ClCompile Include="mono\monoutil.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="stdutil\osversion.cpp">
       <Filter>stdutil</Filter>
     </ClCompile>
   </ItemGroup>
@@ -495,7 +498,10 @@
     <ClInclude Include="blitz3d\std.h">
       <Filter>blitz3d</Filter>
     </ClInclude>
-    <ClInclude Include="osversion.h">
+    <ClInclude Include="mono\monoutil.h">
+      <Filter>mono</Filter>
+    </ClInclude>
+    <ClInclude Include="stdutil\osversion.h">
       <Filter>stdutil</Filter>
     </ClInclude>
   </ItemGroup>

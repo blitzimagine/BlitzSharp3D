@@ -6,7 +6,7 @@
 #include <SDL_syswm.h>
 
 #include <VersionHelpers.h>
-#include "..\osversion.h"
+#include "..\stdutil\osversion.h"
 
 #include "../bbruntime/bbsys.h"
 

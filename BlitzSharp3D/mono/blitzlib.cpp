@@ -1,4 +1,5 @@
 #include "blitzlib.h"
+#include "monoutil.h"
 
 #include "../bbruntime/bbruntime.h"
 #include "../bbruntime/bbgraphics.h"
@@ -17,38 +18,6 @@
 #else
 #define PUBLIC_METHOD extern "C"
 #endif
-
-//--------------------------------------------
-// Utility
-//--------------------------------------------
-
-static inline BBStr* toBBStr(const char* str)
-{
-	return _bbStrConst(str);
-}
-
-static inline void freeBBStr(BBStr* str)
-{
-	_bbStrRelease(str);
-}
-
-static inline const char* toMonoStrNoFree(BBStr* str)
-{
-	char* ret = static_cast<char*>(malloc(str->length() + 1));
-	if (ret == nullptr)
-		return nullptr;
-	errno_t err = strcpy_s(ret, str->length(), str->c_str());
-	if (ret != nullptr)
-		ret[str->length()] = 0;
-	return ret;
-}
-
-static inline const char* toMonoStr(BBStr* str)
-{
-	const char* ret = toMonoStrNoFree(str);
-	freeBBStr(str);
-	return ret;
-}
 
 //--------------------------------------------
 // Public

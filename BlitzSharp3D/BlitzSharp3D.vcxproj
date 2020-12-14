@@ -97,7 +97,8 @@
     <ClCompile Include="gxruntime\gxtimer.cpp" />
     <ClCompile Include="gxruntime\std_gxruntime.cpp" />
     <ClCompile Include="mono\blitzlib.cpp" />
-    <ClCompile Include="osversion.cpp" />
+    <ClCompile Include="mono\monoutil.cpp" />
+    <ClCompile Include="stdutil\osversion.cpp" />
     <ClCompile Include="stdutil\stdutil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -186,8 +187,9 @@
     <ClInclude Include="gxruntime\gxtimer.h" />
     <ClInclude Include="gxruntime\std.h" />
     <ClInclude Include="mono\blitzlib.h" />
-    <ClInclude Include="osversion.h" />
+    <ClInclude Include="mono\monoutil.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="stdutil\osversion.h" />
     <ClInclude Include="stdutil\stdutil.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
