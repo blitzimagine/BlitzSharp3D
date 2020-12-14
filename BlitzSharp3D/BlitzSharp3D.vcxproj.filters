@@ -229,6 +229,9 @@
     <ClCompile Include="blitz3d\world.cpp">
       <Filter>blitz3d</Filter>
     </ClCompile>
+    <ClCompile Include="osversion.cpp">
+      <Filter>stdutil</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mono\blitzlib.h">
@@ -491,6 +494,9 @@
     </ClInclude>
     <ClInclude Include="blitz3d\std.h">
       <Filter>blitz3d</Filter>
+    </ClInclude>
+    <ClInclude Include="osversion.h">
+      <Filter>stdutil</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

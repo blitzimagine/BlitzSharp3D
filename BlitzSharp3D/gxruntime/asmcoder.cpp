@@ -65,10 +65,10 @@ void(__fastcall* span)(void* s, int* argb, int n);
 
 //	void (__fastcall *plot)(int x,int y,int argb,Surface *s)=(void (__fastcall *)(int,int,int,Surface*))code;
 
-void ortest()
+/*void ortest()
 {
 	__asm {
 		or eax, 0xff00ff00
 		or eax, -100
 	}
-}
+}*/

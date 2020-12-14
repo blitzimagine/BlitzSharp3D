@@ -3,6 +3,8 @@
 #include "gxgraphics.h"
 #include "gxruntime.h"
 
+#include <VersionHelpers.h>
+
 extern gxRuntime* gx_runtime;
 
 gxGraphics::gxGraphics(gxRuntime* rt, IDirectDraw7* dd, IDirectDrawSurface7* fs, IDirectDrawSurface7* bs, bool d3d) :
@@ -597,7 +599,7 @@ gxMesh* gxGraphics::createMesh(int max_verts, int max_tris, int flags) {
 	int vbflags = 0;
 
 	//XP or less?
-	if (runtime->osinfo.dwMajorVersion < 6) {
+	if (!IsWindowsVistaOrGreater()) {
 		vbflags |= D3DVBCAPS_WRITEONLY;
 	}
 

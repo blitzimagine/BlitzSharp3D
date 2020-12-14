@@ -5,6 +5,9 @@
 
 #include <SDL_syswm.h>
 
+#include <VersionHelpers.h>
+#include "..\osversion.h"
+
 #include "../bbruntime/bbsys.h"
 
 //#define SPI_SETMOUSESPEED	113
@@ -146,9 +149,9 @@ gxRuntime::gxRuntime(HINSTANCE hi, const string& cl, SDL_Window* window) :
 	timeGetDevCaps(&tc, sizeof(tc));
 	timeBeginPeriod(tc.wPeriodMin);
 
-	memset(&osinfo, 0, sizeof(osinfo));
-	osinfo.dwOSVersionInfoSize = sizeof(osinfo);
-	GetVersionEx(&osinfo);
+	//memset(&osinfo, 0, sizeof(osinfo));
+	//osinfo.dwOSVersionInfoSize = sizeof(osinfo);
+	//GetVersionEx(&osinfo);
 
 	HMODULE ddraw = LoadLibraryA("ddraw.dll");
 	if (ddraw) {
@@ -926,7 +929,7 @@ void gxRuntime::closeInput(gxInput* i) {
 /////////////////////////////////////////////////////
 // TIMER CALLBACK FOR AUTOREFRESH OF WINDOWED MODE //
 /////////////////////////////////////////////////////
-static void CALLBACK timerCallback(UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2) {
+static void CALLBACK timerCallback(UINT id, UINT msg, DWORD_PTR user, DWORD_PTR dw1, DWORD_PTR dw2) {
 	if (gfx_mode) {
 		gxCanvas* f = runtime->graphics->getFrontCanvas();
 		if (f->getModify() != mod_cnt) {
@@ -1418,7 +1421,7 @@ string gxRuntime::systemProperty(const std::string& p) {
 		return "Intel";
 	}
 	else if (t == "os") {
-		switch (osinfo.dwMajorVersion) {
+		/*switch (osinfo.dwMajorVersion) {
 		case 3:
 			switch (osinfo.dwMinorVersion) {
 			case 51:return "Windows NT 3.1";
@@ -1444,7 +1447,11 @@ string gxRuntime::systemProperty(const std::string& p) {
 			case 1:return "Windows 7";
 			}
 			break;
-		}
+		}*/
+
+		char osVersion[2048];
+		if(GetOSVersionString(osVersion, 2048))
+			return osVersion;
 	}
 	else if (t == "appdir") {
 		if (GetModuleFileName(0, buff, MAX_PATH)) {
@@ -1494,40 +1501,4 @@ void gxRuntime::enableDirectInput(bool enable) {
 	else {
 		unacquireInput();
 	}
-}
-
-int gxRuntime::callDll(const std::string& dll, const std::string& func, const void* in, int in_sz, void* out, int out_sz) {
-
-	map<string, gxDll*>::const_iterator lib_it = libs.find(dll);
-
-	if (lib_it == libs.end()) {
-		HINSTANCE h = LoadLibrary(dll.c_str());
-		if (!h) return 0;
-		gxDll* t = d_new gxDll;
-		t->hinst = h;
-		lib_it = libs.insert(make_pair(dll, t)).first;
-	}
-
-	gxDll* t = lib_it->second;
-	map<string, LibFunc>::const_iterator fun_it = t->funcs.find(func);
-
-	if (fun_it == t->funcs.end()) {
-		LibFunc f = (LibFunc)GetProcAddress(t->hinst, func.c_str());
-		if (!f) return 0;
-		fun_it = t->funcs.insert(make_pair(func, f)).first;
-	}
-
-	static void* save_esp;
-
-	_asm {
-		mov[save_esp], esp
-	};
-
-	int n = fun_it->second(in, in_sz, out, out_sz);
-
-	_asm {
-		mov esp, [save_esp]
-	};
-
-	return n;
 }

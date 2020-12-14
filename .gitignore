@@ -19,6 +19,7 @@ bbruntime_dll/bbruntime_dll.vcxproj.filters
 /BlitzGame/bin
 /BlitzSharp3D/Debug
 /BlitzSharp3D/Release
+/BlitzSharp3D/x64
 /BlitzEngine/bin
 /BlitzEngine/obj
 /Run/BlitzSharp3D_DEBUG.ilk
@@ -38,4 +39,4 @@ bbruntime_dll/bbruntime_dll.vcxproj.filters
 /Run/BlitzEngine.pdb
 /lib/freeimage241/Release
 
-/Run/console.log
+/Run/*.log

@@ -97,6 +97,7 @@
     <ClCompile Include="gxruntime\gxtimer.cpp" />
     <ClCompile Include="gxruntime\std_gxruntime.cpp" />
     <ClCompile Include="mono\blitzlib.cpp" />
+    <ClCompile Include="osversion.cpp" />
     <ClCompile Include="stdutil\stdutil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +186,7 @@
     <ClInclude Include="gxruntime\gxtimer.h" />
     <ClInclude Include="gxruntime\std.h" />
     <ClInclude Include="mono\blitzlib.h" />
+    <ClInclude Include="osversion.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdutil\stdutil.h" />
   </ItemGroup>
@@ -245,9 +247,17 @@
     <TargetName>$(ProjectName)_DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\mono-runtime\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\mono-runtime\lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x64;..\lib\freeimage241\lib\x64;..\lib\fmodapi375win\api\lib\x64;..\lib\directx7\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x64;..\lib\freeimage241\lib\x64;..\lib\fmodapi375win\api\lib\x64;..\lib\directx7\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -281,6 +291,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -299,7 +312,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmodvc.lib;libmono-static-sgen.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
@@ -320,6 +333,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
