@@ -603,7 +603,7 @@ gxMesh* gxGraphics::createMesh(int max_verts, int max_tris, int flags) {
 		vbflags |= D3DVBCAPS_WRITEONLY;
 	}
 
-	D3DVERTEXBUFFERDESC desc = { sizeof(desc),vbflags,VTXFMT,max_verts };
+	D3DVERTEXBUFFERDESC desc = { sizeof(desc),(DWORD)vbflags,VTXFMT,(DWORD)max_verts };
 
 	IDirect3DVertexBuffer7* buff;
 	if (dir3d->CreateVertexBuffer(&desc, &buff, 0) < 0) return 0;

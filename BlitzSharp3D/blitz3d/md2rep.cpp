@@ -98,7 +98,7 @@ MD2Rep::MD2Rep(const string& f) :
 			map<t_vert, int>::iterator it = t_map.find(t);
 			if (it == t_map.end()) {
 				//create new vert
-				tr.verts[j] = t_map[t] = t_verts.size();
+				tr.verts[j] = t_map[t] = (unsigned short)t_verts.size(); // TODO: Should this really be using unsigned short?
 				t_verts.push_back(t);
 				//add UVs
 				VertexUV uv;
