@@ -42,8 +42,8 @@ public:
 	bool visible()const { return _visible; }
 	bool enabled()const { return _enabled; }
 
-	void enumVisible(vector<Object*>& out);
-	void enumEnabled(vector<Object*>& out);
+	void enumVisible(std::vector<Object*>& out);
+	void enumEnabled(std::vector<Object*>& out);
 
 	Entity* children()const { return _children; }
 	Entity* successor()const { return _succ; }

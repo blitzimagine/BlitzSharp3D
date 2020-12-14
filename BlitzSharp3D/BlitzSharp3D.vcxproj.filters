@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="mono\blitzlib.cpp">
-      <Filter>mono</Filter>
-    </ClCompile>
     <ClCompile Include="stdutil\stdutil.cpp">
       <Filter>stdutil</Filter>
     </ClCompile>
@@ -46,13 +43,7 @@
     <ClCompile Include="bbruntime\bbsys.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
-    <ClCompile Include="bbruntime\multiplay.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
     <ClCompile Include="bbruntime\multiplay_setup.cpp">
-      <Filter>bbruntime</Filter>
-    </ClCompile>
-    <ClCompile Include="bbruntime\runtime.cpp">
       <Filter>bbruntime</Filter>
     </ClCompile>
     <ClCompile Include="bbruntime\std_runtime.cpp">
@@ -235,11 +226,47 @@
     <ClCompile Include="stdutil\osversion.cpp">
       <Filter>stdutil</Filter>
     </ClCompile>
+    <ClCompile Include="mono\runtime.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\audio.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\bank.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\blitz3d.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\filesystem.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\graphics.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\input.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\math.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\multiplay.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\sockets.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\stream.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="mono\strings.cpp">
+      <Filter>mono</Filter>
+    </ClCompile>
+    <ClCompile Include="bbruntime\bbmultiplay.cpp">
+      <Filter>bbruntime</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="mono\blitzlib.h">
-      <Filter>mono</Filter>
-    </ClInclude>
     <ClInclude Include="stdutil\stdutil.h">
       <Filter>stdutil</Filter>
     </ClInclude>

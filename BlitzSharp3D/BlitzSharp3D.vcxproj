@@ -35,9 +35,8 @@
     <ClCompile Include="bbruntime\bbstream.cpp" />
     <ClCompile Include="bbruntime\bbstring.cpp" />
     <ClCompile Include="bbruntime\bbsys.cpp" />
-    <ClCompile Include="bbruntime\multiplay.cpp" />
+    <ClCompile Include="bbruntime\bbmultiplay.cpp" />
     <ClCompile Include="bbruntime\multiplay_setup.cpp" />
-    <ClCompile Include="bbruntime\runtime.cpp" />
     <ClCompile Include="bbruntime\std_runtime.cpp" />
     <ClCompile Include="bbruntime\userlibs.cpp" />
     <ClCompile Include="blitz3d\animation.cpp" />
@@ -96,8 +95,19 @@
     <ClCompile Include="gxruntime\gxsound.cpp" />
     <ClCompile Include="gxruntime\gxtimer.cpp" />
     <ClCompile Include="gxruntime\std_gxruntime.cpp" />
-    <ClCompile Include="mono\blitzlib.cpp" />
+    <ClCompile Include="mono\audio.cpp" />
+    <ClCompile Include="mono\bank.cpp" />
+    <ClCompile Include="mono\blitz3d.cpp" />
+    <ClCompile Include="mono\filesystem.cpp" />
+    <ClCompile Include="mono\graphics.cpp" />
+    <ClCompile Include="mono\input.cpp" />
+    <ClCompile Include="mono\math.cpp" />
+    <ClCompile Include="mono\multiplay.cpp" />
+    <ClCompile Include="mono\runtime.cpp" />
     <ClCompile Include="mono\monoutil.cpp" />
+    <ClCompile Include="mono\sockets.cpp" />
+    <ClCompile Include="mono\stream.cpp" />
+    <ClCompile Include="mono\strings.cpp" />
     <ClCompile Include="stdutil\osversion.cpp" />
     <ClCompile Include="stdutil\stdutil.cpp" />
   </ItemGroup>
@@ -186,7 +196,6 @@
     <ClInclude Include="gxruntime\gxsound.h" />
     <ClInclude Include="gxruntime\gxtimer.h" />
     <ClInclude Include="gxruntime\std.h" />
-    <ClInclude Include="mono\blitzlib.h" />
     <ClInclude Include="mono\monoutil.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdutil\osversion.h" />

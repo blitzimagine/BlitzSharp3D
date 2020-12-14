@@ -3,6 +3,7 @@
 #define MIRROR_H
 
 #include "object.h"
+#include "..\stdutil\stdutil.h"
 
 class Mirror : public Object {
 public:

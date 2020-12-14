@@ -1,6 +1,12 @@
 #pragma once
 
-#include "../bbruntime/bbstring.h"
+#ifdef _WIN32
+#define PUBLIC_METHOD extern "C" __declspec(dllexport)
+#else
+#define PUBLIC_METHOD extern "C"
+#endif
+
+struct BBStr;
 
 extern BBStr* toBBStr(const char* str);
 extern void freeBBStr(BBStr* str);
