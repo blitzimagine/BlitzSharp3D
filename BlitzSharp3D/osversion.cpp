@@ -68,7 +68,8 @@ bool GetOSVersionStringA(char* version, size_t maxlen)
         return false;
     if (v == nullptr)
         return false;
-    wcstombs(version, v, maxlen);
+    size_t len;
+    wcstombs_s(&len, version, maxlen, v, maxlen);
     return true;
 
     /*char path[_MAX_PATH];
