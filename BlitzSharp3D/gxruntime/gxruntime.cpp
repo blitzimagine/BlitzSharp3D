@@ -1108,69 +1108,70 @@ gxGraphics* gxRuntime::openGraphics(int w, int h, int d, int monitor, int driver
 	bool d3d = flags & gxGraphics::GRAPHICS_3D ? true : false;
 	bool windowed = flags & gxGraphics::GRAPHICS_WINDOWED ? true : false;
 
-	/*if( windowed ) */driver = 0;
+	if (windowed) driver = 0;
 
 	curr_driver = drivers[driver];
 
-	//if( windowed ){
-	if ((graphics = openWindowedGraphics(w, h, d, monitor, d3d))) {
-		gfx_mode = (flags & gxGraphics::GRAPHICS_SCALED || !windowed) ? 1 : 2;
-		auto_suspend = (flags & gxGraphics::GRAPHICS_AUTOSUSPEND) != 0;
-		int ws, ww, hh;
-		if (gfx_mode == 1) {
-			ws = scaled_ws;
-			SDL_GetWindowSize(window, &ww, &hh);
-			/*RECT c_r;
-			GetClientRect( hwnd,&c_r );
-			ww=c_r.right-c_r.left;
-			hh=c_r.bottom-c_r.top;*/
-		}
-		else {
-			ws = static_ws;
-			ww = w;
-			hh = h;
-		}
+	if (windowed) {
+		if ((graphics = openWindowedGraphics(w, h, d, monitor, d3d))) {
+			gfx_mode = (flags & gxGraphics::GRAPHICS_SCALED || !windowed) ? 1 : 2;
+			auto_suspend = (flags & gxGraphics::GRAPHICS_AUTOSUSPEND) != 0;
+			int ws, ww, hh;
+			if (gfx_mode == 1) {
+				ws = scaled_ws;
+				SDL_GetWindowSize(window, &ww, &hh);
+				/*RECT c_r;
+				GetClientRect( hwnd,&c_r );
+				ww=c_r.right-c_r.left;
+				hh=c_r.bottom-c_r.top;*/
+			}
+			else {
+				ws = static_ws;
+				ww = w;
+				hh = h;
+			}
 
-		if (!windowed)
-		{
-			SDL_SetWindowResizable(window, SDL_FALSE);
-			SDL_SetWindowBordered(window, SDL_FALSE);
-			SDL_Rect bounds;
-			SDL_GetDisplayBounds(monitor, &bounds);
-			SDL_SetWindowPosition(window, bounds.x, bounds.y);
-			SDL_SetWindowSize(window, bounds.w, bounds.h);
-		}
-		else
-		{
-			SDL_SetWindowSize(window, ww, hh);
-			SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED_DISPLAY(monitor), SDL_WINDOWPOS_CENTERED_DISPLAY(monitor));
+			if (!windowed)
+			{
+				SDL_SetWindowResizable(window, SDL_FALSE);
+				SDL_SetWindowBordered(window, SDL_FALSE);
+				SDL_Rect bounds;
+				SDL_GetDisplayBounds(monitor, &bounds);
+				SDL_SetWindowPosition(window, bounds.x, bounds.y);
+				SDL_SetWindowSize(window, bounds.w, bounds.h);
+			}
+			else
+			{
+				SDL_SetWindowSize(window, ww, hh);
+				SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED_DISPLAY(monitor), SDL_WINDOWPOS_CENTERED_DISPLAY(monitor));
+				//SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
+			}
+
+			//SetWindowLong( hwnd,GWL_STYLE,ws );
+			//SetWindowPos( hwnd,0,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOZORDER|SWP_FRAMECHANGED );
+
+
+			/*RECT w_r,c_r;
+			GetWindowRect( hwnd,&w_r );
+			GetClientRect( hwnd,&c_r );
+			int tw=(w_r.right-w_r.left)-(c_r.right-c_r.left);
+			int th=(w_r.bottom-w_r.top)-(c_r.bottom-c_r.top );
+			int cx=( GetSystemMetrics( SM_CXSCREEN )-ww )/2;
+			int cy=( GetSystemMetrics( SM_CYSCREEN )-hh )/2;
+			POINT zz={0,0};
+			ClientToScreen( hwnd,&zz );
+			int bw=zz.x-w_r.left,bh=zz.y-w_r.top;
+			int wx=cx-bw,wy=cy-bh;if( wy<0 ) wy=0;		//not above top!
+			MoveWindow( hwnd,wx,wy,ww+tw,hh+th,true );*/
+
+			//int display = 2;
+
+			//SDL_SetWindowSize(window, ww, hh);
+			//SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED_DISPLAY(display), SDL_WINDOWPOS_CENTERED_DISPLAY(display));
 			//SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 		}
-
-		//SetWindowLong( hwnd,GWL_STYLE,ws );
-		//SetWindowPos( hwnd,0,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOZORDER|SWP_FRAMECHANGED );
-
-
-		/*RECT w_r,c_r;
-		GetWindowRect( hwnd,&w_r );
-		GetClientRect( hwnd,&c_r );
-		int tw=(w_r.right-w_r.left)-(c_r.right-c_r.left);
-		int th=(w_r.bottom-w_r.top)-(c_r.bottom-c_r.top );
-		int cx=( GetSystemMetrics( SM_CXSCREEN )-ww )/2;
-		int cy=( GetSystemMetrics( SM_CYSCREEN )-hh )/2;
-		POINT zz={0,0};
-		ClientToScreen( hwnd,&zz );
-		int bw=zz.x-w_r.left,bh=zz.y-w_r.top;
-		int wx=cx-bw,wy=cy-bh;if( wy<0 ) wy=0;		//not above top!
-		MoveWindow( hwnd,wx,wy,ww+tw,hh+th,true );*/
-
-		//int display = 2;
-
-		//SDL_SetWindowSize(window, ww, hh);
-		//SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED_DISPLAY(display), SDL_WINDOWPOS_CENTERED_DISPLAY(display));
-		//SDL_SetWindowPosition(window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
 	}
-	/*}else{
+	else {
 		backupWindowState();
 
 		//SetWindowLong( hwnd,GWL_STYLE,WS_VISIBLE|WS_POPUP );
@@ -1186,18 +1187,19 @@ gxGraphics* gxRuntime::openGraphics(int w, int h, int d, int monitor, int driver
 		SDL_SetWindowPosition(window, bounds.x, bounds.y);
 		SDL_SetWindowSize(window, bounds.w, bounds.h);
 
-		ShowCursor( 0 );
-		if( graphics=openExclusiveGraphics( w,h,d,d3d ) ){
-			gfx_mode=3;
-			auto_suspend=true;
-			SetCursorPos(0,0);
+		ShowCursor(0);
+		if (graphics = openExclusiveGraphics(w, h, d, monitor, d3d)) {
+			gfx_mode = 3;
+			auto_suspend = true;
+			SetCursorPos(0, 0);
 			acquireInput();
-		}else{
-			ShowCursor( 1 );
+		}
+		else {
+			ShowCursor(1);
 			restoreWindowState();
 		}
 
-	}*/
+	}
 
 	if (!graphics) curr_driver = 0;
 
