@@ -4,17 +4,17 @@ using System.Text;
 
 namespace BlitzEngine
 {
-	public class Texture:BBPointer
+	public class Texture : BBPointer
 	{
-		public Texture(IntPtr pointer):base(pointer){}
-		public Texture(int width, int height, int flags = 0, int frames = 1):base(Blitz3D.CreateTexture(width,height,flags,frames)){}
-		public Texture(string file, int flags = 1):base(Blitz3D.LoadTexture(file,flags)){}
-		public Texture(string file, int flags, int width, int height, int first, int count):base(Blitz3D.LoadAnimTexture(file,flags,width,height,first,count)){}
-		public void Free()=>Blitz3D.FreeTexture(this);
-		public void Blend(int blend)=>Blitz3D.TextureBlend(this,blend);
-		public void Scale(float uScale, float vScale)=>Blitz3D.ScaleTexture(this,uScale,vScale);
-		public void Rotate(float angle)=>Blitz3D.RotateTexture(this,angle);
-		public void Position(float uOffset, float vOffset)=>Blitz3D.PositionTexture(this,uOffset,vOffset);
+		public Texture(IntPtr pointer) : base(pointer) { }
+		public Texture(int width, int height, int flags = 0, int frames = 1) : base(Blitz3D.CreateTexture(width, height, flags, frames)) { }
+		public Texture(string file, int flags = 1) : base(Blitz3D.LoadTexture(file, flags)) { }
+		public Texture(string file, int flags, int width, int height, int first, int count) : base(Blitz3D.LoadAnimTexture(file, flags, width, height, first, count)) { }
+		public void Free() => Blitz3D.FreeTexture(this);
+		public void Blend(int blend) => Blitz3D.TextureBlend(this, blend);
+		public void Scale(float uScale, float vScale) => Blitz3D.ScaleTexture(this, uScale, vScale);
+		public void Rotate(float angle) => Blitz3D.RotateTexture(this, angle);
+		public void Position(float uOffset, float vOffset) => Blitz3D.PositionTexture(this, uOffset, vOffset);
 	}
 
 	public static partial class Blitz3D

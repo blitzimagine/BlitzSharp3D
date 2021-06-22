@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Dir:BBPointer
+	public class Dir : BBPointer
 	{
-		public Dir(IntPtr pointer):base(pointer){}
+		public Dir(IntPtr pointer) : base(pointer) { }
 	}
 }

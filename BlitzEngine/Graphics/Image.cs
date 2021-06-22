@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Image:BBPointer
+	public class Image : BBPointer
 	{
-		public Image(IntPtr pointer):base(pointer){}
+		public Image(IntPtr pointer) : base(pointer) { }
 	}
 }

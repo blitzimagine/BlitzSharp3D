@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Sphere:Entity
+	public class Sphere : Entity
 	{
-		public Sphere(int segments=8,Entity parent=null):base(Blitz3D.CreateSphere(segments,parent)){}
+		public Sphere(int segments = 8, Entity parent = null) : base(Blitz3D.CreateSphere(segments, parent)) { }
 	}
 	public static partial class Blitz3D
 	{

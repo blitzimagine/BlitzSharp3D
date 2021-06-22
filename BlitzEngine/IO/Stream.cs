@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Stream:BBPointer
+	public class Stream : BBPointer
 	{
-		public Stream(IntPtr pointer):base(pointer){}
+		public Stream(IntPtr pointer) : base(pointer) { }
 	}
 }

@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Sound:BBPointer
+	public class Sound : BBPointer
 	{
-		public Sound(IntPtr pointer):base(pointer){}
+		public Sound(IntPtr pointer) : base(pointer) { }
 	}
 }

@@ -1114,7 +1114,7 @@ gxGraphics* gxRuntime::openGraphics(int w, int h, int d, int monitor, int driver
 
 	if (windowed) {
 		if ((graphics = openWindowedGraphics(w, h, d, monitor, d3d))) {
-			gfx_mode = (flags & gxGraphics::GRAPHICS_SCALED || !windowed) ? 1 : 2;
+			gfx_mode = (flags & gxGraphics::GRAPHICS_SCALED) ? 1 : 2;
 			auto_suspend = (flags & gxGraphics::GRAPHICS_AUTOSUSPEND) != 0;
 			int ws, ww, hh;
 			if (gfx_mode == 1) {
@@ -1131,7 +1131,7 @@ gxGraphics* gxRuntime::openGraphics(int w, int h, int d, int monitor, int driver
 				hh = h;
 			}
 
-			if (!windowed)
+			if (gfx_mode == 1)
 			{
 				SDL_SetWindowResizable(window, SDL_FALSE);
 				SDL_SetWindowBordered(window, SDL_FALSE);

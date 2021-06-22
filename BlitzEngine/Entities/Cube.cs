@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Cube:Entity
+	public class Cube : Entity
 	{
-		public Cube(Entity parent=null):base(Blitz3D.CreateCube(parent)){}
+		public Cube(Entity parent = null) : base(Blitz3D.CreateCube(parent)) { }
 	}
 	public static partial class Blitz3D
 	{

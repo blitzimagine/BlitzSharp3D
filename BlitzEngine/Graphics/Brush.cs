@@ -3,15 +3,15 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Brush:BBPointer
+	public class Brush : BBPointer
 	{
-		public Brush(System.IntPtr pointer):base(pointer){}
-		public Brush(float red = 255, float green = 255, float blue = 255):base(Blitz3D.CreateBrush(red,green,blue)){}
-		public Brush(string file, int textureFlags = 1, float uScale = 1, float vScale = 1):base(Blitz3D.LoadBrush(file,textureFlags,uScale,vScale)){}
-		public void Free()=>Blitz3D.FreeBrush(this);
-		public void Alpha(float alpha)=>Blitz3D.BrushAlpha(this,alpha);
-		public void Texture(Texture texture,int frame=0,int index=0)=>Blitz3D.BrushTexture(this,texture,frame,index);
-		public void GetTexture(int index=0)=>Blitz3D.GetBrushTexture(this,index);
+		public Brush(System.IntPtr pointer) : base(pointer) { }
+		public Brush(float red = 255, float green = 255, float blue = 255) : base(Blitz3D.CreateBrush(red, green, blue)) { }
+		public Brush(string file, int textureFlags = 1, float uScale = 1, float vScale = 1) : base(Blitz3D.LoadBrush(file, textureFlags, uScale, vScale)) { }
+		public void Free() => Blitz3D.FreeBrush(this);
+		public void Alpha(float alpha) => Blitz3D.BrushAlpha(this, alpha);
+		public void Texture(Texture texture, int frame = 0, int index = 0) => Blitz3D.BrushTexture(this, texture, frame, index);
+		public void GetTexture(int index = 0) => Blitz3D.GetBrushTexture(this, index);
 	}
 
 	public static partial class Blitz3D

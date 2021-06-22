@@ -19,8 +19,8 @@ namespace BlitzEngine
 			{
 				System.IO.Stream s = System.IO.File.Open(logFile, FileMode.Create);
 				_writer = new StreamWriter(s);
-                _writer.AutoFlush = true;
-            }
+				_writer.AutoFlush = true;
+			}
 			catch (IOException ex)
 			{
 				Console.WriteLine("Failed to create log file: " + ex.Message);

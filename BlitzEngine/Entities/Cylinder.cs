@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Cylinder:Entity
+	public class Cylinder : Entity
 	{
-		public Cylinder(int segments=8,bool solid=true,Entity parent=null):base(Blitz3D.CreateCylinder(segments,solid,parent)){}
+		public Cylinder(int segments = 8, bool solid = true, Entity parent = null) : base(Blitz3D.CreateCylinder(segments, solid, parent)) { }
 	}
 	public static partial class Blitz3D
 	{

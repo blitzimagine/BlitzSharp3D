@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Channel:BBPointer
+	public class Channel : BBPointer
 	{
-		public Channel(IntPtr pointer):base(pointer){}
+		public Channel(IntPtr pointer) : base(pointer) { }
 	}
 }

@@ -67,7 +67,7 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		public static extern float Stats3D(int type);
 
-		
+
 
 		[DllImport(B3DDllLink)]
 		public static extern void ClearTextureFilters();
@@ -75,11 +75,11 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		public static extern void TextureFilter(string matchText, int textureFlags = 0);
 
-		
 
-		
 
-		
+
+
+
 
 		[DllImport(B3DDllLink)]
 		private static extern int LoadAnimSeq_internal(IntPtr entity, string file);
@@ -89,11 +89,11 @@ namespace BlitzEngine
 			return LoadAnimSeq_internal(entity.Pointer, file);
 		}
 
-		
 
-		
 
-		
+
+
+
 
 		[DllImport(B3DDllLink)]
 		private static extern bool EntityVisible_internal(IntPtr src, IntPtr dest);

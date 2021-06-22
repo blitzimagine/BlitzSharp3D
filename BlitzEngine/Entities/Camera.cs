@@ -3,14 +3,14 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Camera:Entity
+	public class Camera : Entity
 	{
-		public Camera(Entity parent=null):base(Blitz3D.CreateCamera(parent)){}
+		public Camera(Entity parent = null) : base(Blitz3D.CreateCamera(parent)) { }
 
-		protected Camera(IntPtr instance):base(instance){}
+		protected Camera(IntPtr instance) : base(instance) { }
 
-		public void Zoom(float zoom)=>Blitz3D.CameraZoom(this,zoom);
-		public void Range(float nr, float fr)=>Blitz3D.CameraRange(this,nr,fr);
+		public void Zoom(float zoom) => Blitz3D.CameraZoom(this, zoom);
+		public void Range(float nr, float fr) => Blitz3D.CameraRange(this, nr, fr);
 		//public void CameraClsColor(float red, float green, float blue)=>Blitz3D.CameraClsColor(this,red,green,blue);
 	}
 	public static partial class Blitz3D

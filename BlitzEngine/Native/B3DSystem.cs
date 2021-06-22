@@ -10,7 +10,7 @@ using BlitzEngine.Enums;
 
 namespace BlitzEngine
 {
-    public static partial class Blitz3D
+	public static partial class Blitz3D
 	{
 #if DEBUG_ENGINE
 		internal const string B3DDllLink = "BlitzSharp3D_DEBUG.dll";
@@ -27,121 +27,121 @@ namespace BlitzEngine
 
 		[DllImport(B3DDllLink)]
 		public static extern bool CloseBlitz();
-        
-        [DllImport(B3DDllLink)]
-        public static extern void Restart();
 
-        [DllImport(B3DDllLink)]
-        public static extern void End();
+		[DllImport(B3DDllLink)]
+		public static extern void Restart();
 
-        [DllImport(B3DDllLink)]
-        public static extern void AppTitle(string title, string closePrompt = "");
-        
-        [DllImport(B3DDllLink)]
-        public static extern void Stop();
+		[DllImport(B3DDllLink)]
+		public static extern void End();
 
-        [DllImport(B3DDllLink)]
-        public static extern void RuntimeError(string message);
+		[DllImport(B3DDllLink)]
+		public static extern void AppTitle(string title, string closePrompt = "");
 
-        [DllImport(B3DDllLink)]
-        public static extern int ExecFile(string command);
+		[DllImport(B3DDllLink)]
+		public static extern void Stop();
 
-        [DllImport(B3DDllLink)]
-        public static extern void Delay(int millisecs);
+		[DllImport(B3DDllLink)]
+		public static extern void RuntimeError(string message);
 
-        [DllImport(B3DDllLink)]
-        public static extern int MilliSecs();
+		[DllImport(B3DDllLink)]
+		public static extern int ExecFile(string command);
 
-        [DllImport(B3DDllLink)]
-        private static extern void CommandLine_internal(StringBuilder ret, int retLen);
+		[DllImport(B3DDllLink)]
+		public static extern void Delay(int millisecs);
 
-        public static string CommandLine()
-        {
+		[DllImport(B3DDllLink)]
+		public static extern int MilliSecs();
+
+		[DllImport(B3DDllLink)]
+		private static extern void CommandLine_internal(StringBuilder ret, int retLen);
+
+		public static string CommandLine()
+		{
 			StringBuilder sb = new StringBuilder(4096);
 			CommandLine_internal(sb, sb.Capacity);
 			return sb.ToString();
-        }
-
-        [DllImport(B3DDllLink)]
-        public static extern void SystemProperty_internal(StringBuilder ret, int retLen, string property);
-
-        public static string SystemProperty(string property)
-        {
-	        StringBuilder sb = new StringBuilder(4096);
-	        SystemProperty_internal(sb, sb.Capacity, property);
-	        return sb.ToString();
-        }
+		}
 
 		[DllImport(B3DDllLink)]
-        public static extern void GetEnv_internal(StringBuilder ret, int retLen, string var);
+		public static extern void SystemProperty_internal(StringBuilder ret, int retLen, string property);
 
-        public static string GetEnv(string var)
-        {
-	        StringBuilder sb = new StringBuilder(4096);
-	        GetEnv_internal(sb, sb.Capacity, var);
-	        return sb.ToString();
-        }
+		public static string SystemProperty(string property)
+		{
+			StringBuilder sb = new StringBuilder(4096);
+			SystemProperty_internal(sb, sb.Capacity, property);
+			return sb.ToString();
+		}
 
 		[DllImport(B3DDllLink)]
-        public static extern void SetEnv(string var, string value);
+		public static extern void GetEnv_internal(StringBuilder ret, int retLen, string var);
 
-        [DllImport(B3DDllLink)]
-        private static extern IntPtr CreateTimer_internal(int hertz);
+		public static string GetEnv(string var)
+		{
+			StringBuilder sb = new StringBuilder(4096);
+			GetEnv_internal(sb, sb.Capacity, var);
+			return sb.ToString();
+		}
 
-        public static Timer CreateTimer(int hertz)
-        {
-            IntPtr pointer = CreateTimer_internal(hertz);
-            Timer timer = new Timer(pointer);
-            return timer;
-        }
+		[DllImport(B3DDllLink)]
+		public static extern void SetEnv(string var, string value);
 
-        [DllImport(B3DDllLink)]
-        private static extern int WaitTimer_internal(IntPtr timer);
+		[DllImport(B3DDllLink)]
+		private static extern IntPtr CreateTimer_internal(int hertz);
 
-        public static int WaitTimer(Timer timer)
-        {
-            return WaitTimer_internal(timer.Pointer);
-        }
+		public static Timer CreateTimer(int hertz)
+		{
+			IntPtr pointer = CreateTimer_internal(hertz);
+			Timer timer = new Timer(pointer);
+			return timer;
+		}
 
-        [DllImport(B3DDllLink)]
-        private static extern void FreeTimer_internal(IntPtr timer);
+		[DllImport(B3DDllLink)]
+		private static extern int WaitTimer_internal(IntPtr timer);
 
-        public static void FreeTimer(Timer timer)
-        {
-            FreeTimer_internal(timer.Pointer);
-        }
+		public static int WaitTimer(Timer timer)
+		{
+			return WaitTimer_internal(timer.Pointer);
+		}
 
-        [DllImport(B3DDllLink)]
-        public static extern void DebugLog(string text);
+		[DllImport(B3DDllLink)]
+		private static extern void FreeTimer_internal(IntPtr timer);
 
-        [DllImport(B3DDllLink)]
-        private static extern void GetBuildType_internal(StringBuilder ret, int retLen);
+		public static void FreeTimer(Timer timer)
+		{
+			FreeTimer_internal(timer.Pointer);
+		}
 
-        public static BuildType GetBuildType()
-        {
-	        StringBuilder sb = new StringBuilder(4096);
-	        GetBuildType_internal(sb, sb.Capacity);
+		[DllImport(B3DDllLink)]
+		public static extern void DebugLog(string text);
 
-	        switch (sb.ToString().ToLower())
-	        {
+		[DllImport(B3DDllLink)]
+		private static extern void GetBuildType_internal(StringBuilder ret, int retLen);
+
+		public static BuildType GetBuildType()
+		{
+			StringBuilder sb = new StringBuilder(4096);
+			GetBuildType_internal(sb, sb.Capacity);
+
+			switch (sb.ToString().ToLower())
+			{
 				case "debug":
 					return BuildType.Debug;
 				case "release":
 					return BuildType.Release;
 				default:
 					return BuildType.Unknown;
-	        }
-        }
+			}
+		}
 
-        public static BuildType GetWrapperBuildType()
-        {
+		public static BuildType GetWrapperBuildType()
+		{
 #if DEBUG_ENGINE
 	        return BuildType.DebugEngine;
 #elif DEBUG
-	        return BuildType.Debug;
+			return BuildType.Debug;
 #else
 	        return BuildType.Release;
 #endif
-        }
+		}
 	}
 }

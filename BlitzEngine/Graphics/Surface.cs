@@ -3,20 +3,20 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Surface:BBPointer
+	public class Surface : BBPointer
 	{
 		//public Brush Brush=>Blitz3D.GetSurfaceBrush(this);
 		//public int VerticeCount=>Blitz3D.CountVertices(this);
 		//public int TriangleCount=>Blitz3D.CountTriangles(this);
 
-		public Surface(IntPtr pointer):base(pointer){}
+		public Surface(IntPtr pointer) : base(pointer) { }
 
-		public Surface(StaticMesh mesh,Brush brush=null):this(Blitz3D.CreateSurface(mesh,brush)){}
+		public Surface(StaticMesh mesh, Brush brush = null) : this(Blitz3D.CreateSurface(mesh, brush)) { }
 
 		//public void Clear(bool clearVertices = true, bool clearTriangles = true)=>Blitz3D.ClearSurface(this,clearVertices,clearTriangles);
 		//public void Paint(Brush brush)=>Blitz3D.PaintSurface(this,brush);
-		public int AddVertex(float x, float y, float z, float u = 0, float v = 0, float w = 1)=>Blitz3D.AddVertex(this,x,y,z,u,v,w);
-		public int AddTriangle(int v0,int v1,int v2)=>Blitz3D.AddTriangle(this,v0,v1,v2);
+		public int AddVertex(float x, float y, float z, float u = 0, float v = 0, float w = 1) => Blitz3D.AddVertex(this, x, y, z, u, v, w);
+		public int AddTriangle(int v0, int v1, int v2) => Blitz3D.AddTriangle(this, v0, v1, v2);
 		//public void VertexCoords(int index,float x,float y,float z)=>Blitz3D.VertexCoords(this,index,x,y,z);
 		//public void VertexNormal(int index,float nx,float ny,float nz)=>Blitz3D.VertexNormal(this,index,nx,ny,nz);
 		//public void VertexColor(int index,float red,float green,float blue,float alpha = 1)=>Blitz3D.VertexColor(this,index,red,green,blue,alpha);

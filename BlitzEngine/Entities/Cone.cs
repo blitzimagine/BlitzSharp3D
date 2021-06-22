@@ -3,9 +3,9 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class Cone:Entity
+	public class Cone : Entity
 	{
-		public Cone(int segments=8,bool solid=true,Entity parent=null):base(Blitz3D.CreateCone(segments,solid,parent)){}
+		public Cone(int segments = 8, bool solid = true, Entity parent = null) : base(Blitz3D.CreateCone(segments, solid, parent)) { }
 	}
 	public static partial class Blitz3D
 	{

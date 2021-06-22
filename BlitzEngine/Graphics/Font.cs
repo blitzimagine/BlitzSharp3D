@@ -2,8 +2,8 @@
 
 namespace BlitzEngine
 {
-	public class Font:BBPointer
+	public class Font : BBPointer
 	{
-		public Font(IntPtr pointer):base(pointer){}
+		public Font(IntPtr pointer) : base(pointer) { }
 	}
 }

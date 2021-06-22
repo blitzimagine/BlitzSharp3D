@@ -11,8 +11,8 @@ namespace BlitzEngine
 			Pointer = pointer;
 		}
 
-		public override int GetHashCode()=>Pointer.GetHashCode();
-		public override bool Equals(object obj)=>(obj is BBPointer that) && (this.Pointer==that.Pointer);
+		public override int GetHashCode() => Pointer.GetHashCode();
+		public override bool Equals(object obj) => (obj is BBPointer that) && (this.Pointer == that.Pointer);
 
 		public static bool operator ==(BBPointer a, BBPointer b)
 		{
@@ -36,6 +36,6 @@ namespace BlitzEngine
 			return !(a == b);
 		}
 
-		public static implicit operator IntPtr(BBPointer that)=>that == null ? IntPtr.Zero : that.Pointer;
+		public static implicit operator IntPtr(BBPointer that) => that == null ? IntPtr.Zero : that.Pointer;
 	}
 }

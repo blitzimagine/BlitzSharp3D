@@ -3,34 +3,34 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class StaticMesh:Entity
+	public class StaticMesh : Entity
 	{
-		public float Width=>Blitz3D.MeshWidth(this);
-		public float Height=>Blitz3D.MeshHeight(this);
-		public float Depth=>Blitz3D.MeshDepth(this);
-		public int SurfaceCount=>Blitz3D.CountSurfaces(this);
+		public float Width => Blitz3D.MeshWidth(this);
+		public float Height => Blitz3D.MeshHeight(this);
+		public float Depth => Blitz3D.MeshDepth(this);
+		public int SurfaceCount => Blitz3D.CountSurfaces(this);
 
-		public StaticMesh(System.IntPtr pointer):base(pointer){}
-		public StaticMesh(string file,Entity parent=null):base(Blitz3D.LoadMesh(file,parent)){}
+		public StaticMesh(System.IntPtr pointer) : base(pointer) { }
+		public StaticMesh(string file, Entity parent = null) : base(Blitz3D.LoadMesh(file, parent)) { }
 
-		public StaticMesh(Entity parent=null):base(Blitz3D.CreateMesh(parent)){}
-		
-		public StaticMesh CopyMesh(StaticMesh parent=null)=>new StaticMesh(Blitz3D.CopyMesh(this,parent));
-		
-		public void ScaleMesh(float xScale, float yScale, float zScale)=>Blitz3D.ScaleMesh(this,xScale,yScale,zScale);
-		public void RotateMesh(float pitch, float yaw, float roll)=>Blitz3D.RotateMesh(this,pitch,yaw,roll);
-		public void PositionMesh(float x, float y, float z)=>Blitz3D.PositionMesh(this,x,y,z);
-		public void FitMesh(float x, float y, float z, float width, float height, float depth, bool uniform = false)=>Blitz3D.FitMesh(this,x,y,z,width,height,depth,uniform);
-		public void FlipMesh()=>Blitz3D.FlipMesh(this);
-		public void PaintMesh(Brush brush)=>Blitz3D.PaintMesh(this,brush);
-		public void Add(StaticMesh src)=>Blitz3D.AddMesh(src,this);
-		public void UpdateNormals()=>Blitz3D.UpdateNormals(this);
-		public void Light(float red, float green, float blue, float range = 0, float x = 0, float y = 0, float z = 0)=>Blitz3D.LightMesh(this,red,green,blue,range,x,y,z);
-		
-		public bool MeshIntersects(StaticMesh that)=>Blitz3D.MeshesIntersect(this,that);
-		public Surface GetSurface(int surfaceIndex)=>Blitz3D.GetSurface(this,surfaceIndex);
-		public void CullBox(float x, float y, float z, float width, float height, float depth)=>Blitz3D.MeshCullBox(this,x,y,z,width,height,depth);
-		public Surface FindSurface(Brush brush)=>Blitz3D.FindSurface(this,brush);
+		public StaticMesh(Entity parent = null) : base(Blitz3D.CreateMesh(parent)) { }
+
+		public StaticMesh CopyMesh(StaticMesh parent = null) => new StaticMesh(Blitz3D.CopyMesh(this, parent));
+
+		public void ScaleMesh(float xScale, float yScale, float zScale) => Blitz3D.ScaleMesh(this, xScale, yScale, zScale);
+		public void RotateMesh(float pitch, float yaw, float roll) => Blitz3D.RotateMesh(this, pitch, yaw, roll);
+		public void PositionMesh(float x, float y, float z) => Blitz3D.PositionMesh(this, x, y, z);
+		public void FitMesh(float x, float y, float z, float width, float height, float depth, bool uniform = false) => Blitz3D.FitMesh(this, x, y, z, width, height, depth, uniform);
+		public void FlipMesh() => Blitz3D.FlipMesh(this);
+		public void PaintMesh(Brush brush) => Blitz3D.PaintMesh(this, brush);
+		public void Add(StaticMesh src) => Blitz3D.AddMesh(src, this);
+		public void UpdateNormals() => Blitz3D.UpdateNormals(this);
+		public void Light(float red, float green, float blue, float range = 0, float x = 0, float y = 0, float z = 0) => Blitz3D.LightMesh(this, red, green, blue, range, x, y, z);
+
+		public bool MeshIntersects(StaticMesh that) => Blitz3D.MeshesIntersect(this, that);
+		public Surface GetSurface(int surfaceIndex) => Blitz3D.GetSurface(this, surfaceIndex);
+		public void CullBox(float x, float y, float z, float width, float height, float depth) => Blitz3D.MeshCullBox(this, x, y, z, width, height, depth);
+		public Surface FindSurface(Brush brush) => Blitz3D.FindSurface(this, brush);
 	}
 	public static partial class Blitz3D
 	{

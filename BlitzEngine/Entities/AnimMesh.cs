@@ -3,11 +3,11 @@ using System.Runtime.InteropServices;
 
 namespace BlitzEngine
 {
-	public class AnimMesh:Entity
+	public class AnimMesh : Entity
 	{
-		private AnimMesh(string file,Entity parent=null):base(Blitz3D.LoadAnimMesh(file,parent)){}
+		private AnimMesh(string file, Entity parent = null) : base(Blitz3D.LoadAnimMesh(file, parent)) { }
 
-		public static AnimMesh LoadAnimMesh(string file,Entity parent=null)=>new AnimMesh(file,parent);
+		public static AnimMesh LoadAnimMesh(string file, Entity parent = null) => new AnimMesh(file, parent);
 	}
 	public static partial class Blitz3D
 	{
