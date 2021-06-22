@@ -15,11 +15,8 @@ void freeBBStr(BBStr* str)
 const char* toMonoStrNoFree(BBStr* str)
 {
 	char* ret = static_cast<char*>(malloc(str->length() + 1));
-	if (ret == nullptr)
-		return nullptr;
-	errno_t err = strcpy_s(ret, str->length(), str->c_str());
-	if (ret != nullptr)
-		ret[str->length()] = 0;
+	ret = strcpy(ret, str->c_str());
+	ret[str->length()] = 0;
 	return ret;
 }
 
