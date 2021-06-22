@@ -610,7 +610,7 @@ void gxScene::render(gxMesh* m, int first_vert, int vert_cnt, int first_tri, int
 
 void gxScene::end() {
 	dir3dDev->EndScene();
-	RECT r = { viewport.dwX,viewport.dwY,viewport.dwX + viewport.dwWidth,viewport.dwY + viewport.dwHeight };
+	RECT r = { (LONG)viewport.dwX,(LONG)viewport.dwY,LONG(viewport.dwX + viewport.dwWidth),LONG(viewport.dwY + viewport.dwHeight) };
 	target->damage(r);
 }
 

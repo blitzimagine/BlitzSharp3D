@@ -35,9 +35,8 @@
     <ClCompile Include="bbruntime\bbstream.cpp" />
     <ClCompile Include="bbruntime\bbstring.cpp" />
     <ClCompile Include="bbruntime\bbsys.cpp" />
-    <ClCompile Include="bbruntime\multiplay.cpp" />
+    <ClCompile Include="bbruntime\bbmultiplay.cpp" />
     <ClCompile Include="bbruntime\multiplay_setup.cpp" />
-    <ClCompile Include="bbruntime\runtime.cpp" />
     <ClCompile Include="bbruntime\std_runtime.cpp" />
     <ClCompile Include="bbruntime\userlibs.cpp" />
     <ClCompile Include="blitz3d\animation.cpp" />
@@ -96,7 +95,20 @@
     <ClCompile Include="gxruntime\gxsound.cpp" />
     <ClCompile Include="gxruntime\gxtimer.cpp" />
     <ClCompile Include="gxruntime\std_gxruntime.cpp" />
-    <ClCompile Include="mono\blitzlib.cpp" />
+    <ClCompile Include="mono\audio.cpp" />
+    <ClCompile Include="mono\bank.cpp" />
+    <ClCompile Include="mono\blitz3d.cpp" />
+    <ClCompile Include="mono\filesystem.cpp" />
+    <ClCompile Include="mono\graphics.cpp" />
+    <ClCompile Include="mono\input.cpp" />
+    <ClCompile Include="mono\math.cpp" />
+    <ClCompile Include="mono\multiplay.cpp" />
+    <ClCompile Include="mono\runtime.cpp" />
+    <ClCompile Include="mono\monoutil.cpp" />
+    <ClCompile Include="mono\sockets.cpp" />
+    <ClCompile Include="mono\stream.cpp" />
+    <ClCompile Include="mono\strings.cpp" />
+    <ClCompile Include="stdutil\osversion.cpp" />
     <ClCompile Include="stdutil\stdutil.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -184,8 +196,9 @@
     <ClInclude Include="gxruntime\gxsound.h" />
     <ClInclude Include="gxruntime\gxtimer.h" />
     <ClInclude Include="gxruntime\std.h" />
-    <ClInclude Include="mono\blitzlib.h" />
+    <ClInclude Include="mono\monoutil.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="stdutil\osversion.h" />
     <ClInclude Include="stdutil\stdutil.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -245,9 +258,17 @@
     <TargetName>$(ProjectName)_DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\mono-runtime\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\mono-runtime\lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x86;..\lib\freeimage241\Lib;..\lib\fmodapi375win\api\lib;..\lib\directx7\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Run\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x64;..\lib\freeimage241\lib\x64;..\lib\fmodapi375win\api\lib\x64;..\lib\directx7\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\lib\sdl2\include;..\lib\freeimage241\include;..\lib\fmodapi375win\api\inc;..\lib\directx7\include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\lib\sdl2\lib\x64;..\lib\freeimage241\lib\x64;..\lib\fmodapi375win\api\lib\x64;..\lib\directx7\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -281,6 +302,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>PRO;DEBUG_GAME;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -299,7 +323,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;fmodvc.lib;libmono-static-sgen.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
@@ -320,6 +344,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>SDL2.lib;fmodvc.lib;freeimage.lib;wsock32.lib;winmm.lib;amstrmid.lib;dxguid.lib;d3dxof.lib;dplayx.lib;ddraw.lib;dinput.lib;dsound.lib;odbc32.lib;odbccp32.lib;Ws2_32.lib;version.lib;bcrypt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

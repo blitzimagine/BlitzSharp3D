@@ -9,7 +9,7 @@ public:
 	gxTimer(gxRuntime* rt, int hertz);
 	~gxTimer();
 
-	static void CALLBACK timerCallback(UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2);
+	static void CALLBACK timerCallback(UINT id, UINT msg, DWORD_PTR user, DWORD_PTR dw1, DWORD_PTR dw2);
 
 private:
 	gxRuntime* runtime;

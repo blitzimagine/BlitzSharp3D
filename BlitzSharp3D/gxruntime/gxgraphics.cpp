@@ -3,6 +3,8 @@
 #include "gxgraphics.h"
 #include "gxruntime.h"
 
+#include <VersionHelpers.h>
+
 extern gxRuntime* gx_runtime;
 
 gxGraphics::gxGraphics(gxRuntime* rt, IDirectDraw7* dd, IDirectDrawSurface7* fs, IDirectDrawSurface7* bs, bool d3d) :
@@ -597,11 +599,11 @@ gxMesh* gxGraphics::createMesh(int max_verts, int max_tris, int flags) {
 	int vbflags = 0;
 
 	//XP or less?
-	if (runtime->osinfo.dwMajorVersion < 6) {
+	if (!IsWindowsVistaOrGreater()) {
 		vbflags |= D3DVBCAPS_WRITEONLY;
 	}
 
-	D3DVERTEXBUFFERDESC desc = { sizeof(desc),vbflags,VTXFMT,max_verts };
+	D3DVERTEXBUFFERDESC desc = { sizeof(desc),(DWORD)vbflags,VTXFMT,(DWORD)max_verts };
 
 	IDirect3DVertexBuffer7* buff;
 	if (dir3d->CreateVertexBuffer(&desc, &buff, 0) < 0) return 0;

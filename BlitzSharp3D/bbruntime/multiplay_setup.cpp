@@ -187,7 +187,7 @@ static void endDialog(HWND hwnd, int rc) {
 	EndDialog(hwnd, rc);
 }
 
-static BOOL CALLBACK dialogProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+static INT_PTR CALLBACK dialogProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam) {
 
 	int k, lo = LOWORD(wparam), hi = HIWORD(wparam);
 

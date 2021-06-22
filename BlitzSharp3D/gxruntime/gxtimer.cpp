@@ -14,7 +14,7 @@ gxTimer::~gxTimer() {
 	CloseHandle(event);
 }
 
-void CALLBACK gxTimer::timerCallback(UINT id, UINT msg, DWORD user, DWORD dw1, DWORD dw2) {
+void CALLBACK gxTimer::timerCallback(UINT id, UINT msg, DWORD_PTR user, DWORD_PTR dw1, DWORD_PTR dw2) {
 	gxTimer* t = (gxTimer*)user;
 	++t->ticks_put;
 	SetEvent(t->event);

@@ -8,6 +8,8 @@
 #include "animator.h"
 #include "collision.h"
 
+#include "..\stdutil\stdutil.h"
+
 class gxSound;
 
 struct ObjCollision {
@@ -82,7 +84,7 @@ private:
 	bool obscurer;
 	float elapsed;
 	Vector velocity;
-	vector<gxChannel*> channels;
+	std::vector<gxChannel*> channels;
 	Vector capt_pos, capt_scl;
 	Quat capt_rot;
 	mutable Object* last_copy;

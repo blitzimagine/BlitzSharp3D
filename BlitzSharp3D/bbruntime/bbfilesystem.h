@@ -7,11 +7,13 @@
 
 #include "bbstream.h"
 
+#include <fstream>
+
 extern gxFileSystem* gx_filesys;
 
 struct bbFile : public bbStream {
-	filebuf* buf;
-	bbFile(filebuf* f) :buf(f) {
+	std::filebuf* buf;
+	bbFile(std::filebuf* f) :buf(f) {
 	}
 	~bbFile() {
 		delete buf;

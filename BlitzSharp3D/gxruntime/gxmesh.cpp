@@ -5,6 +5,8 @@
 
 #include "gxruntime.h"
 
+#include <VersionHelpers.h>
+
 extern gxRuntime* gx_runtime;
 
 gxMesh::gxMesh(gxGraphics* g, IDirect3DVertexBuffer7* vs, WORD* is, int max_vs, int max_ts) :
@@ -35,7 +37,7 @@ bool gxMesh::lock(bool all) {
 	int flags = DDLOCK_WAIT | DDLOCK_WRITEONLY;
 
 	//XP or less?
-	if (graphics->runtime->osinfo.dwMajorVersion < 6) {
+	if (!IsWindowsVistaOrGreater()) {
 		flags |= (all ? DDLOCK_DISCARDCONTENTS : DDLOCK_NOOVERWRITE);
 	}
 

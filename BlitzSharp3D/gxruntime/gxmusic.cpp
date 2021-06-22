@@ -32,10 +32,10 @@ void gxMusic::stop() {
 
 void gxMusic::setVolume(float volume) {
 	if (module) {
-		FMUSIC_SetMasterVolume(module, volume * 255.0f);
+		FMUSIC_SetMasterVolume(module, int(volume * 255.0f));
 	}
 	else {
-		FSOUND_SetVolume(stream_channel, volume * 255.0f);
+		FSOUND_SetVolume(stream_channel, int(volume * 255.0f));
 	}
 }
 
