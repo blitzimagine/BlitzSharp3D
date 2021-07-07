@@ -16,37 +16,37 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		private static extern IntPtr OpenFile_internal(string filename);
 
-		public static File OpenFile(string filename)
+		public static BlitzFile OpenFile(string filename)
 		{
 			IntPtr pointer = OpenFile_internal(filename);
-			File file = new File(pointer);
+			BlitzFile file = new BlitzFile(pointer);
 			return file;
 		}
 
 		[DllImport(B3DDllLink)]
 		private static extern IntPtr ReadFile_internal(string filename);
 
-		public static File ReadFile(string filename)
+		public static BlitzFile ReadFile(string filename)
 		{
 			IntPtr pointer = ReadFile_internal(filename);
-			File file = new File(pointer);
+			BlitzFile file = new BlitzFile(pointer);
 			return file;
 		}
 
 		[DllImport(B3DDllLink)]
 		private static extern IntPtr WriteFile_internal(string filename);
 
-		public static File WriteFile(string filename)
+		public static BlitzFile WriteFile(string filename)
 		{
 			IntPtr pointer = WriteFile_internal(filename);
-			File file = new File(pointer);
+			BlitzFile file = new BlitzFile(pointer);
 			return file;
 		}
 
 		[DllImport(B3DDllLink)]
 		private static extern void CloseFile_internal(IntPtr file);
 
-		public static void CloseFile(File file)
+		public static void CloseFile(BlitzFile file)
 		{
 			CloseFile_internal(file.Pointer);
 		}
@@ -54,7 +54,7 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		private static extern int FilePos_internal(IntPtr file);
 
-		public static int FilePos(File file)
+		public static int FilePos(BlitzFile file)
 		{
 			return FilePos_internal(file.Pointer);
 		}
@@ -62,7 +62,7 @@ namespace BlitzEngine
 		[DllImport(B3DDllLink)]
 		private static extern int SeekFile_internal(IntPtr file, int pos);
 
-		public static int SeekFile(File file, int pos)
+		public static int SeekFile(BlitzFile file, int pos)
 		{
 			return SeekFile_internal(file.Pointer, pos);
 		}

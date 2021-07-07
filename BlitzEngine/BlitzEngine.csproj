@@ -72,7 +72,7 @@
     <Compile Include="Graphics\Texture.cs" />
     <Compile Include="Graphics\Surface.cs" />
     <Compile Include="IO\Dir.cs" />
-    <Compile Include="IO\File.cs" />
+    <Compile Include="IO\BlitzFile.cs" />
     <Compile Include="IO\Stream.cs" />
     <Compile Include="Native\B3DStrings.cs" />
     <Compile Include="Vector3.cs" />
